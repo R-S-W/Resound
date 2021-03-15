@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import configureStore  from './store/store';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import configureStore  from './store/store';
 
 
 // document.addEventListener('DOMContentLoaded', ()=>{
