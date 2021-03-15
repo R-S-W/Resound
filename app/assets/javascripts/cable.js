@@ -11,3 +11,8 @@
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+
+import {connect}from 'react-redux';
+import {fetchChirps} from '../../actions/chirp_actions';
+import ChirpIndex from './chirp_index'
+
