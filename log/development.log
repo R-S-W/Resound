@@ -121,3 +121,38 @@ Migrating to CreateAlbums (20210315180434)
   ↳ bin/rails:9
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-03-15 17:37:29 -0400
+
+SyntaxError - syntax error, unexpected tSYMBEG, expecting keyword_do or '{' or '('
+...space :api, defaults: {format :json} do
+...                              ^
+/Users/RxTenshou/Studies/App Academy /fullstack/resound/config/routes.rb:7: syntax error, unexpected keyword_end, expecting end-of-input
+  end
+  ^~~:
+  config/routes.rb:4:in `'
+
+Started POST "/__better_errors/026b82d0f88d8ce3/variables" for ::1 at 2021-03-15 17:37:30 -0400
+Started GET "/" for ::1 at 2021-03-15 17:38:38 -0400
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/RxTenshou/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/30d6452ac8968faa/variables" for ::1 at 2021-03-15 17:38:38 -0400
+Started GET "/" for ::1 at 2021-03-15 17:39:20 -0400
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/a6c358c1e94ee5f9/variables" for ::1 at 2021-03-15 17:39:20 -0400
+Started GET "/" for ::1 at 2021-03-15 17:41:08 -0400
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/74ce839b7a23854d/variables" for ::1 at 2021-03-15 17:41:08 -0400
+Started GET "/" for ::1 at 2021-03-15 17:41:42 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/RxTenshou/.rvm/gems/ruby-2.5.1/gems/railties-5.2.4.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/RxTenshou/.rvm/gems/ruby-2.5.1/gems/railties-5.2.4.5/lib/rails/templates/rails/welcome/index.html.erb (8.5ms)
+Completed 200 OK in 30ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
