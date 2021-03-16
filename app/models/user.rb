@@ -7,10 +7,6 @@ class User < ApplicationRecord
   attr_reader :password
   before_validation :ensure_session_token
 
-  has_many: :songs
-    foreign_key: :artist_id
-  has_many: :albums
-
   def self.find_by_credentials(uname, pw)
     @u = User.find_by(username: uname);
     if (@u && @u.is_password?(pw))
@@ -39,5 +35,11 @@ class User < ApplicationRecord
     self.session_token
   end
 
+
+  has_many :songs,
+    foreign_key: :artist_id
+
+  has_many :albums,
+    foreign_key: :artist_id
 
 end
