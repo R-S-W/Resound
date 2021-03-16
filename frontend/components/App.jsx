@@ -3,7 +3,7 @@ import React from 'react';
 const App = ()=>{
   return (
     <div>
-      Resound!
+      <h1>Resound App!</h1>
     </div>
   )
 }
