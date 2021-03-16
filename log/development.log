@@ -580,3 +580,18 @@ Migrating to EditAlbums (20210316161758)
   ↳ bin/rails:9
   [1m[35m (10.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (25.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "yo"], ["email", "bleh@gmail"], ["password_digest", "$2a$12$NbefUV3njsSY.d9P9r1WaupN9Gm7/6FOEnhgSZfz/xpzDGoMU/zDG"], ["session_token", "BT2dctVJoSUzp9__oKtxthiliUR7EX8VaTO44HLapT4"], ["created_at", "2021-03-16 17:48:29.059980"], ["updated_at", "2021-03-16 17:48:29.059980"]]
+  [1m[35m (11.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/" for ::1 at 2021-03-16 13:51:02 -0400
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/RxTenshou/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 4605ms (Views: 4575.5ms | ActiveRecord: 0.0ms)
+
+
