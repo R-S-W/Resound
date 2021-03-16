@@ -5,14 +5,19 @@ class User < ApplicationRecord
 
 
   attr_reader :password
-  before_validation: ensure_session_token
+  before_validation :ensure_session_token
 
-  def class.find_by_credentials(uname, pw)
+  has_many: :songs
+    foreign_key: :artist_id
+  has_many: :albums
+
+  def self.find_by_credentials(uname, pw)
     @u = User.find_by(username: uname);
     if (@u && @u.is_password?(pw))
       @u
     else
       nil  ###
+    end
   end
 
   def password=(pw)
@@ -25,13 +30,13 @@ class User < ApplicationRecord
   end
 
   def ensure_session_token
-    this.session_token ||= SecureRandom.urlsafe_base64(32)
+    self.session_token ||= SecureRandom.urlsafe_base64(32)
   end
 
   def reset_session_token!
-    this.session_token = SecureRandom.urlsafe_base64(32)
+    self.session_token = SecureRandom.urlsafe_base64(32)
     self.save!
-    this.session_token
+    self.session_token
   end
 
 
