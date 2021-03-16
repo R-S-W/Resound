@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-  validates :content, presence: true
+  validates :content, length: {minimum: 1}
 end

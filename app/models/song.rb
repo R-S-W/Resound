@@ -1,7 +1,7 @@
 class Song < ApplicationRecord
   validates :name, :length, :artist_id, presence: true
-  validates :info, :album_id
-  validates :genre  #-# add later
+  # validates :info, :album_id
+  # validates :genre  #-# add later
 
 
 
