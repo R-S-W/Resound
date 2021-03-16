@@ -20,6 +20,7 @@ class Api::UsersController < ApplicationController
       render 'api/users/show'    ####render somewhere
     else
       render json: ['Invalid username or password.  Please try again.'], status: 404
+    end
   end
 
 
