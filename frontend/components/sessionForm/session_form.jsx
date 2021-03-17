@@ -61,7 +61,6 @@ class SessionForm extends React.Component{
 
   render(){
     // if (this.props.match.params.)
-    // debugger
     return (
       <div>
         <h4>{this.props.formType.toUpperCase()}</h4>
