@@ -10,14 +10,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const root = document.getElementById('root');
   let store;
   
+
+
   // ReactDOM.render( <h1>HELLO WORLD, this is Resound.jsx!</h1>, root);
   window.Alogin  = sessionActions.login;
   window.Asignup = sessionActions.signup;
   window.Alogout = sessionActions.logout;
-
   window.Ulogin = SessionAPIUtil.login;
 
   
+
   if (window.currentUser){
     const preloadedState = {
       entities:{
@@ -32,12 +34,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
   }
 
 
+
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 
   
-  ReactDOM.render( <Root store= {store}/> ,root);
 
+
+  ReactDOM.render( <Root store= {store}/> ,root);
 
 
 })
