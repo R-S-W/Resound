@@ -1,9 +1,12 @@
 
 
 import {combineReducers} from 'redux';
-import SongReducer from './song_reducer';
+import entitiesReducer from './entities_reducer';
+import errorsReducer from './errors_reducer';
+import sessionReducer from './session_reducer';
 
 export default combineReducers({
-  songs: SongReducer
-  
+  entities: entitiesReducer,
+  session: sessionReducer,
+  errors: errorsReducer
 });

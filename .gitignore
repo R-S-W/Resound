@@ -5,4 +5,15 @@ bundle.js.mapgt
 /node_modules
 /app/assets/javascripts/bundle.js
 /public/assets
-/tmp
+
+
+app/assets/images/
+
+config/initializers/secret_token.rb
+config/master.key
+
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+

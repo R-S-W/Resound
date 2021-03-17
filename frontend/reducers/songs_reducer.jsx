@@ -4,7 +4,7 @@
 const RECEIVESOMETHING= 'RECEIVESOMETHING';
 
 
-const SongReducer = (state= {}, action)=>{
+const songsReducer = (state= {}, action)=>{
   Object.freeze(state);
   switch(action.type){
     case RECEIVESOMETHING:
@@ -14,4 +14,4 @@ const SongReducer = (state= {}, action)=>{
   }
 }
 
-export default SongReducer;
+export default songsReducer;
