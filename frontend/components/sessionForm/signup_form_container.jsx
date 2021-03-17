@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (disp) => {
   return {
     processForm : (user)=>{
-      return disp(signup(user));
+      disp(signup(user));
     }
   }
 }

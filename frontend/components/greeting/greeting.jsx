@@ -4,14 +4,15 @@ import {Link} from 'react-router-dom'
 const Greeting  = (props)=>{
   let greetingMessage = 'Welcome ' 
 
+  
+
   if (props.currentUser) {
     greetingMessage += props.currentUser.username;
-    debugger
 
     return (
       <div>
-        <h3>{greetingMessage} AAA </h3>
-        <button onClick = {()=>{props.logout}}>Logout</button>
+        <h3>{greetingMessage}</h3>
+        <button onClick = {props.logout}>Logout</button>
       </div>
     );
   }else{

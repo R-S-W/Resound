@@ -4,7 +4,7 @@ import {logout} from '../../actions/session_actions';
 
 
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state)=>{  //triggers rerender if props are changed. 
   return {
     currentUser: state.entities.users[state.session.id]
 
@@ -12,7 +12,7 @@ const mapStateToProps = (state)=>{
 }
 const mapDispatchToProps = (disp)=>{
   return {
-    logout: ()=>{return disp(logout())}
+    logout: ()=>disp(logout())
   }
 }
 

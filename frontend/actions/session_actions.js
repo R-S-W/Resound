@@ -27,8 +27,9 @@ export const  receiveErrors = (errors) => {
 }
 
 export const login = (user) => disp => {
+  debugger
   return SessionAPIUtil.login(user).then((u) => {
-    return disp(receiveCurrentUser(u));//, (errors)=>disp(receiveErrors(JSON.stringify(errors)))); //###
+    return disp(receiveCurrentUser(u));
   });
 }
 export const logout = () => disp => {

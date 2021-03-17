@@ -26,7 +26,11 @@ class SessionForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
+    
     this.props.processForm(Object.assign({},this.state));   //##
+    
+
+
   }
 
   emailDiv(){                             
@@ -57,7 +61,7 @@ class SessionForm extends React.Component{
 
   render(){
     // if (this.props.match.params.)
-
+    // debugger
     return (
       <div>
         <h4>{this.props.formType.toUpperCase()}</h4>
