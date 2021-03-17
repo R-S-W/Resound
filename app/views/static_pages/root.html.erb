@@ -1,5 +1,11 @@
 
-
+<% if logged_in?%>
+  <script type ='text/javascript'>
+      window.currentUser = <%= render(
+        '/api/users/users.json.jbuilder',user: current_user).html_safe %>
+      // {id:1, username: 'Ray'}
+  </script>
+<% end %>
 <div id = 'root'>
   Welcome to Resound, from root.html.erb!
 </div>
