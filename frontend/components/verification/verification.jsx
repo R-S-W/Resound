@@ -10,24 +10,25 @@ const Verification  = (props)=>{
     greetingMessage += props.currentUser.username;
 
     return (
-      <div>
-        <h3>{greetingMessage}</h3>
+      <div id = 'logout-button'>
+        {/* <h3>{greetingMessage}</h3> */}
         <button onClick = {props.logout}>Logout</button>
       </div>
     );
   }else{
     return (
-      <div>
+      <div id='verification-buttons'>
         {/* <div>{greetingMessage}</div> */}
-        <h2>Resound</h2>
-        <button>
-          <Link to='/signup'>Create Account</Link>     
-        </button>
-        <button>
+        <button id='login-button'>
           <Link to='/login'>Sign In</Link>
         </button>
+        <button id = 'sign-up-button'>
+          <Link to='/signup'>Create Account</Link>     
+        </button>
 
-        <button onClick={props.demoLogin}>Demo Login</button>
+        <button id = 'demo-login-button' onClick={props.demoLogin}>
+          <span>Demo Login</span> 
+        </button>
       </div>
     )
   }

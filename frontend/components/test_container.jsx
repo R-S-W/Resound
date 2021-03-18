@@ -12,7 +12,7 @@ const mstp = (state)=>{
 
 const Test = (props)=>{
   return (
-    <div>This is a Test</div>
+    <p>This is a Test</p>
   )
 }
 

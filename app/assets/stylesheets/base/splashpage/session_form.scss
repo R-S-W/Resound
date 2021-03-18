@@ -1,0 +1,41 @@
+
+$input-font-size : 15px;
+
+
+
+#session-form-component {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+
+
+  h4{
+    color: red;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+  }
+}
+
+#sesh-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:450px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+#username, #email, #password {
+  border-style: none;
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 5px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 800;
+  font-size: $input-font-size;
+
+
+  padding: 5px 0;
+  line-height: 7px;
+}

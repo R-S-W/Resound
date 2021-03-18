@@ -9,10 +9,19 @@ class SplashPage extends React.Component{
 
   render(){
     return (
-      <div>
-        <h2>Splash Page</h2>
-        <VerificationContainer/>
-        {/* <button onClick = {this.props.demoLogin}>Demo Login</button> */}
+      <div id = 'splash-page'>
+        <div className = 'rectangle'></div>
+        <header>
+          <div id = 'logo-title'>
+            <img id= 'logo' src = {window.resoundLogoURL}/>
+            <h1 id = 'title'>RESOUND</h1>
+          </div>
+          <VerificationContainer/>
+
+        </header>
+        <img id ='stars-pic' src={window.soundcloudStarsURL} />
+        
+        
       </div>
     )
   }
