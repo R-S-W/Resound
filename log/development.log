@@ -7425,3 +7425,439 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 139ms (Views: 133.4ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2021-03-18 09:01:34 -0400
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/RxTenshou/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 2780ms (Views: 2775.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 09:09:21 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 115ms (Views: 111.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 09:09:29 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 94ms (Views: 84.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 09:09:32 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 394ms (Views: 389.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 09:10:32 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 169ms (Views: 163.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 09:10:41 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 165ms (Views: 158.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 09:13:05 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 584ms (Views: 575.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 09:13:43 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 226ms (Views: 218.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 09:17:16 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 154ms (ActiveRecord: 0.0ms)
+
+
+
+Sass::SyntaxError - Invalid CSS after "  color:": expected expression (e.g. 1px, bold), was "}":
+  app/views/layouts/application.html.erb:29:in `_app_views_layouts_application_html_erb___2619926913601708576_70333847613800'
+
+Started POST "/__better_errors/c666f3d6a7e0ddab/variables" for ::1 at 2021-03-18 09:17:17 -0400
+Started GET "/" for ::1 at 2021-03-18 09:26:42 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 84ms (ActiveRecord: 0.0ms)
+
+
+
+Sass::SyntaxError - Invalid CSS after "  color:": expected expression (e.g. 1px, bold), was "}":
+  app/views/layouts/application.html.erb:29:in `_app_views_layouts_application_html_erb___2619926913601708576_70333851984740'
+
+Started POST "/__better_errors/40e9b11cdf937235/variables" for ::1 at 2021-03-18 09:26:42 -0400
+Started GET "/" for ::1 at 2021-03-18 09:29:19 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 93ms (ActiveRecord: 0.0ms)
+
+
+
+Sass::SyntaxError - Undefined variable: "$text-color".:
+  app/views/layouts/application.html.erb:29:in `_app_views_layouts_application_html_erb___2619926913601708576_70333856436240'
+
+Started POST "/__better_errors/91a4f440b77c3e28/variables" for ::1 at 2021-03-18 09:29:19 -0400
+Started GET "/" for ::1 at 2021-03-18 09:29:37 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 88ms (ActiveRecord: 0.0ms)
+
+
+
+Sass::SyntaxError - Undefined variable: "$text-color".:
+  app/views/layouts/application.html.erb:29:in `_app_views_layouts_application_html_erb___2619926913601708576_70333851827660'
+
+Started POST "/__better_errors/10c204f14bbb047a/variables" for ::1 at 2021-03-18 09:29:38 -0400
+Started GET "/" for ::1 at 2021-03-18 10:01:14 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.1ms)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 0.0ms)
+
+
+
+Sass::SyntaxError - Invalid CSS after "  color:": expected expression (e.g. 1px, bold), was "}":
+  app/views/layouts/application.html.erb:29:in `_app_views_layouts_application_html_erb___2619926913601708576_70333839782180'
+
+Started POST "/__better_errors/68276f18250fed1c/variables" for ::1 at 2021-03-18 10:01:14 -0400
+Started GET "/" for ::1 at 2021-03-18 10:02:35 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 118ms (ActiveRecord: 0.0ms)
+
+
+
+Sass::SyntaxError - Invalid CSS after "  color:": expected expression (e.g. 1px, bold), was "}":
+  app/views/layouts/application.html.erb:29:in `_app_views_layouts_application_html_erb___2619926913601708576_70333787729880'
+
+Started POST "/__better_errors/4aac686e41e4cb9d/variables" for ::1 at 2021-03-18 10:02:35 -0400
+Started GET "/" for ::1 at 2021-03-18 10:03:31 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 108ms (ActiveRecord: 0.0ms)
+
+
+
+Sass::SyntaxError - Invalid CSS after "  color:": expected expression (e.g. 1px, bold), was "}":
+  app/views/layouts/application.html.erb:29:in `_app_views_layouts_application_html_erb___2619926913601708576_70333852986300'
+
+Started POST "/__better_errors/6588563cc55b6ce4/variables" for ::1 at 2021-03-18 10:03:31 -0400
+Started GET "/" for ::1 at 2021-03-18 10:04:03 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 137ms (ActiveRecord: 0.0ms)
+
+
+
+Sass::SyntaxError - Invalid CSS after "  color:": expected expression (e.g. 1px, bold), was "}":
+  app/views/layouts/application.html.erb:29:in `_app_views_layouts_application_html_erb___2619926913601708576_70333840260000'
+
+Started POST "/__better_errors/e45c3046b850af4d/variables" for ::1 at 2021-03-18 10:04:04 -0400
+Started GET "/" for ::1 at 2021-03-18 10:06:02 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.1ms)
+Completed 500 Internal Server Error in 117ms (ActiveRecord: 0.0ms)
+
+
+
+Sass::SyntaxError - Invalid CSS after "..../../variables'": expected selector or at-rule, was "$input-font-siz...":
+  app/views/layouts/application.html.erb:25:in `_app_views_layouts_application_html_erb___2619926913601708576_70333840220660'
+
+Started POST "/__better_errors/5a0a102b615f3cfb/variables" for ::1 at 2021-03-18 10:06:03 -0400
+Started GET "/" for ::1 at 2021-03-18 10:06:10 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 475ms (Views: 466.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:07:57 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 149ms (Views: 144.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:08:03 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 69ms (Views: 66.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:11:23 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 91ms (ActiveRecord: 0.0ms)
+
+
+
+Sass::SyntaxError - Invalid CSS after "...1px solid black": expected "{", was ";":
+  app/views/layouts/application.html.erb:25:in `_app_views_layouts_application_html_erb___2619926913601708576_70333853017160'
+
+Started POST "/__better_errors/fa4f34d2409d4f7e/variables" for ::1 at 2021-03-18 10:11:24 -0400
+Started GET "/" for ::1 at 2021-03-18 10:11:37 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 137ms (Views: 134.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:12:35 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 734ms (Views: 726.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-18 10:16:29 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Guest", "password"=>"[FILTERED]", "email"=>"demoUser@demomail.com"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Guest"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:11
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_users.json.jbuilder (0.8ms)
+  Rendered api/users/show.json.jbuilder (4.2ms)
+Completed 200 OK in 348ms (Views: 14.7ms | ActiveRecord: 66.8ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-03-18 10:16:48 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "9s4RQm8W_ZySwMEShQtqh97UxuVvMMZLB-NtAb6Nvu8"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:34
+  [1m[36mUser Update (10.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "leBD3tKA2zJlDwtZrbeImtqkwz2iWyowanmUPAyVWgM"], ["updated_at", "2021-03-18 14:16:48.560500"], ["id", 8]]
+  ↳ app/models/user.rb:34
+  [1m[35m (37.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:34
+Completed 200 OK in 64ms (Views: 0.2ms | ActiveRecord: 50.5ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:17:55 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 523ms (Views: 509.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-18 10:17:58 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Guest", "password"=>"[FILTERED]", "email"=>"demoUser@demomail.com"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Guest"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:11
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_users.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (2.4ms)
+Completed 200 OK in 245ms (Views: 11.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:18:44 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "leBD3tKA2zJlDwtZrbeImtqkwz2iWyowanmUPAyVWgM"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14
+  Rendered api/users/_users.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 473ms (Views: 463.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:19:25 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (13.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "leBD3tKA2zJlDwtZrbeImtqkwz2iWyowanmUPAyVWgM"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14
+  Rendered api/users/_users.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 452ms (Views: 435.1ms | ActiveRecord: 13.1ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-03-18 10:22:28 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (11.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "leBD3tKA2zJlDwtZrbeImtqkwz2iWyowanmUPAyVWgM"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:34
+  [1m[36mUser Update (4.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "q3wXedvFWkAcEhKK0Rq_uVY1K9QLQcfbokI3pRK1Od8"], ["updated_at", "2021-03-18 14:22:28.048756"], ["id", 8]]
+  ↳ app/models/user.rb:34
+  [1m[35m (75.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:34
+Completed 200 OK in 105ms (Views: 0.2ms | ActiveRecord: 92.8ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:40:33 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 147ms (Views: 143.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:41:11 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 107ms (Views: 100.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-18 10:41:56 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Ray", "password"=>"[FILTERED]", "email"=>"Your Email"}}
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Ray"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:11
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_users.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (2.7ms)
+Completed 200 OK in 267ms (Views: 12.1ms | ActiveRecord: 19.8ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:43:17 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "fmKLv6eJ60zsw1-_7JNjzThDL5rZM9l_e3hdjeoYfU4"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14
+  Rendered api/users/_users.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (47.3ms)
+Completed 200 OK in 205ms (Views: 197.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:43:55 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "fmKLv6eJ60zsw1-_7JNjzThDL5rZM9l_e3hdjeoYfU4"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14
+  Rendered api/users/_users.json.jbuilder (1.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 227ms (Views: 216.8ms | ActiveRecord: 1.6ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-03-18 10:43:58 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "fmKLv6eJ60zsw1-_7JNjzThDL5rZM9l_e3hdjeoYfU4"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:34
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "ZedSbuQ4QmU4no-aDyDQ5mpGxz6aTD10nb891wac-m0"], ["updated_at", "2021-03-18 14:43:58.985736"], ["id", 1]]
+  ↳ app/models/user.rb:34
+  [1m[35m (8.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:34
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 12.1ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-18 10:44:00 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Guest", "password"=>"[FILTERED]", "email"=>"demoUser@demomail.com"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Guest"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:11
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_users.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.7ms)
+Completed 200 OK in 241ms (Views: 9.5ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-03-18 10:44:03 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "q3wXedvFWkAcEhKK0Rq_uVY1K9QLQcfbokI3pRK1Od8"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:34
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "1Yu9VHXz65QFTDx8nD9g0_m4AsS0EwZwNjfGsFd2_fA"], ["updated_at", "2021-03-18 14:44:03.059532"], ["id", 8]]
+  ↳ app/models/user.rb:34
+  [1m[35m (16.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:34
+Completed 200 OK in 30ms (Views: 0.8ms | ActiveRecord: 20.8ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-18 10:44:04 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Guest", "password"=>"[FILTERED]", "email"=>"demoUser@demomail.com"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Guest"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:11
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_users.json.jbuilder (0.5ms)
+  Rendered api/users/show.json.jbuilder (2.5ms)
+Completed 200 OK in 261ms (Views: 11.9ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-03-18 10:44:46 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (5.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "1Yu9VHXz65QFTDx8nD9g0_m4AsS0EwZwNjfGsFd2_fA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14
+  [1m[35m (6.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:34
+  [1m[36mUser Update (10.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "o2U3Sn_mMCweELZ3W2LzbMJqJNxarZ4lT_35P-yjGrc"], ["updated_at", "2021-03-18 14:44:46.468135"], ["id", 8]]
+  ↳ app/models/user.rb:34
+  [1m[35m (8.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:34
+Completed 200 OK in 55ms (Views: 0.2ms | ActiveRecord: 31.3ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:46:19 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 196ms (Views: 185.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:49:39 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 512ms (Views: 506.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:51:09 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 474ms (Views: 471.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:51:20 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 87ms (Views: 84.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:51:51 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 520ms (Views: 507.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-18 10:53:42 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 507ms (Views: 492.4ms | ActiveRecord: 0.0ms)
+
+

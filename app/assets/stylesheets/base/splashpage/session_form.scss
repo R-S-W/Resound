@@ -1,20 +1,22 @@
+@import '../../variables';
 
 $input-font-size : 15px;
+
 
 
 
 #session-form-component {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
-
+  border : 1px solid black;
 
   h4{
     color: red;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Secular One', sans-serif;    
     font-size: 20px;
     font-weight: 800;
+
   }
 }
 
@@ -39,3 +41,13 @@ $input-font-size : 15px;
   padding: 5px 0;
   line-height: 7px;
 }
+
+// .submit-button {
+//   background: red;
+//   color: $text-color;
+//   border-radius: 3px;
+//   padding: 8px 15px;
+//   font-size: 12px;
+//   margin:5px;
+
+// }

@@ -122,11 +122,12 @@ passwordDiv(){
               // value = {this.state.username}
             />
           </label>
-          {this.passwordDiv()}
-
           {this.emailDiv()}
 
-          <button>Submit</button>
+          {this.passwordDiv()}
+
+
+          <button className = 'press-button'>Continue</button>
         </form>
         <Link to = {`${this.oppositeFormType}`}></Link>
         

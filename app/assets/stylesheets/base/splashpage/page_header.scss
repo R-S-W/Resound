@@ -1,5 +1,8 @@
 
-$header-font-color: lightgray;
+@import '../../variables';
+
+$header-font-color: $text-color;
+// $header-font-color : lightgray;
 $logo-pic-height: 70px;
 
 
@@ -47,19 +50,19 @@ $logo-pic-height: 70px;
   margin-right: 5px;
 }
 
-#verification-buttons button{
-  padding: 8px 15px;
-  font-size: 12px;
-  margin:5px;
-  /* outline: none; */
+// #verification-buttons button{
+//   padding: 8px 15px;
+//   font-size: 12px;
+//   margin:5px;
+//   /* outline: none; */
 
-  * {
-    color: $header-font-color;
-    text-decoration: none;
-    font-family: 'Quicksand', sans-serif;
-  }
-
-}
+//   * {
+//     color: lightgray; 
+//     // $header-font-color;
+//     text-decoration: none;
+//     font-family: 'Quicksand', sans-serif;
+//   }
+// }
 #login-button{
   background: transparent;
   border-style: none;
@@ -76,6 +79,14 @@ $logo-pic-height: 70px;
 #demo-login-button{
   background: transparent;
   border-style: none;
+}
+
+#logout-button {
+  background: transparent;
+  border: 1px solid $header-font-color;
+  border-radius: 3px;
+  color: $header-font-color;
+
 }
 
 #stars-pic {
