@@ -111,7 +111,7 @@ passwordDiv(){
     // if (this.props.match.params.)
     return (
       <div id = "session-form-component">
-        <h4>{this.props.formType.toUpperCase()}</h4>
+        <h4 id='form-title'>{this.props.formType.toUpperCase()}</h4>
         <form id ='sesh-form' onSubmit= {this.handleSubmit}>
           <label htmlFor= 'username'>Username:
             <input 
