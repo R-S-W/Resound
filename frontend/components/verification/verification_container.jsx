@@ -6,10 +6,10 @@ import { demoLogin } from '../../actions/session_actions';
 
 
 
-const mapStateToProps = (state)=>{  //triggers rerender if props are changed. 
+const mapStateToProps = (state,ownProps)=>{  //triggers rerender if props are changed. 
   return {
-    currentUser: state.entities.users[state.session.id]
-
+    currentUser: state.entities.users[state.session.id],
+    handleModal: ownProps.handleModal
   }
 }
 const mapDispatchToProps = (disp)=>{
