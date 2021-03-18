@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-const Greeting  = (props)=>{
+const Verification  = (props)=>{
   let greetingMessage = 'Welcome ' 
 
   
@@ -18,13 +18,20 @@ const Greeting  = (props)=>{
   }else{
     return (
       <div>
-        <div>{greetingMessage}</div>
-        <Link to='/signup'>Create Account</Link>
-        <Link to='/login'>Sign In</Link>
+        {/* <div>{greetingMessage}</div> */}
+        <h2>Resound</h2>
+        <button>
+          <Link to='/signup'>Create Account</Link>     
+        </button>
+        <button>
+          <Link to='/login'>Sign In</Link>
+        </button>
+
+        <button onClick={props.demoLogin}>Demo Login</button>
       </div>
     )
   }
 
 }
 
-export default Greeting;
+export default Verification;

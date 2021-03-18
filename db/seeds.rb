@@ -17,6 +17,10 @@ User.create(username:"DesCartes" ,email:"ilovegeometry@.com" ,password:"cogitoer
 User.create(username:"Tats" ,email:"bigWave@.com" ,password:"cooldude" )
 User.create(username:"Natasha" ,email:"cats@.com" ,password:"bleghb" )
 
+#Our DemoUser.  Very important
+User.create(username:"Guest", email: "demoUser@demomail.com", password:'demodemo')
+
+
 #remember songs also have genres.
 Song.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!(Song.table_name)
