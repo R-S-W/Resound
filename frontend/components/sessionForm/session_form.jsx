@@ -5,22 +5,16 @@ import {Link} from 'react-router-dom'
 class SessionForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      username:'Your Username',
-      password:'Your Password',
-      email: 'Your Email',
-    };
+    this.defaultState = { username: 'Your Username', password: 'Your Password', email: 'Your Email' };
+    this.state = Object.assign({}, this.defaultState);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.oppositeFormType = (props.formType==="signup") ?  'login' : 'signup';
     
     
-
-    // prefilled values.
-    //Used for handlefocus and handleChange
-    
     // this.handleFocus = this.handleFocus.bind(this);
-    /// this.isUnchangedDict = {username: true, password: true, email:true}
+    // this.handleBlur = this.handleBlur.bind(this);
+    // this.isUnfilledDict = {username: true, password: true, email:true}
   }
 
 
@@ -34,60 +28,66 @@ class SessionForm extends React.Component{
     }
   }
 
-  // handleFocus(type) {//Takes away the prefilled data from the username
-  //   return (e)=>{
-  //     if (this.isUnchangedDict[type]){
-  //       e.target.value = '';           /////////i will not change the isUnchangedDict element to false here. It is changedin handlechanged
-  //       this.isUnchangedDict[type] = false;
-  //     }
-  //     this.setState({[type]:e.target.value});
-  //   }
-
-  // }
+  
 
   handleSubmit(e){
     e.preventDefault();
-
     //#-# check order of these async lines 
     this.props.handleSwitch();///////
     this.props.processForm(Object.assign({},this.state));   //##
   }
 
 
+
+  // handleFocus(type) {//Takes away the prefilled data from the username
+  //   return (e)=>{
+  //     // debugger
+  //     let val = e.target.value;
+  //     if (this.isUnfilledDict[type]){
+  //       val = '';           /////////i will not change the isUnchangedDict element to false here. It is changedin handlechanged
+  //       this.isUnfilledDict[type] = false;
+  //     }
+  //     this.setState({[type]: val});
+  //   }
+  // }
+  // handleBlur(type){
+  //   return (e)=>{
+  //     let val  = e.target.value;
+  //     if (val ===''){
+  //       this.isUnfilledDict[type]= true;
+  //       this.setState({
+  //         [type]: this.defaultState[type]
+  //       })
+  //     }
+  //   }
+  // }
+
+
+
+  //Component rendering functions_________
   passwordDiv(){
-    if (       false  ){ //       this.isUnchangedDict.password){
-      // return (
-      //   <input type="text"
-      //     id = 'password'
-      //     onFocus = {this.handleFocus('password')}
-      //     value = "Password"
-      //   />
-      // )
-    }else{
-      return (
-        <label htmlFor='password'>Password:
-        <input
-          className='password'
-          type="password"
-          onChange={this.handleChange('password')}
-          // value={this.state.password}
-          />
-      </label>
-      )
-    }
+    return (
+      <input
+        className='password'
+        type="password"
+        onChange={this.handleChange('password')}
+        placeholder= " Your Password"
+      />
+    )    
   }
 
   emailDiv(){       
     if (this.props.formType === 'signup'){
       return (
-        <label htmlFor = 'email'>Email:
-          <input 
-            className = 'email'
-            type="text"
-            onChange={this.handleChange('email')}
-            // value = {this.state.email}
-          />
-        </label>
+        <input 
+          className = 'email'
+          type="text"
+          onChange={this.handleChange('email')}
+          // onFocus = {this.handleFocus('email')}
+          // onBlur=  {this.handleBlur('email')}            
+          // value = {this.state.email}
+          placeholder = " Your Email"
+        />
       )
     }
   }
@@ -103,43 +103,61 @@ class SessionForm extends React.Component{
   }
 
 
-  //REDIRECT USER TO / IF LOGGED IN
-
-
-
   render(){
-    // if (this.props.match.params.)
-    // debugger
     return (
-      
 
       <div className = {`session-form-component ${this.props.className}`}>
 
-        <img className = "x-button-picture" src={window.xButtonURL}/>
+        <div className ='background-screen'>
 
-        <h4 className='form-title'>{this.props.formType.toUpperCase()}</h4>
-        <form 
-          className ='sesh-form' 
-          onSubmit= {this.handleSubmit}
-          onBlur = {this.props.handleSwitch}
-        >
-          <label htmlFor= 'username'>Username:
-            <input 
-              className = 'username'
-              type="text"
-              // onFocus = {this.handleFocus('username')}
-              onChange = {this.handleChange('username')}
-              // value = {this.state.username}
-              autofocus
-            />
-          </label>
+          <button 
+            className='background-screen-button'
+            onClick = {this.props.handleSwitch}
+          ></button>
 
-          {this.emailDiv()}
+          <img className="x-button-picture" src={window.xButtonURL} />
 
-          {this.passwordDiv()}
+          <div className = 'top-modal-components'>
 
-          <button className = 'press-button'>Continue</button>
-        </form>
+            <h4 className='form-title'>{this.props.formType.toUpperCase()}
+
+                <form
+                  className='sesh-form'
+                  onSubmit={this.handleSubmit}
+                // onBlur = {this.props.handleSwitch}
+                >
+
+                  <input
+                    className='username'
+                    type="text"
+                    onChange={this.handleChange('username')}
+                    placeholder = " Your Username"
+                    // onFocus={this.handleFocus('username')}
+                    // onBlur={this.handleBlur('username')}
+                    // value={this.state.username}
+                  // autoFocus
+                  />
+
+                  {this.emailDiv()}
+
+                  {this.passwordDiv()}
+
+                  <button 
+                    className='press-button'
+                    id = 'submit-button'
+                  >Continue
+                    </button>
+                </form>
+            </h4>
+
+          </div>
+
+
+   
+        </div>
+
+
+
         <Link to = {`${this.oppositeFormType}`}></Link>
         
         {this.errorList()}

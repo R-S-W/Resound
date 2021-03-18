@@ -19,6 +19,7 @@ class SplashPage extends React.Component{
     isSessionFormVisible =  (type === 'signup') ?  'isSignupVisible' : 'isLoginVisible';
     
     return (e)=>{
+      
       this.setState({ [isSessionFormVisible] : !this.state[isSessionFormVisible]});
     }
     //don't need to care about whether both bools are true, since our page will make sure the other verifictation button is unclickable.

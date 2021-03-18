@@ -13,8 +13,7 @@ const Verification  = (props)=>{
       <div className= 'verification-buttons'>
         {/* <h3>{greetingMessage}</h3> */}
         <button 
-          className='logout-button'
-          className='press-button'
+          className='logout-button press-button'
           onClick = {props.logout}>
             Logout
         </button>

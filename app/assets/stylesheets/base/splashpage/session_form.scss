@@ -1,31 +1,42 @@
 @import '../../variables';
 
-$input-font-size : 15px;
-
-
+$input-font-size : 17px;
+$modal-background-screen-color: rgba(0,0,0,.5);
 
 
 .session-form-component.show-modal {
+  // position: absolute;////
+  position: fixed;
   display: flex;
+
   flex-direction: column;
   align-items: center;
   border : 1px solid black; 
+}
 
+.session-form-component.hide-modal {
+  display: none;
+  // visibility: hidden;
+}
+
+.background-screen{
+  // display: float;
   position: fixed;
-  // width:100%;
-  // height: 100%;
   top: 0; 
   bottom:0;
   left: 0;
   right: 0;
   z-index: 2;
-  background: rgba(0,0,0,.8);
-
+  background:$modal-background-screen-color;
 
 }
+.background-screen-button{
+  width:100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  background: transparent;
 
-.session-form-component.hide-modal {
-  display: none;
 }
 
 
@@ -34,45 +45,85 @@ $input-font-size : 15px;
   width: auto;
   margin-left: auto;
   padding: 10px;
+  
+  position:absolute;
+  z-index: 1;
 }
 
+.top-modal-components{
+  position: absolute;
+  z-index: 3;
+
+
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  // bottom: 0;
+  margin: auto;
+
+  
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
 
 .form-title{  /////
   color: red;
   font-family: 'Secular One', sans-serif;    
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 800;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 
 }
 
 .sesh-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   width:450px;
+  padding:30px 20px ;
+  background: white;
+  // padding-top: 20px;
+  
   font-family: 'Quicksand', sans-serif;
 }
 
 
-.username, .email, .password {
-  border-style: none;
+.sesh-form > *{
   border: 1px solid rgb(170, 170, 170);
   border-radius: 5px;
-  font-family: 'Quicksand', sans-serif;
   font-weight: 800;
   font-size: $input-font-size;
 
-
-  padding: 5px 0;
-  line-height: 7px;
+  margin : 5px 0;
 }
 
-// .submit-button {
-//   background: red;
-//   color: $text-color;
-//   border-radius: 3px;
-//   padding: 8px 15px;
-//   font-size: 12px;
-//   margin:5px;
+.username, .email, .password {
+  // border-style: none;
+  font-family: 'Quicksand', sans-serif;
 
-// }
+
+  line-height: 7px;
+  padding: 5px 0;
+}
+
+
+#submit-button {
+  background: red;
+  font-size: $input-font-size;
+  border-radius: 5px;
+  font-weight: 900;
+  margin: 5px 0;
+  
+  // color: $text-color;
+  // border-radius: 3px;
+  // padding: 8px 15px;
+  // font-size: 12px;
+  // margin:5px;
+
+}
