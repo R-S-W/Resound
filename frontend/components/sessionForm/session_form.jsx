@@ -5,8 +5,12 @@ import {Link} from 'react-router-dom'
 class SessionForm extends React.Component{
   constructor(props){
     super(props);
-    this.defaultState = { username: 'Your Username', password: 'Your Password', email: 'Your Email' };
-    this.state = Object.assign({}, this.defaultState);
+    // this.defaultState = { username: 'Your Username', password: 'Your Password', email: 'Your Email' };
+    this.state = {
+      username:'',
+      password:'',
+      email:''
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.oppositeFormType = (props.formType==="signup") ?  'login' : 'signup';
@@ -37,6 +41,8 @@ class SessionForm extends React.Component{
     this.props.processForm(Object.assign({},this.state));   //##
   }
 
+
+  
 
 
   // handleFocus(type) {//Takes away the prefilled data from the username
