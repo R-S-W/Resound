@@ -44,8 +44,10 @@ $sesh-form-width : 450px;
 .x-button-picture {
   height:20px;
   width: auto;
-  margin-left: auto;
-  padding: 10px;
+  right:0;
+  // bottom:0;
+  // margin: auto;
+  padding: 30px;
   
   position:absolute;
   z-index: 1;

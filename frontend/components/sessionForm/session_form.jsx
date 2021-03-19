@@ -7,20 +7,16 @@ class SessionForm extends React.Component{
   constructor(props){
     super(props);
     // this.defaultState = { username: 'Your Username', password: 'Your Password', email: 'Your Email' };
-    this.state = {
+    this.defaultState ={
       username:'',
       password:'',
-      email:''
+      email:'',
+      className: props.className
     }
+    this.state = this.defaultState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.oppositeFormType = (props.formType==="signup") ?  'login' : 'signup';
-    
-    
-    
-    // this.handleFocus = this.handleFocus.bind(this);
-    // this.handleBlur = this.handleBlur.bind(this);
-    // this.isUnfilledDict = {username: true, password: true, email:true}
   }
 
 
@@ -38,28 +34,36 @@ class SessionForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    debugger
-    let newObj;
-    //#-# check order of these async lines 
+    
+    let newObj;  //used as argument in props.processform    
+    
     if (this.props.formType === "login"){
+      //Determine whether a username or email was passed in.
+      //If an email was passed in,
       if (determineUsernameOrEmail(this.state.usernameOrEmail) === 'email'){
         newObj = {
           email: this.state.usernameOrEmail,
         };
-      }else{
+      }else{ //A username was passed in.
         newObj = {
           username: this.state.usernameOrEmail,
-          usernameOrEmail:undefined
         };
       }
       newObj.password = this.state.password;
-      this.props.processForm(newObj);   //##
 
-    }else{
-      this.props.processForm(Object.assign({}, this.state));   //##
+      delete this.state.usernameOrEmail;
+      
+
+    }else{// If this is a signup form,
+      // this.props.processForm(Object.assign({}, this.state));   //##
+      newObj = this.state;
     }
+    // this.setState(this.defaultState);
+    this.props.processForm(newObj);
+    this.props.handleSwitch();
     //the setstates should change the state first so when processFormcomes around everything is correct for the ajax call.
-    this.props.handleSwitch();///////
+    
+
   }
 
 
@@ -84,6 +88,7 @@ class SessionForm extends React.Component{
       className='username'
       type="text"
       onChange={this.handleChange(inputType)}
+      value = {this.state.inputType}
       placeholder= {prefillText}
       />
     )
@@ -97,6 +102,7 @@ class SessionForm extends React.Component{
           className = 'email'
           type="text"
           onChange={this.handleChange('email')}
+          value = {this.state.email}
           placeholder = " Your Email"
         />
       )
@@ -111,10 +117,10 @@ class SessionForm extends React.Component{
         type="password"
         onChange={this.handleChange('password')}
         placeholder=" Your Password"
+        value = {this.state.password}
       />
     )
   }
-
 
   // errorList(){
   //   return <ul>
@@ -128,6 +134,7 @@ class SessionForm extends React.Component{
 
 
   render(){
+    debugger
     return (
 
       <div className = {`session-form-component ${this.props.className}`}>
@@ -172,7 +179,7 @@ class SessionForm extends React.Component{
 
 
 
-        <Link to = {`${this.oppositeFormType}`}></Link>
+        {/* <Link to = {`${this.oppositeFormType}`}></Link> */}
         
         {/* {this.errorList()} */}
       </div>
