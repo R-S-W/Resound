@@ -1,11 +1,22 @@
 class Api::SessionsController < ApplicationController
 
   def create 
-    @user = User.find_by_credentials(params[:user][:username], params[:user][:password]);
-    if @user
-      login!(@user)
-      render 'api/users/show'
-      # render json: ["Successfully logged in"]
+    email = params[:user][:email]
+    uname = params[:user][:username]
+
+    if email
+      u = User.find_by(email: email)
+      uname = u[:username] if u
+    else
+      uname = params[:user][:username]
+    end
+    if uname != '' &&  uname 
+      @user = User.find_by_credentials(uname, params[:user][:password]);
+      if @user
+        login!(@user)
+        render 'api/users/show'
+        # render json: ["Successfully logged in"]
+      end
     else
       render json: ['Invalid username or password'], status: 401
     end

@@ -2,6 +2,7 @@
 
 $input-font-size : 17px;
 $modal-background-screen-color: rgba(0,0,0,.5);
+$sesh-form-width : 450px;
 
 
 .session-form-component.show-modal {
@@ -51,6 +52,9 @@ $modal-background-screen-color: rgba(0,0,0,.5);
 }
 
 .top-modal-components{
+  width: $sesh-form-width;
+
+
   position: absolute;
   z-index: 3;
 
@@ -85,7 +89,7 @@ $modal-background-screen-color: rgba(0,0,0,.5);
   display: flex;
   flex-direction: column;
 
-  width:450px;
+  width:$sesh-form-width;
   padding:30px 20px ;
   background: white;
   // padding-top: 20px;

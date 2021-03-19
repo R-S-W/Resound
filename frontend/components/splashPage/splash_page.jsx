@@ -31,7 +31,8 @@ class SplashPage extends React.Component{
         <div className = 'rectangle'></div>
         <header>
           <div className = 'logo-title'>
-            <img className= 'logo' src = {window.resoundLogoURL}/>
+            {/* <img className= 'logo' src = {window.resoundLogoURL}/> */}
+            <img className='logo' src={window.resoundLogoWhiteBorderURL} />
             <h1 className = 'title'>RESOUND</h1>
           </div>
           <VerificationContainer

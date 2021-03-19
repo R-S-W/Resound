@@ -1,7 +1,8 @@
+from 11:42 3/18/21
 
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {determineUsernameOrEmail} from '../../util/misc_utils'
+
 
 class SessionForm extends React.Component{
   constructor(props){
@@ -17,14 +18,13 @@ class SessionForm extends React.Component{
     this.oppositeFormType = (props.formType==="signup") ?  'login' : 'signup';
     
     
-    
     // this.handleFocus = this.handleFocus.bind(this);
     // this.handleBlur = this.handleBlur.bind(this);
     // this.isUnfilledDict = {username: true, password: true, email:true}
   }
 
 
-  //will accept types of username, email, and usernameOrEmail
+
   handleChange(type){
     return (e)=>{
       let value = e.target.value;
@@ -38,57 +38,51 @@ class SessionForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    debugger
-    let newObj;
     //#-# check order of these async lines 
-    if (this.props.formType === "login"){
-      if (determineUsernameOrEmail(this.state.usernameOrEmail) === 'email'){
-        newObj = {
-          email: this.state.usernameOrEmail,
-        };
-      }else{
-        newObj = {
-          username: this.state.usernameOrEmail,
-          usernameOrEmail:undefined
-        };
-      }
-      newObj.password = this.state.password;
-      this.props.processForm(newObj);   //##
-
-    }else{
-      this.props.processForm(Object.assign({}, this.state));   //##
-    }
-    //the setstates should change the state first so when processFormcomes around everything is correct for the ajax call.
     this.props.handleSwitch();///////
+    this.props.processForm(Object.assign({},this.state));   //##
   }
+
+
+  
+
+
+  // handleFocus(type) {//Takes away the prefilled data from the username
+  //   return (e)=>{
+  //     // debugger
+  //     let val = e.target.value;
+  //     if (this.isUnfilledDict[type]){
+  //       val = '';           /////////i will not change the isUnchangedDict element to false here. It is changedin handlechanged
+  //       this.isUnfilledDict[type] = false;
+  //     }
+  //     this.setState({[type]: val});
+  //   }
+  // }
+  // handleBlur(type){
+  //   return (e)=>{
+  //     let val  = e.target.value;
+  //     if (val ===''){
+  //       this.isUnfilledDict[type]= true;
+  //       this.setState({
+  //         [type]: this.defaultState[type]
+  //       })
+  //     }
+  //   }
+  // }
 
 
 
   //Component rendering functions_________
-
-
-  usernameDiv(){
-    let prefillText; 
-    let inputType;
-    if (this.props.formType === "signup"){
-      //if signup, create new attribute for state called username-or-email
-      prefillText= " Your Username" 
-      inputType = 'username'
-    }else{
-      prefillText=   " Your Username or Password" ;
-      inputType = 'usernameOrEmail'
-    }
-    
+  passwordDiv(){
     return (
       <input
-      className='username'
-      type="text"
-      onChange={this.handleChange(inputType)}
-      placeholder= {prefillText}
+        className='password'
+        type="password"
+        onChange={this.handleChange('password')}
+        placeholder= " Your Password"
       />
-    )
+    )    
   }
-
 
   emailDiv(){       
     if (this.props.formType === 'signup'){
@@ -97,34 +91,24 @@ class SessionForm extends React.Component{
           className = 'email'
           type="text"
           onChange={this.handleChange('email')}
+          // onFocus = {this.handleFocus('email')}
+          // onBlur=  {this.handleBlur('email')}            
+          // value = {this.state.email}
           placeholder = " Your Email"
         />
       )
     }
   }
 
-
-  passwordDiv() {
-    return (
-      <input
-        className='password'
-        type="password"
-        onChange={this.handleChange('password')}
-        placeholder=" Your Password"
-      />
-    )
+  errorList(){
+    return <ul>
+      {
+        this.props.errors.map((err)=>{
+          return <li>{err}</li>
+        })
+      }
+    </ul>
   }
-
-
-  // errorList(){
-  //   return <ul>
-  //     {
-  //       this.props.errors.map((err)=>{
-  //         return <li>{err}</li>
-  //       })
-  //     }
-  //   </ul>
-  // }
 
 
   render(){
@@ -150,7 +134,17 @@ class SessionForm extends React.Component{
                   onSubmit={this.handleSubmit}
                 // onBlur = {this.props.handleSwitch}
                 >
-                  {this.usernameDiv()}
+
+                  <input
+                    className='username'
+                    type="text"
+                    onChange={this.handleChange('username')}
+                    placeholder = " Your Username"
+                    // onFocus={this.handleFocus('username')}
+                    // onBlur={this.handleBlur('username')}
+                    // value={this.state.username}
+                  // autoFocus
+                  />
 
                   {this.emailDiv()}
 
@@ -174,7 +168,7 @@ class SessionForm extends React.Component{
 
         <Link to = {`${this.oppositeFormType}`}></Link>
         
-        {/* {this.errorList()} */}
+        {this.errorList()}
       </div>
     )
   }
