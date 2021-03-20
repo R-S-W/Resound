@@ -4,9 +4,8 @@ import VerificationContainer from '../verification/verification_container';
 import LoginFormContainer from '../sessionForm/login_form_container';
 import SignupFormContainer from '../sessionForm/signup_form_container';
 
-// import ReactCSSTransitionGroup from 'react-transition-group';
+// import {CSSTransition} from 'react-transition-group';
 
-// import 
 class SplashPage extends React.Component{
   constructor(props){
     super(props);
@@ -15,20 +14,53 @@ class SplashPage extends React.Component{
       isSignupVisible: false
     }
     this.handleModal = this.handleModal.bind(this);
+    this.evalClassName = this.evalClassName.bind(this);
   }
 
   handleModal(type){//Types are login and signup
+    debugger
     let isSessionFormVisible;
     isSessionFormVisible =  (type === 'signup') ?  'isSignupVisible' : 'isLoginVisible';
     
     return (e)=>{
-      
       this.setState({ [isSessionFormVisible] : !this.state[isSessionFormVisible]});
     }
     //don't need to care about whether both bools are true, since our page will make sure the other verifictation button is unclickable.
   }
 
+
+  // showFunc(){
+
+  //   if ( this.state.isLoginVisible ){
+  //     return (
+  //     <CSSTransition
+  //       key='loginFormTransition'
+  //       classNames="session-form"
+  //       in={this.state.isLoginVisible}
+  //       timeout={2000}
+  //     // umountOnExit
+  //     >
+  //       <LoginFormContainer
+  //         className='modal  show-modal'
+  //         handleSwitch={this.handleModal('login')}
+  //       />
+
+  //     </CSSTransition>
+  //     )
+  //   }
+  //   // }
+
+  // }
+
+  evalClassName(aBool){
+    return  aBool ? 'modal show-modal' : 'modal hide-modal'
+  }
+
+
+
+
   render(){
+    debugger
     return (
       <div className = 'splash-page'>
         <div className = 'rectangle'></div>
@@ -46,30 +78,67 @@ class SplashPage extends React.Component{
         <img className ='stars-pic' src={window.soundcloudStarsURL} />
 
 
-        {/* <ReactCSSTransitionGroup transitionName = "session-form-slide-down"> */}
-          { this.state.isLoginVisible ?  
+
+
+        {
+          this.state.LoginVisible ?
             <LoginFormContainer
-              className = 'modal  show-modal'
+              className = {this.evalClassName(this.state.isLoginVisible)}
               handleSwitch = {this.handleModal('login')}
-              //be careful if this will overwrite other classes you need for styling.
-              /> 
-            :
-            null
-          }
-        {/* </ReactCSSTransitionGroup> */}
+            /> 
+          :
+          null
+        }
 
 
-        {/* <ReactCSSTransitionGroup transitionName = 'session-form-slide-down'> */}
-          {this.state.isSignupVisible ? 
-            <SignupFormContainer
-              className='modal  show-modal' 
-              handleSwitch={this.handleModal('signup')}
-            />
-            :
-            null
-          }
-        {/* </ReactCSSTransitionGroup> */}
+        {this.state.isSignupVisible ?
+          <SignupFormContainer
+            className={this.evalClassName(this.isSignupVisible)}
+            handleSwitch={this.handleModal('signup')}
+          />
+          :
+          null
+        }
 
+
+
+
+
+        {/* {this.makeAudioTag()} */}
+
+
+        {/* {this.showFunc()} */}
+          {/* <CSSTransition 
+            key = 'loginFormTransition'
+            classNames = "session-form"
+            in = {this.state.isLoginVisible}
+            timeout = {2000}
+            // umountOnExit
+            >
+              <div id = 'a-box'> */}
+             
+          
+                
+              {/* </div>
+              
+          </CSSTransition> */}
+
+
+
+
+
+          {/* 
+          <CSSTransition
+            key='loginFormTransition'
+            classNames="session-form"
+            in={this.state.isLoginVisible}
+            timeout={2000}
+          >
+            <div id='testbox'></div>
+
+          </CSSTransition> */}
+
+ 
       </div>
     )
   }

@@ -48,20 +48,36 @@ $logo-pic-height: 70px;
 
 
 
-.session-form-slide-down-enter {
-    height: 0px;
+.session-form-enter {
+  transform: translateY(-500px);
+  transform: opacity(0);
+}
+.session-form-enter-active {
+  transform: translateY(0px);
+  transform: opacity(1); 
+  transition:  transform 1000ms;
+}
+.session-form-exit {
+  transform: translateY(0px)
+}
+.session-form-exit-active {
+  transform: translateY(-300px);
+  transition:  transform 300ms;
 }
 
-.session-form-slide-down-enter.example-enter-active {
-    height: 100px;
-    -webkit-transition: height .3s ease;
+
+#testbox{
+  background: green;
+  width: 400px;
+  height: 400px;
 }
 
-.session-form-slide-down-leave.example-leave-active {
-    height: 0px;
-    -webkit-transition: height .3s ease;
-}
 
+#a-box{
+  background: green;
+  // width: 500;
+
+}
 
 
 
@@ -117,6 +133,4 @@ $logo-pic-height: 70px;
   margin-top: -$logo-pic-height;
   z-index: -1;
 }
-
-
 
