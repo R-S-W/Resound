@@ -48,23 +48,6 @@ $logo-pic-height: 70px;
 
 
 
-.session-form-slide-down-enter {
-    height: 0px;
-}
-
-.session-form-slide-down-enter.example-enter-active {
-    height: 100px;
-    -webkit-transition: height .3s ease;
-}
-
-.session-form-slide-down-leave.example-leave-active {
-    height: 0px;
-    -webkit-transition: height .3s ease;
-}
-
-
-
-
 .verification-buttons{
   margin-right: 5px;
 }

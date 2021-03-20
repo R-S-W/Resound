@@ -134,7 +134,6 @@ class SessionForm extends React.Component{
 
 
   render(){
-    debugger
     return (
 
       <div className = {`session-form-component ${this.props.className}`}>

@@ -4,9 +4,6 @@ import VerificationContainer from '../verification/verification_container';
 import LoginFormContainer from '../sessionForm/login_form_container';
 import SignupFormContainer from '../sessionForm/signup_form_container';
 
-// import ReactCSSTransitionGroup from 'react-transition-group';
-
-// import 
 class SplashPage extends React.Component{
   constructor(props){
     super(props);
@@ -22,10 +19,8 @@ class SplashPage extends React.Component{
     isSessionFormVisible =  (type === 'signup') ?  'isSignupVisible' : 'isLoginVisible';
     
     return (e)=>{
-      
       this.setState({ [isSessionFormVisible] : !this.state[isSessionFormVisible]});
     }
-    //don't need to care about whether both bools are true, since our page will make sure the other verifictation button is unclickable.
   }
 
   render(){
@@ -46,7 +41,6 @@ class SplashPage extends React.Component{
         <img className ='stars-pic' src={window.soundcloudStarsURL} />
 
 
-        {/* <ReactCSSTransitionGroup transitionName = "session-form-slide-down"> */}
           { this.state.isLoginVisible ?  
             <LoginFormContainer
               className = 'modal  show-modal'
@@ -56,10 +50,7 @@ class SplashPage extends React.Component{
             :
             null
           }
-        {/* </ReactCSSTransitionGroup> */}
 
-
-        {/* <ReactCSSTransitionGroup transitionName = 'session-form-slide-down'> */}
           {this.state.isSignupVisible ? 
             <SignupFormContainer
               className='modal  show-modal' 
@@ -68,7 +59,6 @@ class SplashPage extends React.Component{
             :
             null
           }
-        {/* </ReactCSSTransitionGroup> */}
 
       </div>
     )

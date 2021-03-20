@@ -24,12 +24,12 @@ User.create(username:"Guest", email: "demoUser@demomail.com", password:'demodemo
 #remember songs also have genres.
 Song.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!(Song.table_name)
-Song.create(name: "Sparkle", length: 180, info: "A great song",artist_id: 6,album_id: 1)
-Song.create(name: "Song2", length: 100, info: "A bangin' instrumental",artist_id: 1 ,album_id:2)
-Song.create(name: "Song3", length:60 , info: "A chill song",artist_id:1 ,album_id:2)
-Song.create(name: "Ride on Time", length:230 , info: "A cool, catchy and funky song",artist_id:6 ,album_id:1)
-Song.create(name: "Bleghb", length:2 , info: "blegh",artist_id:7 ,album_id:1)
-Song.create(name: "Howdy", length:10 , info: "The cowboy song",artist_id:5 ,album_id:1)
+Song.create(name: "Sparkle", length: 180, info: "A great song",artist_id: 6,album_id: 1, path: 'a')
+Song.create(name: "Song2", length: 100, info: "A bangin' instrumental",artist_id: 1 ,album_id:2, path: 'b')
+Song.create(name: "Song3", length:60 , info: "A chill song",artist_id:1 ,album_id:2, path: 'c')
+Song.create(name: "Ride on Time", length:230 , info: "A cool, catchy and funky song",artist_id:6 ,album_id:1, path: 'd')
+Song.create(name: "Bleghb", length:2 , info: "blegh",artist_id:7 ,album_id:1, path: 'e')
+Song.create(name: "Howdy", length:10 , info: "The cowboy song",artist_id:5 ,album_id:1, path: 'f')
 
 Album.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!(Album.table_name)
