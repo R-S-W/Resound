@@ -5,6 +5,10 @@ import SignupFormContainer from './sessionForm/signup_form_container';
 import { AuthRoute,ProtectedRoute} from '../util/route_utils'
 import {Route, Switch} from 'react-router-dom'
 import TestContainer from './test_container';
+
+import AudioPlayerContainer from './audioPlayer/audio_player_container'
+
+
 const App = ()=>{
   
   return (
@@ -22,9 +26,10 @@ const App = ()=>{
 
         {/* <ProtectedRoute path='' component={ } />    also for albums */}
         </Switch>
-
           
+        <AudioPlayerContainer/>
     </div>
+
     
 
   )
