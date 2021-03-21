@@ -12,4 +12,7 @@ class Song < ApplicationRecord
 
   #-# belongs to album , optional
 
+
+  has_one_attached  :audio
+
 end

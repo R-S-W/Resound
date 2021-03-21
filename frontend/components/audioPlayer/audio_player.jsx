@@ -16,6 +16,7 @@ class AudioPlayer extends React.Component {
       <div className = 'audio-player'>
         <SongBar
           songPlaylist = {this.props.songPlaylist}
+          fetchPlaylistSong = {this.props.fetchPlaylistSong}
 
         />
 

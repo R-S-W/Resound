@@ -3,32 +3,53 @@ import React from 'react';
 
 
 
+
+
+
+
 class SongBar extends React.Component {
   constructor(props){
 
 
     super(props);
-    this.song= props.songPlaylist[0];
+
     this.state = {
-      numLoops: 0
+      numLoops: 0,
+      song: props.songPlaylist[0]
     }
-    // this.audioRef = React.createRef();
+    this.audioRef = React.createRef();
 
   
-    this.audio = new Audio('Song_3.mp3');
+    // this.audio = new Audio('Song_3.mp3');
+    this.handlePlay = this.handlePlay.bind(this);
+
+    this.handleTheClick= this.handleTheClick.bind(this);
   }
 
   scrubberComponent(){
 
     // return (
 
-
     // )
-
   }
 
 
+  playButton(){
+    return (
+      <button className='play-button'
+      onClick={this.handlePlay}
+      >
+        <img src="#" />
+      </button>
+      )
+  }
+
   loopButton(){
+
+
+    return <div>Loopbutton</div>
+
+
     let imgLink;
     switch (this.state.numLoops){
       case 0:
@@ -40,6 +61,7 @@ class SongBar extends React.Component {
     }
 
     return (
+
       <button className='loop-button'
         onClick={(e)=>(
           this.setState({
@@ -52,28 +74,48 @@ class SongBar extends React.Component {
     )
   }
 
+
+
+  handlePlay(e){
+
+    if (this.audioRef.current.paused){
+      this.audioRef.current.play();
+    }else{
+      this.audioRef.current.pause();
+    }
+  }
+
+
+  handleTheClick(e){
+    this.props.fetchPlaylistSong(3);
+    this.setState({ song: this.props.songPlaylist[0]})
+  }
                     //////REMEMBER TO DECREMENT NUMLOOPS
   render(){
-    // return (
-    //   <div></div>
-    // )
+    debugger
+    let aSong = this.props.songPlaylist[0];
     return (
       <div className = 'songBar'>
 
-        {/* <audio
-          // src={require('../../../app/assets/audios/Song_3.mp3')}
-          src = '/assets/audios/Song_3.mp3'
-          ref = {this.audioRef} 
-        /> */}
+        <button onClick={this.handleTheClick}>Press</button>
 
+        {
+          aSong ? 
+            <audio 
+              src={aSong.audioURL} 
+              controls 
+              ref = {this.audioRef} 
+            ></audio>
+            :
+            null
+        }
+      
         <button className = 'forward-button'>
           <img src="#"/>
         </button>
-        <button className = 'pause-button'
-          onClick={(e) => { this.audio.paused = !this.audio.paused }}
-        >
-          <img src="#"/>
-        </button>
+        
+        {this.playButton()}
+
         <button className = 'reverse-button'>
           <img src="#"/>
         </button>
@@ -88,7 +130,7 @@ class SongBar extends React.Component {
         <div className = 'song-time-bar'>
           {/* <span className = 'current-time'>{ this.audioRef.current.currentTime }</span> */}
           {this.scrubberComponent()}
-          <span className = 'song-length'>{this.song.length}</span>
+          {/* <span className = 'song-length'>{this.song.length}</span> */}
         </div>
 
       </div>

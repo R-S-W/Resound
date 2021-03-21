@@ -10,8 +10,15 @@ class Api::SongsController < ApplicationController
   end
 
   def show
-    
+    @song = Song.find(params[:id])
+    render :show
   end
+
+  def index
+    @songs = Song.all
+    render :index
+  end
+
 
   def edit
   end
@@ -25,3 +32,5 @@ class Api::SongsController < ApplicationController
       .permit(:name, :length, :artist_id,  :info, :album_id, :genre)
   end   #-# check if this can have info be optional.
 end
+
+

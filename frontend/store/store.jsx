@@ -6,7 +6,7 @@ import logger from "redux-logger";
 const preloadedState = {
   entities: { 
     songs: { 
-      songPlaylist: [ { id: 100, name: 'testSong' } ] 
+      songPlaylist: [ ]
     }
   }
 };

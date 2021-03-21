@@ -5,7 +5,7 @@ import SignupFormContainer from './sessionForm/signup_form_container';
 import { AuthRoute,ProtectedRoute} from '../util/route_utils'
 import {Route, Switch} from 'react-router-dom'
 import TestContainer from './test_container';
-
+import Test2 from './test2'
 import AudioPlayerContainer from './audioPlayer/audio_player_container'
 
 
@@ -20,7 +20,7 @@ const App = ()=>{
           <AuthRoute path="/signup" exact component={SignupFormContainer} />
 
           <ProtectedRoute path='/users/:userId' exact component={ TestContainer} />
-          <ProtectedRoute path='/songs/:songId' exact component={ TestContainer} />
+          <ProtectedRoute path='/songs/:songId' exact component={ Test2} />
           <ProtectedRoute path='/songs/new' exact component={TestContainer} />
           <ProtectedRoute path='/songs/edit' exact component={TestContainer} />
 
