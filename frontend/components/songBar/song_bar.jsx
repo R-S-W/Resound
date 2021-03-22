@@ -229,7 +229,6 @@ class SongBar extends React.Component {
           <div className='control-bar'>
             <div className='scrubber-background' ref = {this.scrubberBackgroundRef}></div>
             {this.scrubber()}
-
           </div>
 
           <span className = 'song-length'>
