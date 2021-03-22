@@ -1,5 +1,6 @@
 
 
+@import '../../variables';
 
 // .app {
 //   display: flex;
@@ -9,10 +10,10 @@
 
 
 $audio-player-text-color: lightgray;
-$audio-player-background-color: rgb(58, 58, 58);
+// $audio-player-background-color: rgb(58, 58, 58);
 $audio-player-height: 35px;
-$volume-slider-width: 70px;
-$volume-slider-height: 15px;
+$volume-component-width: 70px;
+$volume-component-height: 15px;
 
 
 .audio-player {
@@ -20,7 +21,7 @@ $volume-slider-height: 15px;
   bottom: 0;
   width: 100%;
   height: $audio-player-height;
-  background: $audio-player-background-color;
+  background: $slider-background-color;
   display: flex;
 
 
@@ -32,7 +33,7 @@ $volume-slider-height: 15px;
     
   }
   button {
-    background: $audio-player-background-color;
+    background: $slider-background-color;
     padding: 0 8px;
     outline: none;
   }
@@ -73,7 +74,8 @@ $volume-slider-height: 15px;
     }
 
     .scrubber-background{
-      background:$audio-player-background-color;
+      
+      background: $slider-background-color;
       height: 2px;
       position: absolute;
       // display: block;
@@ -107,7 +109,7 @@ $volume-slider-height: 15px;
         height: 2px;
         display: flex;
         flex-direction: row-reverse;
-        background: rgb(139, 0, 0);
+        background: $slider-progress-bar-color;
         // align-items: center;
         margin: auto 0;
         
@@ -150,31 +152,33 @@ $volume-slider-height: 15px;
   // }
 
   
-  .volume-slider{
+  .volume-component{
     // position: relative;
     display: flex;
     flex-direction: column;
     width: 30px;
+    
     input {
       //because of transformation rotation, x is y and y is x.
       position: absolute;
       margin: 0;
-      width: $volume-slider-width;
-      height: $volume-slider-height;
+      width: $volume-component-width;
+      // height: $volume-component-height;
       transform: 
-        translateX(-$volume-slider-width/2 + $volume-slider-height/2) //when unrotated, this actually shifts the input to the left
+        translateX(-$volume-component-width/2 + $volume-component-height) //when unrotated, this actually shifts the input to the left
         rotate(270deg ) 
-        translateX(($volume-slider-width+$audio-player-height)/2); //has to be x after rotation
+        translateX(($volume-component-width+$audio-player-height)/2); //has to be x after rotation
       
+        
     }
-
-    .volume-icon{
-      position: relative;
+      
+    .volume-button{
+      position: absolute;
       top: 50%;
       transform: translateY(-50%);
+      height:$audio-player-height - 1px;
       // margin: auto;
     }
-    
   }
 
 

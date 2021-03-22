@@ -1,0 +1,46 @@
+
+@import '../../variables';
+
+
+// $slider-height : 2px;
+
+input[type=range]{
+  -webkit-appearance: none;
+  width: 100%;
+  outline: none;
+  height: 2px;
+  background-color: $slider-background-color;
+
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: $slider-thumb-color;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+// input[type=range]::-webkit-slider-runnable-track {
+//   // background: red;
+// }
+
+
+input[type=range]::-moz-range-track {
+  border-radius: 8px;
+  // height: 10px;
+  background-color: $slider-background-color;
+}
+input[type=range]::-moz-range-thumb {
+  background:$slider-thumb-color;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=range]::-moz-range-progress{
+  background: red;
+}

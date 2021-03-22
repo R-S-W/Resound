@@ -79,7 +79,7 @@ class SessionForm extends React.Component{
       prefillText= " Your Username" 
       inputType = 'username'
     }else{
-      prefillText=   " Your Username or Password" ;
+      prefillText=   " Your Username or Email" ;
       inputType = 'usernameOrEmail'
     }
     

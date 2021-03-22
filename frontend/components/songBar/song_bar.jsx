@@ -4,7 +4,7 @@ import React from 'react';
 import { FaPlay, FaPause} from 'react-icons/fa';
 import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp} from 'react-icons/io5';
 import { ImShuffle, ImLoop} from 'react-icons/im';
-import { TiArrowLoop} from 'react-icons/ti';
+// import { TiArrowLoop} from 'react-icons/ti';
 import { BsDiamondFill} from 'react-icons/bs';
 import { RiVolumeUpFill} from 'react-icons/ri';
 
@@ -27,7 +27,7 @@ class SongBar extends React.Component {
     this.audioRef = React.createRef();
     this.scrubberBackgroundRef = React.createRef();
     this.scrubberRef = React.createRef();
-    this.volumeSliderInputRef = React.createRef();
+    this.volumeComponentInputRef = React.createRef();
 
 
   
@@ -114,28 +114,26 @@ class SongBar extends React.Component {
     )
   }
 
-  volumeSlider(){
+  volumeComponent(){
     return (
-      <button className = 'volume-slider'  >
-        
-        {this.state.song ?
-          <input className = 'volume-slider-input' 
-            type="range"
-            max='1' 
-            step = '.01'
-            // value=".5"
-            ref= {this.volumeSliderInputRef}
-            onChange = {this.handleVolumeChange}
+      <div className = 'volume-component'>
+        {
+          this.state.song ?
+          <input className = 'volume-slider-input slider' 
+          type="range"
+          max='1' 
+          step = '.01'
+          // value=".5"
+          ref= {this.volumeComponentInputRef}
+          onChange = {this.handleVolumeChange}
           />
           :
           null
         }
-        <RiVolumeUpFill className='volume-icon' />
-
-        
-
-
-      </button>
+        <button className = 'volume-button'  >
+          <RiVolumeUpFill className='volume-icon' />
+        </button>
+      </div>
     )
   }
 
@@ -153,7 +151,7 @@ class SongBar extends React.Component {
     //Update audio tag to correct time.
     let audio = this.audioRef.current;
     audio.currentTime = Math.round(songTimePercent * audio.duration);
-    this.setState({ currentTime: audio.currentTime })
+    this.setState({ currentTime: audio.currentTime });
     this.setThisInterval();
   }
 
@@ -258,7 +256,7 @@ class SongBar extends React.Component {
           </span>
         </div>
 
-        {this.volumeSlider()}
+        {this.volumeComponent()}
 
       </div>
     )
@@ -275,8 +273,8 @@ class SongBar extends React.Component {
     if (this.state.song && !this.interval) {
       this.setThisInterval();
 
-      //reset volumeSliderInput here. maybe not
-      // this.volumeSliderInputRef.current.value  = 1;
+      //reset volumeComponentInput here. maybe not
+      // this.volumeComponentInputRef.current.value  = 1;
     }
   }
   
