@@ -27,6 +27,7 @@ class SongBar extends React.Component {
     this.audioRef = React.createRef();
     this.scrubberBackgroundRef = React.createRef();
     this.scrubberRef = React.createRef();
+    this.volumeSliderInputRef = React.createRef();
 
 
   
@@ -34,6 +35,7 @@ class SongBar extends React.Component {
     this.handlePlay = this.handlePlay.bind(this);
     this.handleTheClick= this.handleTheClick.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.handleVolumeChange = this.handleVolumeChange.bind(this);
 
     this.interval;  //handles the interval that rerenders component every second
     // this.setThisInterval = this.setThisInterval.bind(this);
@@ -114,8 +116,18 @@ class SongBar extends React.Component {
 
   volumeSlider(){
     return (
-      <button className = 'volume-slider'>
-        <RiVolumeUpFill/>
+      <button className = 'volume-slider'  >
+        {/* <RiVolumeUpFill/> */}
+        <div>
+          <input className = 'volume-slider-input' 
+            type="range"
+            max='1' 
+            step = '.01'
+            // value=".5"
+            ref= {this.volumeSliderInputRef}
+            onChange = {this.handleVolumeChange}
+          />
+        </div>
 
       </button>
     )
@@ -168,6 +180,11 @@ class SongBar extends React.Component {
       });
       this.incrementProgressBar();
     }, 1000);
+  }
+
+  handleVolumeChange(e){    
+    this.audioRef.current.volume = parseFloat(e.target.value)
+
   }
 
 
@@ -262,7 +279,7 @@ class SongBar extends React.Component {
 
 
   handleTheClick(e) { //helper function to load 1 playlist song for development
-    this.props.fetchPlaylistSong(3);
+    this.props.fetchPlaylistSong(7);
   }
 
       

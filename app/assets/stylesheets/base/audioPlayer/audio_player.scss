@@ -10,14 +10,15 @@
 
 $audio-player-text-color: lightgray;
 $audio-player-background-color: rgb(58, 58, 58);
-
+$audio-player-height: 35px;
+$volume-slider-width: 70px;
 
 
 .audio-player {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 35px;
+  height: $audio-player-height;
   background: $audio-player-background-color;
   display: flex;
 
@@ -146,8 +147,28 @@ $audio-player-background-color: rgb(58, 58, 58);
   //   // text-align: center;
   //   margin: auto, 0;
   // }
+
+  
+  .volume-slider{
+    // position: relative;
+    input {
+      //because of transformation rotation, x is y and y is x.
+      position: relative;
+      width: $volume-slider-width;
+      transform: rotate(270deg ) translateX(($volume-slider-width+$audio-player-height)/2); //has to be x after rotation
+      
+      
+      
+    }
     
+  }
+
+
 }
+
+
+
+
 
 
 .link-bar{
