@@ -1,9 +1,12 @@
 
 import React from 'react';
 
-
-
-
+import { FaPlay, FaPause} from 'react-icons/fa';
+import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp} from 'react-icons/io5';
+import { ImShuffle, ImLoop} from 'react-icons/im';
+import { TiArrowLoop} from 'react-icons/ti';
+import { BsDiamondFill} from 'react-icons/bs';
+import { RiVolumeUpFill} from 'react-icons/ri';
 
 
 
@@ -15,40 +18,56 @@ class SongBar extends React.Component {
 
     this.state = {
       numLoops: 0,
-      song: props.songPlaylist[0]
+      song: props.songPlaylist[0],
+      isPaused:true,
+      currentTime: 0
+
+
     }
     this.audioRef = React.createRef();
+    this.scrubberBackgroundRef = React.createRef();
+    this.scrubberRef = React.createRef();
+
 
   
     // this.audio = new Audio('Song_3.mp3');
     this.handlePlay = this.handlePlay.bind(this);
-
     this.handleTheClick= this.handleTheClick.bind(this);
-  }
+    this.handleTimeChange = this.handleTimeChange.bind(this);
 
-  scrubberComponent(){
+    this.interval;  //handles the interval that rerenders component every second
+    // this.setThisInterval = this.setThisInterval.bind(this);
 
-    // return (
-
-    // )
   }
 
 
   playButton(){
     return (
       <button className='play-button'
-      onClick={this.handlePlay}
+      onClick={ (e)=>{
+        if (this.state.isPaused) {
+          this.audioRef.current.play();
+          this.setState({isPaused: false});
+          this.setThisInterval();
+          
+
+        } else {
+          this.audioRef.current.pause();
+          clearInterval(this.interval);
+          this.setState({isPaused: true})
+
+        }
+      }}
       >
-        <img src="#" />
+
+        {!this.audioRef.current || this.audioRef.current.paused ? <FaPlay/>  : <FaPause/>}
+         
       </button>
-      )
+    )
   }
 
+
   loopButton(){
-
-
-    return <div>Loopbutton</div>
-
 
     let imgLink;
     switch (this.state.numLoops){
@@ -69,72 +88,191 @@ class SongBar extends React.Component {
           })
         )}
       >
-        <img src={imgLink} />
+        <ImLoop className = 'scrubber-slider-button'/>
+      </button>
+    )
+  }
+
+
+  scrubber() {
+
+    return (
+      <button className='scrubber'
+        ref={this.scrubberRef}
+        onClick={this.handleTimeChange}
+      >
+        <div className='progress-bar'
+          style={{ color: 'blue' }, { height: '100%' }, { width: '0' }}
+        >
+          <BsDiamondFill className = 'progress-bar-slider-button hide'/>
+
+        </div>
+
+      </button>
+    )
+  }
+
+  volumeSlider(){
+    return (
+      <button className = 'volume-slider'>
+        <RiVolumeUpFill/>
+
       </button>
     )
   }
 
 
 
-  handlePlay(e){
+  //METHODS____________________
 
-    if (this.audioRef.current.paused){
+  handleTimeChange(e) { //Change the currentTime of the song with the controlbar.
+    let backgroundCoords = this.scrubberBackgroundRef.current.getBoundingClientRect();
+    let x = e.clientX - backgroundCoords.left;
+    let backgroundX = (backgroundCoords.right - backgroundCoords.left);
+    let songTimePercent = x / backgroundX;
+    //Update progress Bar
+    this.scrubberRef.current.children[0].style = `width:${x}px`//{{ color: 'blue' }, { height: '100%' }, { width:x } };
+    //Update audio tag to correct time.
+    let audio = this.audioRef.current;
+    audio.currentTime = Math.round(songTimePercent * audio.duration);
+    this.setState({ currentTime: audio.currentTime })
+    this.setThisInterval();
+  }
+
+
+  incrementProgressBar() {
+    let backgroundCoords = this.scrubberBackgroundRef.current.getBoundingClientRect();
+    let backgroundX = (backgroundCoords.right - backgroundCoords.left);
+    let songTimePercent = this.state.currentTime / this.audioRef.current.duration;  //we assume this.state.currentTime is already updated.
+    let x = backgroundX * songTimePercent;
+    this.scrubberRef.current.children[0].style = `width:${x}px`
+  }
+
+
+
+  handlePlay(e) { //Handle play button functionality
+    if (this.audioRef.current.paused) {
       this.audioRef.current.play();
-    }else{
+    } else {
       this.audioRef.current.pause();
     }
+    this.setState({ isPaused: this.audioRef.current.paused });
   }
 
 
-  handleTheClick(e){
-    this.props.fetchPlaylistSong(3);
-    this.setState({ song: this.props.songPlaylist[0]})
+  setThisInterval() { //Set this.interval
+    if (this.interval) clearInterval(this.interval);
+    this.interval = setInterval(() => {
+      this.setState({
+        currentTime: this.audioRef.current.currentTime
+      });
+      this.incrementProgressBar();
+    }, 1000);
   }
+
+
+
+  //LIFECYCLE METHODS___________________
+
                     //////REMEMBER TO DECREMENT NUMLOOPS
   render(){
-    debugger
-    let aSong = this.props.songPlaylist[0];
+    // debugger
+    // let aSong = this.props.songPlaylist[0];
     return (
-      <div className = 'songBar'>
+      <div className = 'song-bar'>
 
-        <button onClick={this.handleTheClick}>Press</button>
+        <button onClick={this.handleTheClick}>Load Test Song</button>
 
         {
-          aSong ? 
+          this.state.song ? 
             <audio 
-              src={aSong.audioURL} 
-              controls 
+              src={this.state.song.audioURL} 
+              // controls 
               ref = {this.audioRef} 
             ></audio>
             :
             null
         }
-      
-        <button className = 'forward-button'>
-          <img src="#"/>
-        </button>
         
-        {this.playButton()}
 
         <button className = 'reverse-button'>
-          <img src="#"/>
+          <IoPlaySkipBackSharp/>
+        </button>
+      
+        {this.playButton()}
+
+        <button className = 'forward-button'>
+          <IoPlaySkipForwardSharp/>
         </button>
 
-        <button className='shuffle-button'>
-          <img src="#" />
+        <button className='shuffle-button' 
+          onClick = {this.findPos}
+        >
+          <ImShuffle/>
         </button>
         
         {this.loopButton()}
 
+
+
         
-        <div className = 'song-time-bar'>
-          {/* <span className = 'current-time'>{ this.audioRef.current.currentTime }</span> */}
-          {this.scrubberComponent()}
-          {/* <span className = 'song-length'>{this.song.length}</span> */}
+        <div className = 'song-time-bar' >
+          <span className = 'current-time'>
+            {
+              this.audioRef.current ? 
+                formatSeconds(this.audioRef.current.currentTime)
+                : 
+                '--:--' 
+            }
+          </span>
+        
+          <div className='control-bar'>
+            <div className='scrubber-background' ref = {this.scrubberBackgroundRef}></div>
+            {this.scrubber()}
+
+          </div>
+
+          <span className = 'song-length'>
+            {this.audioRef.current ? formatSeconds(this.audioRef.current.duration) : '--:--'}
+          </span>
         </div>
+
+        {this.volumeSlider()}
 
       </div>
     )
   }
+  
+  // componentDidMount() {}
+      
+  componentDidUpdate(){
+    if (!this.state.song){
+      this.setState({song: this.props.songPlaylist[0]});
+    }
+
+    if (this.state.song && !this.interval) {
+      this.setThisInterval();
+    }
+  }
+  
+  componentWillUnmount() {
+    if (this.state.song){
+      clearInterval(this.interval);
+    }
+  }
+
+
+  handleTheClick(e) { //helper function to load 1 playlist song for development
+    this.props.fetchPlaylistSong(3);
+  }
+
+      
 }
+
+const formatSeconds = (seconds)=>{
+    return new Date(1000 * Math.round(seconds))
+      .toISOString()
+      .slice(14, 19);
+  }
+
 export default SongBar;

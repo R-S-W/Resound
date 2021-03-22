@@ -12,7 +12,7 @@ import AudioPlayerContainer from './audioPlayer/audio_player_container'
 const App = ()=>{
   
   return (
-    <div>
+    <div className = 'app'>
         {/* <Route  path = '/' component={GreetingContainer}/> */}
         <Switch>
           <Route path='/' exact component={SplashPageContainer} />
