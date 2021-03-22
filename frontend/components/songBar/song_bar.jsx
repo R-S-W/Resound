@@ -117,8 +117,8 @@ class SongBar extends React.Component {
   volumeSlider(){
     return (
       <button className = 'volume-slider'  >
-        {/* <RiVolumeUpFill/> */}
-        <div>
+        
+        {this.state.song ?
           <input className = 'volume-slider-input' 
             type="range"
             max='1' 
@@ -127,7 +127,13 @@ class SongBar extends React.Component {
             ref= {this.volumeSliderInputRef}
             onChange = {this.handleVolumeChange}
           />
-        </div>
+          :
+          null
+        }
+        <RiVolumeUpFill className='volume-icon' />
+
+        
+
 
       </button>
     )
@@ -183,8 +189,7 @@ class SongBar extends React.Component {
   }
 
   handleVolumeChange(e){    
-    this.audioRef.current.volume = parseFloat(e.target.value)
-
+    this.audioRef.current.volume =  e.target.value;
   }
 
 
@@ -266,8 +271,12 @@ class SongBar extends React.Component {
       this.setState({song: this.props.songPlaylist[0]});
     }
 
+
     if (this.state.song && !this.interval) {
       this.setThisInterval();
+
+      //reset volumeSliderInput here. maybe not
+      // this.volumeSliderInputRef.current.value  = 1;
     }
   }
   

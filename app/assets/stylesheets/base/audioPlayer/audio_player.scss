@@ -12,6 +12,7 @@ $audio-player-text-color: lightgray;
 $audio-player-background-color: rgb(58, 58, 58);
 $audio-player-height: 35px;
 $volume-slider-width: 70px;
+$volume-slider-height: 15px;
 
 
 .audio-player {
@@ -151,14 +152,27 @@ $volume-slider-width: 70px;
   
   .volume-slider{
     // position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 30px;
     input {
       //because of transformation rotation, x is y and y is x.
-      position: relative;
+      position: absolute;
+      margin: 0;
       width: $volume-slider-width;
-      transform: rotate(270deg ) translateX(($volume-slider-width+$audio-player-height)/2); //has to be x after rotation
+      height: $volume-slider-height;
+      transform: 
+        translateX(-$volume-slider-width/2 + $volume-slider-height/2) //when unrotated, this actually shifts the input to the left
+        rotate(270deg ) 
+        translateX(($volume-slider-width+$audio-player-height)/2); //has to be x after rotation
       
-      
-      
+    }
+
+    .volume-icon{
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      // margin: auto;
     }
     
   }
