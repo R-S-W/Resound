@@ -100,22 +100,30 @@ $sesh-form-width : 450px;
 }
 
 
-.sesh-form > *{
+.sesh-form  input{
   border: 1px solid rgb(170, 170, 170);
   border-radius: 5px;
   font-weight: 800;
   font-size: $input-font-size;
 
+  width: 100%;
+
   margin : 5px 0;
 }
 
-.username, .email, .password {
+.username input, .email, .password {
   // border-style: none;
   font-family: 'Quicksand', sans-serif;
 
 
   line-height: 7px;
   padding: 5px 0;
+}
+
+.username{
+  .error-message{
+    font-size: 12.5px;
+  }
 }
 
 

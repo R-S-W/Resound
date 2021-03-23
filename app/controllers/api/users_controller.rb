@@ -1,16 +1,23 @@
 class Api::UsersController < ApplicationController
 
   def create
+    if user_params[:password].size <6
+      render json: ['Please create a password greater than 6 characters.'],status: 401 
+      return 
+    end
     @user = User.new(user_params)
     if User.find_by(username: user_params[:username])
       render json: ['Username already taken.'], status: 401
     elsif User.find_by(email: user_params[:email])
       render json:  ["A user has already registered an account with this email."], status: 401
+    
+    elsif !user_params[:email].include?('@')
+      render json: ['Invalid email.  Please try again.'], status: 401
     elsif @user.save!
       login!(@user)
       render :show
     else
-      render json:  @user.errors.full_messages, status: 422 #['Invalid username or password.  Please try again.']
+      render json: ['Invalid username or password.  Please try again.'], status: 422
     end
   end
   

@@ -43,7 +43,6 @@ class Test2 extends React.Component{
   }
 
   render(){
-    // debugger
     if (this.props.songPlaylist.length === 0){
       return (
         <button onClick = {this.handleClick}>Press</button>
