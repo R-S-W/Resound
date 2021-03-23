@@ -278,7 +278,7 @@ class SongBar extends React.Component {
   // componentDidMount() {}
       
   componentDidUpdate(){
-    if (!this.state.song){
+    if (this.props.songPlaylist.length > 0 && !this.state.song ){
       this.setState({song: this.props.songPlaylist[0]});
     }
 
