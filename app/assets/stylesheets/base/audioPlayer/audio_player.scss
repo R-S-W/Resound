@@ -189,7 +189,38 @@ $volume-component-height: 15px;
 
 
 
+
+
+
+
 .link-bar{
   display: flex;
+
+  .song-links{
+    display: grid;
+    grid-template-columns: auto 80px ;
+
+    margin-left: 8px;
+
+    .album-cover-button {
+      height: $audio-player-height;
+      width: $audio-player-height;
+      background-size:cover ;
+      padding: 0;
+
+      img{
+        width: 100%;
+        height: auto;
+        // object-fit: scale-down;
+      }
+      
+    }
+
+    a {
+      font-size: 10px;
+
+    }
+
+  }
 }
 
