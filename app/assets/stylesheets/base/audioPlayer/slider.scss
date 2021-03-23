@@ -10,6 +10,7 @@ input[type=range]{
   outline: none;
   height: 2px;
   background-color: $slider-background-color;
+  
 
 }
 
@@ -46,5 +47,9 @@ input[type=range]::-moz-range-thumb {
 input[type=range]::-moz-range-progress{
   background: red;
 }
+
+
+
+
 
 

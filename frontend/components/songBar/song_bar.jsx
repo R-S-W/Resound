@@ -4,7 +4,6 @@ import React from 'react';
 import { FaPlay, FaPause} from 'react-icons/fa';
 import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp} from 'react-icons/io5';
 import { ImShuffle, ImLoop} from 'react-icons/im';
-// import { TiArrowLoop} from 'react-icons/ti';
 import { BsDiamondFill} from 'react-icons/bs';
 import { RiVolumeUpFill} from 'react-icons/ri';
 
@@ -21,13 +20,14 @@ class SongBar extends React.Component {
       song: props.songPlaylist[0],
       isPaused:true,
       currentTime: 0,
-      volume: 1
+      volume: 1,
+      isVolumeVisible: false
 
 
     }
     this.audioRef = React.createRef();
     this.scrubberBackgroundRef = React.createRef();
-    this.scrubberRef = React.createRef();
+    this.scrubberInputRangeRef = React.createRef();
     this.volumeComponentInputRef = React.createRef();
 
 
@@ -37,6 +37,7 @@ class SongBar extends React.Component {
     this.handleTheClick= this.handleTheClick.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleVolumeChange = this.handleVolumeChange.bind(this);
+    this.handleVolumeModal = this.handleVolumeModal.bind(this);
 
     this.interval;  //handles the interval that rerenders component every second
     // this.setThisInterval = this.setThisInterval.bind(this);
@@ -98,37 +99,51 @@ class SongBar extends React.Component {
 
 
   scrubber() {
+    let styleString;
+    if (this.audioRef.current){
+      let progPercent = this.audioRef.current.currentTime/this.audioRef.current.duration;
+      styleString = `linear-gradient(90deg, #ff0000  ${100 * progPercent}%, #000000 ${100 * progPercent}%)`
+    }else{
+      styleString  = '##000000'
+    }
 
     return (
-      <button className='scrubber'
-        ref={this.scrubberRef}
-        onClick={this.handleTimeChange}
-      >
-        <div className='progress-bar'
-          style={{ color: 'blue' }, { height: '100%' }, { width: '0' }}
-        >
-          <BsDiamondFill className = 'progress-bar-slider-button hide'/>
+      <div className = "scrubber">
+        <input className = 'scrubber-input-range'
+          type="range"
+          max='1'
+          step = '.01'
+          defaultValue = '0'
+          ref = {this.scrubberInputRangeRef}
+          onChange = {this.handleTimeChange}
+          style={{ background: styleString}}
+        />
+      </div>
 
-        </div>
-
-      </button>
     )
   }
 
   volumeComponent(){
+    
     return (
-      <div className = 'volume-component'>
+      <div className = 'volume-component'
+        onMouseEnter = {this.handleVolumeModal}
+        onMouseLeave = {this.handleVolumeModal}
+      >
         {
-          this.state.song ?
-          <input className = 'volume-slider-input slider' 
-            type="range"
-            max='1' 
-            step = '.01'
-            // value=".5"
-            ref= {this.volumeComponentInputRef}
-            onChange = {this.handleVolumeChange}
-            style={{ background: `linear-gradient(90deg, #ff0000  ${100*this.state.volume}%, #000000 ${100*this.state.volume}%)`}}
-          />
+          this.state.isVolumeVisible && this.state.song ?
+          <div className = "volume-background ">
+
+            <input className = 'volume-slider-input slider' 
+              type="range"
+              max='1' 
+              step = '.01'
+              defaultValue = {this.state.volume}
+              ref= {this.volumeComponentInputRef}
+              onChange = {this.handleVolumeChange}
+              style={{ background: `linear-gradient(90deg, #ff0000  ${100*this.state.volume}%, #000000 ${100*this.state.volume}%)`}}
+            />
+          </div>
           :
           null
         }
@@ -143,27 +158,17 @@ class SongBar extends React.Component {
 
   //METHODS____________________
 
-  handleTimeChange(e) { //Change the currentTime of the song with the controlbar.
-    let backgroundCoords = this.scrubberBackgroundRef.current.getBoundingClientRect();
-    let x = e.clientX - backgroundCoords.left;
-    let backgroundX = (backgroundCoords.right - backgroundCoords.left);
-    let songTimePercent = x / backgroundX;
-    //Update progress Bar
-    this.scrubberRef.current.children[0].style = `width:${x}px`//{{ color: 'blue' }, { height: '100%' }, { width:x } };
-    //Update audio tag to correct time.
+
+  handleTimeChange(e){
     let audio = this.audioRef.current;
-    audio.currentTime = Math.round(songTimePercent * audio.duration);
-    this.setState({ currentTime: audio.currentTime });
-    this.setThisInterval();
+    audio.currentTime = e.target.value*audio.duration;
+    this.setState({currentTime: audio.currentTime});
   }
 
+  incrementProgressBar(){
+    let audio = this.audioRef.current;
+    this.scrubberInputRangeRef.current.value = audio.currentTime/audio.duration;
 
-  incrementProgressBar() {
-    let backgroundCoords = this.scrubberBackgroundRef.current.getBoundingClientRect();
-    let backgroundX = (backgroundCoords.right - backgroundCoords.left);
-    let songTimePercent = this.state.currentTime / this.audioRef.current.duration;  //we assume this.state.currentTime is already updated.
-    let x = backgroundX * songTimePercent;
-    this.scrubberRef.current.children[0].style = `width:${x}px`
   }
 
 
@@ -195,12 +200,16 @@ class SongBar extends React.Component {
   }
 
 
+  handleVolumeModal(e){
+    this.setState({isVolumeVisible: !this.state.isVolumeVisible});
+  }
+
 
   //LIFECYCLE METHODS___________________
 
                     //////REMEMBER TO DECREMENT NUMLOOPS
   render(){
-    // debugger
+    debugger
     // let aSong = this.props.songPlaylist[0];
     return (
       <div className = 'song-bar'>
