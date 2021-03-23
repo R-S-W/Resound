@@ -20,7 +20,8 @@ class SongBar extends React.Component {
       numLoops: 0,
       song: props.songPlaylist[0],
       isPaused:true,
-      currentTime: 0
+      currentTime: 0,
+      volume: 1
 
 
     }
@@ -120,12 +121,13 @@ class SongBar extends React.Component {
         {
           this.state.song ?
           <input className = 'volume-slider-input slider' 
-          type="range"
-          max='1' 
-          step = '.01'
-          // value=".5"
-          ref= {this.volumeComponentInputRef}
-          onChange = {this.handleVolumeChange}
+            type="range"
+            max='1' 
+            step = '.01'
+            // value=".5"
+            ref= {this.volumeComponentInputRef}
+            onChange = {this.handleVolumeChange}
+            style={{ background: `linear-gradient(90deg, #ff0000  ${100*this.state.volume}%, #000000 ${100*this.state.volume}%)`}}
           />
           :
           null
@@ -188,6 +190,8 @@ class SongBar extends React.Component {
 
   handleVolumeChange(e){    
     this.audioRef.current.volume =  e.target.value;
+    this.setState({volume: e.target.value})
+    debugger
   }
 
 
