@@ -299,7 +299,7 @@ class SongBar extends React.Component {
 
 
   handleTheClick(e) { //helper function to load 1 playlist song for development
-    this.props.fetchPlaylistSong(7);
+    this.props.fetchPlaylistSong(4);  //4, 7
   }
 
       

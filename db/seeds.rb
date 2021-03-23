@@ -24,7 +24,6 @@ User.create(username:"Natasha" ,email:"cats@.com" ,password:"bleghb" )
 #Our DemoUser.  Very important
 User.create(username:"Guest", email: "demoUser@demomail.com", password:'demodemo')
 
-
 #remember songs also have genres.
 Song.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!(Song.table_name)
@@ -35,8 +34,8 @@ Song.create(name: "Song3", length:60 , info: "A chill song",artist_id:1 ,album_i
 
 rt = Song.create(name: "Ride on Time", length:230 , info: "A cool, catchy and funky song",artist_id:6 ,album_id:1, path: 'd')
 # file = open('https://resound-seeds.us-east-1.amazonaws.com/Ride_on_time.mp3')
-audio_file  = open('https://resound-seeds.s3.amazonaws.com/Ride_on_Time.mp3')
-album_cover_file = open('https://resound-seeds.s3.amazonaws.com/Ride_on_Time.jpeg')
+audio_file  = URI.open('https://resound-seeds.s3.amazonaws.com/Ride_on_Time.mp3')
+album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Ride_on_Time.jpeg')
 rt.audio.attach(io:audio_file, filename: 'Ride_on_Time.mp3')
 rt.album_cover.attach(io:album_cover_file, filename: 'Ride_on_Time.jpeg')
 
@@ -45,10 +44,12 @@ Song.create(name: "Bleghb", length:2 , info: "blegh",artist_id:7 ,album_id:1, pa
 Song.create(name: "Howdy", length:10 , info: "The cowboy song",artist_id:5 ,album_id:1, path: 'f')
 
 
+
 jta  = Song.create(name: "Journey to Arnhemland Clip", length: 14, info: "funky", artist_id: 2, path: "g")
-audio_file = open('https://resound-seeds.s3.amazonaws.com/Journey_to_Arnhemland_clip.mp3')
-album_cover_file = open('https://resound-seeds.s3.amazonaws.com/Return_of_the_Space_Cowboy.png')
-jta.audio.attach(io:audio_file, filename: 'Journey_to_Arnhemland_clip.mp3')
+audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/Journey_to_Arnhemland_clip.mp3")
+album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Return_of_the_Space_Cowboy.png')
+
+jta.audio.attach(io:audio_file, filename: "Journey_to_Arnhemland_clip.mp3")
 jta.album_cover.attach(io: album_cover_file, filename: 'Return_of_the_Space_Cowboy.png')
 
 

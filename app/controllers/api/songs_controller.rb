@@ -21,6 +21,7 @@ class Api::SongsController < ApplicationController
 
 
   def edit
+    @song = Song.find()
   end
 
   def destroy
