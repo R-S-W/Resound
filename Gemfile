@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'jquery'  ###
 gem 'jquery-rails'
 
+gem 'open-uri'
 
 
 group :development, :test do
