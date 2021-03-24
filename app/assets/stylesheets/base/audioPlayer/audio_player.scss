@@ -76,7 +76,16 @@ $volume-background-height: 20px;
     height: 16px;
     width:16px;
   }
-  
+
+  .loop-icon-1{
+    height: 20px;
+    width: 20px;
+    margin:0 -2px;
+  }
+
+  .loop-icon.active-loop-icon{
+    fill: $soundcloud-color;
+  }
   
   .song-time-bar {
     

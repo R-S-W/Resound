@@ -5,7 +5,7 @@ import { FaPlay, FaPause} from 'react-icons/fa';
 import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp} from 'react-icons/io5';
 import { ImShuffle, ImLoop} from 'react-icons/im';
 import { RiVolumeDownFill, RiVolumeUpFill, RiVolumeMuteFill} from 'react-icons/ri';
-
+import { MdRepeatOne} from 'react-icons/md';
 
 
 class SongBar extends React.Component {
@@ -15,12 +15,14 @@ class SongBar extends React.Component {
     super(props);
 
     this.state = {
-      numLoops: 0,
+      numLoops: 0, //=0,1,or 2
+      playlist:props.songPlaylist,
       song: props.songPlaylist[0],
       isPaused:true,
       currentTime: 0,
       volume: 1,
-      isVolumeVisible: false
+      isVolumeVisible: false,
+      
 
 
     }
@@ -38,6 +40,7 @@ class SongBar extends React.Component {
     this.handleVolumeChange = this.handleVolumeChange.bind(this);
     this.handleVolumeModal = this.handleVolumeModal.bind(this);
     this.handleMute = this.handleMute.bind(this);
+    this.handleAudioEnded = this.handleAudioEnded.bind(this);
 
     this.interval;  //handles the interval that rerenders component every second
     // this.setThisInterval = this.setThisInterval.bind(this);
@@ -75,27 +78,29 @@ class SongBar extends React.Component {
 
 
   loopButton(){
+    const  loopIcon  = ()=>{
 
-    let imgLink;
-    switch (this.state.numLoops){
-      case 0:
-        imgLink= "#";
-      case 1:
-        imgLink = "#";
-      case 2:
-        imgLink = "#";
+      switch(this.state.numLoops){
+        case 0:
+          return  <ImLoop className = "loop-icon"/>;
+        case 1:
+          console.log('1')
+          return  <MdRepeatOne className = 'loop-icon loop-icon-1'/>
+        case 2:
+          return  <ImLoop className = 'loop-icon active-loop-icon'/>
+      }
     }
 
     return (
 
       <button className='loop-button'
-        onClick={(e)=>(
+        onClick={(e)=>{          
           this.setState({
             numLoops: (this.state.numLoops + 1) % 3
-          })
-        )}
+          });
+        }}
       >
-        <ImLoop className = 'loop-icon'/>
+        {loopIcon()}
       </button>
     )
   }
@@ -233,6 +238,37 @@ class SongBar extends React.Component {
   }
 
 
+  handleAudioEnded(e){
+
+      debugger
+      switch (this.state.numLoops) {
+        case 0:
+        // this.props.nextSong();
+          this.audioRef.current.currentTime = 0;
+        // this.state.playlist.shift();
+        // this.setState({
+        //   playlist: this.state.playlist,
+        //   song: this.state.playlist[0]
+        // })
+          console.log('zero');
+          break;
+        case 1:
+          this.audioRef.current.currentTime = 0;
+          this.setState({ numLoops: this.state.numLoops - 1 });
+          this.audioRef.current.play();
+          console.log('one');
+          break;
+        case 2:
+          // debugger
+          console.log('two')
+          this.audioRef.current.currentTime = 0;
+          this.audioRef.current.play();
+      }
+
+
+
+  }
+
   //LIFECYCLE METHODS___________________
 
                     //////REMEMBER TO DECREMENT NUMLOOPS
@@ -251,6 +287,7 @@ class SongBar extends React.Component {
               className = 'audio' 
               // controls 
               ref = {this.audioRef} 
+              onEnded={this.handleAudioEnded}
             ></audio>
             :
             <audio className = 'audio'/>
@@ -313,6 +350,10 @@ class SongBar extends React.Component {
   componentDidUpdate(){
     if (this.props.songPlaylist.length > 0 && !this.state.song ){
       this.setState({song: this.props.songPlaylist[0]});
+
+
+
+
     }
 
 
@@ -324,6 +365,8 @@ class SongBar extends React.Component {
     }
   }
   
+  
+
   componentWillUnmount() {
     if (this.state.song){
       clearInterval(this.interval);
