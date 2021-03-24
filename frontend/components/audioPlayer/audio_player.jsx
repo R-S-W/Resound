@@ -12,20 +12,25 @@ class AudioPlayer extends React.Component {
   }
 
   render(){
-    return (
-      <div className = 'audio-player'>
-        <SongBar
-          songPlaylist = {this.props.songPlaylist}
-          fetchPlaylistSong = {this.props.fetchPlaylistSong}
+    if (this.props.loggedIn){
 
-        />
+      return (
+        <div className = 'audio-player'>
+          <SongBar
+            songPlaylist = {this.props.songPlaylist}
+            fetchPlaylistSong = {this.props.fetchPlaylistSong}
+            
+            />
 
-        <LinkBar
-          songPlaylist =  {this.props.songPlaylist}
-        />
+          <LinkBar
+            songPlaylist =  {this.props.songPlaylist}
+            />
 
-      </div>
-    )
+        </div>
+      )
+    }else{
+      return null;
+    }
   }
 }
 export default AudioPlayer;

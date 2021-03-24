@@ -10,6 +10,7 @@ const mapStateToProps = (state)=>{
   
   return {
     songPlaylist: state.entities.songs.songPlaylist, // Make sure this is configureda ssuch #-#
+    loggedIn : !!state.session.id
   }
 }
 const mapDispatchToProps = (dispatch)=>{

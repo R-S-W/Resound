@@ -37,6 +37,7 @@ class SongBar extends React.Component {
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleVolumeChange = this.handleVolumeChange.bind(this);
     this.handleVolumeModal = this.handleVolumeModal.bind(this);
+    this.handleMute = this.handleMute.bind(this);
 
     this.interval;  //handles the interval that rerenders component every second
     // this.setThisInterval = this.setThisInterval.bind(this);
@@ -63,7 +64,10 @@ class SongBar extends React.Component {
       }}
       >
 
-        {!this.audioRef.current || this.audioRef.current.paused ? <FaPlay/>  : <FaPause/>}
+        {!this.audioRef.current || this.audioRef.current.paused ? 
+          <FaPlay className = 'play-icon'/>  
+          : 
+          <FaPause className = 'play-icon'/>}
          
       </button>
     )
@@ -91,7 +95,7 @@ class SongBar extends React.Component {
           })
         )}
       >
-        <ImLoop className = 'scrubber-slider-button'/>
+        <ImLoop className = 'loop-icon'/>
       </button>
     )
   }
@@ -107,7 +111,7 @@ class SongBar extends React.Component {
     }
 
     return (
-      <div className = "scrubber">
+      // <div className = "scrubber">
         <input className = 'scrubber-input-range'
           type="range"
           max='1'
@@ -117,7 +121,7 @@ class SongBar extends React.Component {
           onChange = {this.handleTimeChange}
           style={{ background: styleString}}
         />
-      </div>
+      // </div>
 
     )
   }
@@ -137,7 +141,7 @@ class SongBar extends React.Component {
               type="range"
               max='1' 
               step = '.01'
-              defaultValue = {this.state.volume}
+              value = {this.state.volume}
               ref= {this.volumeComponentInputRef}
               onChange = {this.handleVolumeChange}
               style={{ background: `linear-gradient(90deg, #ff0000  ${100*this.state.volume}%, #000000 ${100*this.state.volume}%)`}}
@@ -146,7 +150,9 @@ class SongBar extends React.Component {
           :
           null
         }
-        <button className = 'volume-button'  >
+        <button className = 'volume-button'  
+          onClick = {this.handleMute}
+        >
           <RiVolumeUpFill className='volume-icon' />
         </button>
       </div>
@@ -202,6 +208,21 @@ class SongBar extends React.Component {
     this.setState({isVolumeVisible: !this.state.isVolumeVisible});
   }
 
+  handleMute(e){
+    let v = 0 ;
+    if (!this.prevVolume){
+      this.prevVolume = this.state.volume;
+    }else if (this.state.volume > 0){
+      this.prevVolume = this.state.volume;
+    }else{
+      this.setState({volume: this.prevVolume})
+      v = this.prevVolume;
+      this.prevVolume= 0;
+    }
+    this.audioRef.current.volume = v;
+    this.setState({volume:v});
+  }
+
 
   //LIFECYCLE METHODS___________________
 
@@ -210,35 +231,37 @@ class SongBar extends React.Component {
     // let aSong = this.props.songPlaylist[0];
     return (
       <div className = 'song-bar'>
+        {/* <button onClick={this.handleTheClick}>Load Test Song</button> */}
 
-        <button onClick={this.handleTheClick}>Load Test Song</button>
+
 
         {
           this.state.song ? 
             <audio 
-              src={this.state.song.audioURL} 
+              src={this.state.song.audioURL}
+              className = 'audio' 
               // controls 
               ref = {this.audioRef} 
             ></audio>
             :
-            null
+            <audio className = 'audio'/>
         }
         
 
         <button className = 'reverse-button'>
-          <IoPlaySkipBackSharp/>
+          <IoPlaySkipBackSharp className ='reverse-icon'/>
         </button>
       
         {this.playButton()}
 
         <button className = 'forward-button'>
-          <IoPlaySkipForwardSharp/>
+          <IoPlaySkipForwardSharp className = 'forward-icon'/>
         </button>
 
         <button className='shuffle-button' 
           onClick = {this.findPos}
         >
-          <ImShuffle/>
+          <ImShuffle className = 'shuffle-icon'/>
         </button>
         
         {this.loopButton()}
@@ -268,11 +291,15 @@ class SongBar extends React.Component {
 
         {this.volumeComponent()}
 
+
+
       </div>
     )
   }
   
-  // componentDidMount() {}
+  componentDidMount() {
+    this.handleTheClick();
+  }
       
   componentDidUpdate(){
     if (this.props.songPlaylist.length > 0 && !this.state.song ){
