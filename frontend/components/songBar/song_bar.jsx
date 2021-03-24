@@ -4,7 +4,7 @@ import React from 'react';
 import { FaPlay, FaPause} from 'react-icons/fa';
 import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp} from 'react-icons/io5';
 import { ImShuffle, ImLoop} from 'react-icons/im';
-import { RiVolumeUpFill} from 'react-icons/ri';
+import { RiVolumeDownFill, RiVolumeUpFill, RiVolumeMuteFill} from 'react-icons/ri';
 
 
 
@@ -111,23 +111,31 @@ class SongBar extends React.Component {
     }
 
     return (
-      // <div className = "scrubber">
-        <input className = 'scrubber-input-range'
-          type="range"
-          max='1'
-          step = '.01'
-          defaultValue = '0'
-          ref = {this.scrubberInputRangeRef}
-          onChange = {this.handleTimeChange}
-          style={{ background: styleString}}
-        />
-      // </div>
-
+      <input className = 'scrubber-input-range'
+        type="range"
+        max='1'
+        step = '.01'
+        defaultValue = '0'
+        ref = {this.scrubberInputRangeRef}
+        onChange = {this.handleTimeChange}
+        style={{ background: styleString}}
+      />
     )
   }
 
   volumeComponent(){
     
+
+    const volumeIcon = ()=>{  
+      if (this.state.song){ // Handle volume button icons
+        if (this.state.volume >= .5){
+          return (<RiVolumeUpFill className = 'volume-icon'/>);
+        }else if (this.state.volume === 0){
+          return (<RiVolumeMuteFill className='volume-icon'/>);
+        }
+        return (<RiVolumeDownFill className='volume-icon'/>);
+      }
+    }
     return (
       <div className = 'volume-component'
         onMouseEnter = {this.handleVolumeModal}
@@ -153,7 +161,7 @@ class SongBar extends React.Component {
         <button className = 'volume-button'  
           onClick = {this.handleMute}
         >
-          <RiVolumeUpFill className='volume-icon' />
+          {volumeIcon()}
         </button>
       </div>
     )
