@@ -115,7 +115,8 @@ class SongBar extends React.Component {
         type="range"
         max='1'
         step = '.01'
-        defaultValue = '0'
+        // defaultValue = '0'
+        value = {this.audioRef.current ? this.audioRef.current.currentTime/this.audioRef.current.duration : 0} //ugly
         ref = {this.scrubberInputRangeRef}
         onChange = {this.handleTimeChange}
         style={{ background: styleString}}
