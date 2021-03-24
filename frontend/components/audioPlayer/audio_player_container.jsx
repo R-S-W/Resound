@@ -2,7 +2,7 @@ import AudioPlayer from './audio_player'
 import { connect } from "react-redux"
 
 
-import { fetchPlaylistSong } from "../../actions/audio_player_actions"
+import { fetchPlaylistSong } from "../../actions/song_actions"
 
 
 

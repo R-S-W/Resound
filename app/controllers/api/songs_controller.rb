@@ -1,7 +1,11 @@
 
 class Api::SongsController < ApplicationController
   def create
+
+    debugger
+
     @song = Song.new(song_params)
+    debugger
     if @song.save!
       render :show
     else
@@ -11,7 +15,7 @@ class Api::SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
-    render :show
+    render :show 
   end
 
   def index
@@ -46,8 +50,18 @@ class Api::SongsController < ApplicationController
 
   private
   def song_params
+    p params
+    debugger
     params.require(:song)
-      .permit(:name, :length, :artist_id,  :info, :album_id, :genre)
+      .permit(
+        :name,
+        :length, 
+        :artist_id,
+        :audio,
+        :album_cover,  
+        :info, 
+        :album_id, 
+        :genre)
   end   #-# check if this can have info be optional.
 end
 

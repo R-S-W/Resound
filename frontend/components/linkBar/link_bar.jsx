@@ -12,7 +12,6 @@ class LinkBar extends React.Component{
   
 
   render(){
-    debugger
   
     if (this.props.songPlaylist.length >0){
       if (!this.song) this.song = this.props.songPlaylist[0];

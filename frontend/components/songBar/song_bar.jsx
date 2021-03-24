@@ -4,7 +4,6 @@ import React from 'react';
 import { FaPlay, FaPause} from 'react-icons/fa';
 import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp} from 'react-icons/io5';
 import { ImShuffle, ImLoop} from 'react-icons/im';
-import { BsDiamondFill} from 'react-icons/bs';
 import { RiVolumeUpFill} from 'react-icons/ri';
 
 
@@ -196,7 +195,6 @@ class SongBar extends React.Component {
   handleVolumeChange(e){    
     this.audioRef.current.volume =  e.target.value;
     this.setState({volume: e.target.value})
-    debugger
   }
 
 
@@ -209,7 +207,6 @@ class SongBar extends React.Component {
 
                     //////REMEMBER TO DECREMENT NUMLOOPS
   render(){
-    debugger
     // let aSong = this.props.songPlaylist[0];
     return (
       <div className = 'song-bar'>
@@ -299,7 +296,7 @@ class SongBar extends React.Component {
 
 
   handleTheClick(e) { //helper function to load 1 playlist song for development
-    this.props.fetchPlaylistSong(4);  //4, 7
+    this.props.fetchPlaylistSong(16);  //4, 7. 15,16
   }
 
       

@@ -40,7 +40,7 @@ export const logout = () => disp => {
 export const signup = (user) => disp => {
   return SessionAPIUtil.signup(user)
     .then((u) => {return disp(receiveCurrentUser(u));})
-    .fail((err) => { debugger; return disp(receiveErrors(err.responseJSON)) })
+    .fail((err) => {return disp(receiveErrors(err.responseJSON)) })
 }
 
 export const demoLogin = () => {
