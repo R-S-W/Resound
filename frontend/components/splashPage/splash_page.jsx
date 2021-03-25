@@ -60,6 +60,9 @@ class SplashPage extends React.Component{
           null
         }
 
+        <h2 className = 'song-grid-header'>Hear what's trending for free in the Resound community</h2>
+
+
         <SongGrid
         
         />

@@ -8,9 +8,13 @@ $stars-pic-width: 1240px;//1154px;
 
 
 .splash-page {
-  // background: black;
+  background-color: white;
   margin: 0 auto 0 $page-side-margin;
   // margin: 0 auto;
+
+  header *{
+    z-index: 2;
+  }
 }
 
 .rectangle {
@@ -18,6 +22,7 @@ $stars-pic-width: 1240px;//1154px;
   width: $stars-pic-width;
   background: red;
 }
+
 
 .logo-title{
   display: flex;
@@ -28,6 +33,7 @@ $stars-pic-width: 1240px;//1154px;
     max-height: $logo-pic-height;
     width: auto;
     margin-left: 10px;
+    // z-index:2;
     /* object-fit: contain; */
   }
 
@@ -52,6 +58,7 @@ $stars-pic-width: 1240px;//1154px;
 
 .verification-buttons{
   margin-right: 5px;
+  // z-index:2;
 }
 
 // #verification-buttons button{
@@ -101,8 +108,17 @@ $stars-pic-width: 1240px;//1154px;
   height: auto;
   position: relative;
   margin-top: -$logo-pic-height;
-  z-index: -1;
+  z-index: 0;
 }
 
 
+
+.song-grid-header{
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+
+  margin: 40px 0;
+}
 

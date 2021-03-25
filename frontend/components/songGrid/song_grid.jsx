@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchSongs , fetchSong} from '../../actions/song_actions';
+import { FaPlayCircle} from 'react-icons/fa';
+
 
 const mapStateToProps= (state)=>{
   let keys = Object.keys(state.entities.songs);
@@ -29,14 +31,19 @@ class SongGrid extends React.Component{
 
   songComponent(song){
     return (
-      <div key=  {song.name + song.id} id = {song.id}>
+
+      <div className = 'song-grid-element'  id = {song.id}>
         <button className = 'song-component-button'
           onClick = {this.handleSongSelect}
         >
-          <img src={"#"} className = "song-component-album-cover"/>
+          <img src={song.albumCoverURL} className = "song-component-album-cover"/>
+          {/* <FaPlayCircle className ='play-icon'/> */}
         </button>
-        <span>{"song.name"}</span>
-        <span> song artist </span>
+        <div className = 'text-div'>
+          <span className= 'title' >{song.name}</span>
+          {/* <br/> */}
+          <span className = "album-title"> {song.id} </span>
+        </div>
       </div>
     )
   }
