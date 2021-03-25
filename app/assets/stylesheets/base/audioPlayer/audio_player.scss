@@ -51,14 +51,34 @@ $volume-background-height: 20px;
 .song-bar{
   display: flex;
   height:100%;
-  width: 75%;
+  // width: 75%;
+  
+
+  margin-right: 20px;
+  margin-right: 40px;
 
   .reverse-button, .play-button, .forward-button, .shuffle-button{
     margin-left:4.5px;
   }
 
+  .play-button{
+    margin-left: 75px;
+    margin-right: 20px;
+  }
+
+
+  .forward-button{
+    display: none;
+    .forward-icon{
+      
+      // opacity: 0; /////
+    }
+  }
+
   .reverse-button{
+    display:none;
     .reverse-icon{
+      // opacity: 0; /////
       margin-left: 16px;
     }
   }
@@ -68,9 +88,13 @@ $volume-background-height: 20px;
   // .forward-icon{
   //   margin-left: 1px;
   // }
-  .shuffle-icon{
-    height: 16px;
-    width: 16px;  
+  .shuffle-button{
+    display: none;
+    .shuffle-icon{
+      // opacity: 0;/////
+      height: 16px;
+      width: 16px;  
+    }
   }
   .loop-icon{
     height: 16px;
@@ -92,6 +116,7 @@ $volume-background-height: 20px;
     display: flex;
     // flex-direction: row;
     width: 545px;    
+    width: 610px;
     
     margin-right: 20px;
     font-size: 10.5px;
@@ -268,9 +293,10 @@ $volume-background-height: 20px;
   display: flex;
   width: 100%;
   .song-links{
-    display: grid;
-    grid-template-columns: auto 160px ;
-
+    // display: grid;
+    // grid-template-columns: auto 160px ;
+    display: flex;
+    align-items: center;
 
     .album-cover-button {
       height: $audio-player-height;
@@ -300,7 +326,7 @@ $volume-background-height: 20px;
       white-space: nowrap;
       margin-left: 8px;
       
-      font-size: 10px;
+      font-size: 13px;
       text-decoration: none;
       padding: 5px;
     }

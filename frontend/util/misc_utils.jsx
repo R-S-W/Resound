@@ -33,3 +33,41 @@ export const determineUsernameOrEmail = (str)=>{
   }
 }
 
+
+
+
+export const shuffleArray = (arr) => {
+  let newArr = [];
+  let indArr = generateIndices(arr.length);
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(arr[indArr[i]]);
+  }
+  return newArr;
+}
+
+const generateIndices = (num) => {
+  let indArr = [];
+  while (indArr.length < num && isNoRepeatElements(indArr)) {
+    let x = Math.floor(Math.random() * num);
+    if (indArr.indexOf(x) === -1) {
+      indArr.push(x);
+    }
+  }
+  return indArr;
+}
+
+const isNoRepeatElements = (arr) => {
+  let obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    if (obj[arr[i]]) {
+      obj[arr[i]]++;
+    } else {
+      obj[arr[i]] = 1;
+    }
+  }
+  let objVals = Object.values(obj);
+  for (let j = 0; j < objVals.length; j++) {
+    if (objVals[j] > 1) return false;
+  }
+  return true;
+}

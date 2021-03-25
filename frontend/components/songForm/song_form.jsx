@@ -72,7 +72,7 @@ class SongForm extends React.Component{
   }
 
   handleSubmit(e){
-    debugger
+    // debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append('song[name]', this.state.name);

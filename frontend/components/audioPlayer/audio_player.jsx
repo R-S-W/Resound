@@ -19,6 +19,9 @@ class AudioPlayer extends React.Component {
           <SongBar
             songPlaylist = {this.props.songPlaylist}
             fetchPlaylistSong = {this.props.fetchPlaylistSong}
+            nextSong = {this.props.nextSong}
+            shufflePlaylist = {this.props.shufflePlaylist}
+            
             
             />
 

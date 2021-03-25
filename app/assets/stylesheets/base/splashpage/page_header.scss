@@ -4,16 +4,18 @@
 $header-font-color: $text-color;
 // $header-font-color : lightgray;
 $logo-pic-height: 70px;
-
+$stars-pic-width: 1154px;
 
 
 .splash-page {
   // background: black;
-  margin: 0 $page-side-margin;
+  margin: 0 auto 0 $page-side-margin;
+  // margin: 0 auto;
 }
 
 .rectangle {
   height: 4px;
+  width: $stars-pic-width;
   background: red;
 }
 
@@ -94,7 +96,7 @@ $logo-pic-height: 70px;
 }
 
 .stars-pic {
-  width: 1154px;
+  width: $stars-pic-width;
   // height: 418px;
   height: auto;
   position: relative;

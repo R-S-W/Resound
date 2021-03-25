@@ -23,20 +23,21 @@ class LinkBar extends React.Component{
               <img   src = {this.song.albumCoverURL} />
             </button>
             <a href="#">{this.song.name}</a>
-            <a href="#">{this.props.albumName}</a>
+            {/* <a href="#">{this.props.albumName}</a> */}
           </div>
 
 
-          <button className = 'favorite-button'>
+          {/* <button className = 'favorite-button'>
             <HiHeart/>
           </button>
 
           <button className = 'follow-button'>
             <HiUserAdd/>
-          </button>
+          </button> 
           <button className='playlist-button'>
             <RiPlayListFill />
           </button>
+          */}
         </nav>
       )
     }else{

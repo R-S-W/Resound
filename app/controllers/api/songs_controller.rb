@@ -1,11 +1,7 @@
 
 class Api::SongsController < ApplicationController
   def create
-
-    debugger
-
     @song = Song.new(song_params)
-    debugger
     if @song.save!
       render :show
     else
@@ -50,8 +46,6 @@ class Api::SongsController < ApplicationController
 
   private
   def song_params
-    p params
-    debugger
     params.require(:song)
       .permit(
         :name,

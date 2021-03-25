@@ -1,4 +1,6 @@
 
+
+from 11:15 3/25  had song capabilities
 import React from 'react';
 
 import { FaPlay, FaPause} from 'react-icons/fa';
@@ -244,23 +246,22 @@ class SongBar extends React.Component {
   handleAudioEnded(e){
       switch (this.state.numLoops) {
         case 0:
-          // this.nextPlaylistSong();
-          // if (this.props.playlist.length > this.props.playlistIndex) {
-          //   // this.audioRef.current.currentTime = 0;
-          //   let newSong = this.props.playlist[this.props.playlistIndex + 1];
-          //   // this.setState({ song: newSong }); //
-          //   debugger
-          //   audio.src = newSong.audioURL;
-          //   audio.pause();
-          //   audio.load();
-          //   audio.play();
-          //   // this.audioRef.current.play();
-          // }
-          
-          this.setState({isPaused:true});
-          this.audioRef.current.currentTime = 0;
-
-          
+          this.nextPlaylistSong();
+          if (this.props.playlist.length > this.props.playlistIndex) {
+            // this.audioRef.current.currentTime = 0;
+            let newSong = this.props.playlist[this.props.playlistIndex + 1];
+            let audio = this.audioRef.current;
+            // this.setState({ song: newSong }); //
+            debugger
+            audio.src = newSong.audioURL;
+            audio.pause();
+            audio.load();
+            audio.play();
+            // this.audioRef.current.play();
+          }
+          // this.setState({isPaused: true})
+          // this.audioRef.current.currentTime = 0;
+        
         // this.state.playlist.shift();
         // this.setState({
         //   playlist: this.state.playlist,
@@ -301,7 +302,17 @@ class SongBar extends React.Component {
 
 
   audioTag(){
+    // debugger
+    if (!this.prevSong && this.state.song){
+      // debugger
+      this.prevSong = this.state.song;
+    }
 
+    if (this.prevSong !==this.state.song){
+      debugger
+      this.prevSong = this.state.song;
+    }
+    
 
     
   
@@ -407,6 +418,7 @@ class SongBar extends React.Component {
     if (!this.state.song && this.props.songPlaylist.length > 0){
       if (!this.props.playlistIndex)   this.nextPlaylistSong();
       else{
+        debugger
         this.setState({
           song:this.props.songPlaylist[this.props.playlistIndex],
           isPaused: false
@@ -460,8 +472,8 @@ class SongBar extends React.Component {
     // setTimeout(() => { console.log("World!"); }, 2000);
     console.log('generate song playlist')
     setTimeout(() => { this.props.fetchPlaylistSong(16); }, 500);
-    // setTimeout(() => { this.props.fetchPlaylistSong(4); }, 1000);
-    // setTimeout(() => { this.props.fetchPlaylistSong(7); }, 1500);
+    setTimeout(() => { this.props.fetchPlaylistSong(4); }, 1000);
+    setTimeout(() => { this.props.fetchPlaylistSong(7); }, 1500);
       //4, 7. 15,16
     // this.props.fetchPlaylistSong(4);
     // this.props.fetchPlaylistSong(7);
@@ -473,7 +485,7 @@ class SongBar extends React.Component {
   const formatSeconds = (seconds)=>{
   // debugger
     console.log(seconds, (typeof seconds));
-    // if (seconds === NaN  || !(seconds instanceof Number)) return '--:--';
+    if (seconds === NaN  || !(seconds instanceof Number)) return '--:--';
     return new Date(1000 * Math.round(seconds))
       .toISOString()
       .slice(14, 19);

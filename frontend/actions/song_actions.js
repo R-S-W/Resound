@@ -4,9 +4,12 @@ export const RECEIVE_SONG = 'RECEIVE_SONG';
 export const REMOVE_SONG  = 'REMOVE_SONG';
 export const RECEIVE_SONGS = 'RECEIVE_SONGS';
 export const ADD_PLAYLIST_SONG = 'ADD_PLAYLIST_SONG';
+export const NEXT_SONG  = 'NEXT_SONG';
+export const PREVIOUS_SONG = 'PREVIOUS_SONG'
+export const SHUFFLE_PLAYLIST = 'SHUFFLE_PLAYLIST';
 
 
-
+//Action Creators
 export const receiveSong=(song)=>{
   return {
     type: RECEIVE_SONG,
@@ -34,6 +37,21 @@ export const addPlaylistSong = (song) => {
   }
 }
 
+export const nextSong=()=>{
+  return {type: NEXT_SONG};
+}
+
+export const previousSong=()=>{
+  return {type: PREVIOUS_SONG};
+}
+
+export const shufflePlaylist = ()=>{
+  return {type: SHUFFLE_PLAYLIST};
+}
+
+
+
+//Thunk Action Creators
 export const createSong = (song)=>dispatch=>{
   return SongAPIUtil.createSong(song)
     .then((s)=>{return dispatch(receiveSong(s) )})
