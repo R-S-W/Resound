@@ -79,8 +79,8 @@ export const deleteSong = (songId)=>dispatch=>{
 
 
 export const fetchPlaylistSong = (songId) => dispatch => {
-  return SongAPIUtil.fetchSong(songId).then((s) => {
-    return dispatch(addPlaylistSong(s));
+  return SongAPIUtil.fetchSong(songId).then((song) => {
+    return dispatch(addPlaylistSong(song));
   })
 
 }

@@ -3,6 +3,7 @@ import React from 'react';
 import VerificationContainer from '../verification/verification_container';
 import LoginFormContainer from '../sessionForm/login_form_container';
 import SignupFormContainer from '../sessionForm/signup_form_container';
+import SongGrid from '../songGrid/song_grid';
 
 class SplashPage extends React.Component{
   constructor(props){
@@ -40,25 +41,29 @@ class SplashPage extends React.Component{
         </header>
         <img className ='stars-pic' src={window.soundcloudStarsURL} />
 
+        { this.state.isLoginVisible ?  
+          <LoginFormContainer
+            className = 'modal  show-modal'
+            handleSwitch = {this.handleModal('login')}
+            //be careful if this will overwrite other classes you need for styling.
+            /> 
+          :
+          null
+        }
 
-          { this.state.isLoginVisible ?  
-            <LoginFormContainer
-              className = 'modal  show-modal'
-              handleSwitch = {this.handleModal('login')}
-              //be careful if this will overwrite other classes you need for styling.
-              /> 
-            :
-            null
-          }
+        {this.state.isSignupVisible ? 
+          <SignupFormContainer
+            className='modal  show-modal' 
+            handleSwitch={this.handleModal('signup')}
+          />
+          :
+          null
+        }
 
-          {this.state.isSignupVisible ? 
-            <SignupFormContainer
-              className='modal  show-modal' 
-              handleSwitch={this.handleModal('signup')}
-            />
-            :
-            null
-          }
+        <SongGrid
+        
+        />
+        
 
       </div>
     )

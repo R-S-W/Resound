@@ -24,6 +24,7 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:null}, action)=>{
       return Object.assign({}, state, newState);
 
     case RECEIVE_SONG:
+      // debugger
       return Object.assign({},state, {[action.song.id]:action.song});
 
     case REMOVE_SONG:

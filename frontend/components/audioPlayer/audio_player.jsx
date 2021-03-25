@@ -12,7 +12,7 @@ class AudioPlayer extends React.Component {
   }
 
   render(){
-    if (this.props.loggedIn){
+    if (true || this.props.loggedIn){///////\
 
       return (
         <div className = 'audio-player'>
