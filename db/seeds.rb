@@ -93,7 +93,7 @@ round.album_cover.attach(io: album_cover_file, filename: 'Roundabout.png')
 
 
 
-Sein= Song.create(name: "", length:10 , info: "Cool", artist_name:'Newman' )
+Sein= Song.create(name: "Seinfeld", length: 10 , info: "Cool", artist_name:'Newman' )
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/Seinfeld.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Seinfeld.png')
 Sein.audio.attach(io:audio_file, filename: "Seinfeld.mp3")
@@ -123,6 +123,8 @@ audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/What_About_Me.mp3"
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/What_About_Me.png')
 wam.audio.attach(io:audio_file, filename: "What_About_Me.mp3")
 wam.album_cover.attach(io: album_cover_file, filename: 'What_About_Me.png')
+
+
 
 
 
