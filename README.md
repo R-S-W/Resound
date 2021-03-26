@@ -1,16 +1,15 @@
-## Resound
+# Resound
 
 [Resound](https://dashboard.heroku.com/apps/resound-music) is a Soundcloud clone that emulates its music player.  Users can play any song that appears on the page and control playback with the song player.  
 <img width="1280" alt="Screen Shot 2021-03-26 at 10 53 30 AM" src="https://user-images.githubusercontent.com/73966827/112650249-8fa5ba00-8e21-11eb-889d-a59e0d3b393c.png">
 
-Audio tag, ajax request, react-redux, 
-### Technologies:
+## Technologies:
 The application was built using a rails backend that accessed the database and managed http requests connected to a frontend that used React-Redux to build the app.  
 AJAX requests are used for database accession to provide an uninterrupted user experience.  
 
-### Main Focuses
+## Main Focuses
 
-#### Song Player
+### Song Player
 The audio player allows users to control the audio by pausing and playing the media, choosing where in the song to start, changing the volume, and looping the song.  A main feature of the soundcloud player is its persistence  as one navigates different pages.  The resound player does the same, as all pages are made via frontend routes that do not send an http request.
 
 The player uses an html audio tag, controlling it with buttons and sliders connected via Refs in React.  The reference, this.audioRef, points to the audio tag, allowing me to manipulate it:  
@@ -25,7 +24,7 @@ I ran across some difficulties using the audio tag: some functionalities like au
 
 
 
-#### User Authentication
+### User Authentication
 Users can use forms to login and sign up to the site.  For a login, when the form is submitted, an AJAX call is sent with the data to the backend, where he username and password combination is checked to see if the user exists and the password matches.  If so, a session token is created and stored, allowing the user to remain logged in even after reloading the page.  Like soundcloud, Resound also allows one to use either a username or password to login.  
 <img width="545" alt="Screen Shot 2021-03-26 at 10 55 19 AM" src="https://user-images.githubusercontent.com/73966827/112650458-c8de2a00-8e21-11eb-916c-8b4dddc310a7.png">
 
@@ -33,7 +32,7 @@ Users can use forms to login and sign up to the site.  For a login, when the for
 
 
 
-### Further functionality: 
+## Further functionality: 
 * A song page that allows you to access info on a song and comment on it
 * A user page that allows you to see the tracks and albums created by them
 * A playlist feature
