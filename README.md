@@ -12,8 +12,8 @@ AJAX requests are used for database accession to provide an uninterrupted user e
 #### Song Player
 The audio player allows users to control the audio by pausing and playing the media, choosing where in the song to start, changing the volume, and looping the song.
 
-The player uses an html audio tag, controlling it with buttons and sliders connected via Refs in React.  The functionality of the audio tag is accessed in this way:
-<img width="325" alt="Screen Shot 2021-03-26 at 10 03 41 AM" src="https://user-images.githubusercontent.com/73966827/112643292-97ae2b80-8e1a-11eb-908b-6b2d542d5903.png">
+The player uses an html audio tag, controlling it with buttons and sliders connected via Refs in React.  The functionality of the audio tag is accessed in this way:  
+<img width="325" alt="Screen Shot 2021-03-26 at 10 03 41 AM" src="https://user-images.githubusercontent.com/73966827/112643292-97ae2b80-8e1a-11eb-908b-6b2d542d5903.png">  
 <img width="287" alt="Screen Shot 2021-03-26 at 10 05 17 AM" src="https://user-images.githubusercontent.com/73966827/112643488-ccba7e00-8e1a-11eb-9c78-6782e693a46d.png">
 
 
