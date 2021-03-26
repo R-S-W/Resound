@@ -9,7 +9,9 @@ $stars-pic-width: 1240px;//1154px;
 
 .splash-page {
   background-color: white;
-  margin: 0 auto 0 $page-side-margin;
+  // margin: 0 $page-side-margin 0 $page-side-margin;  /////
+  margin: 0 auto;
+  max-width: $stars-pic-width;
   // margin: 0 auto;
 
   header *{

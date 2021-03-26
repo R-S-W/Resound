@@ -4,12 +4,14 @@
 
 .song-grid{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  // grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 160px 160px 160px 160px 160px 160px;
   grid-template-rows: 1fr 1fr 1fr;
   column-gap:10px;
   row-gap: 25px;
+  justify-content: center;
 
-  margin: 0 30px;
+  margin: 0 auto;
 
   width: 1090px;
  
