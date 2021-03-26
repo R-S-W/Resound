@@ -27,6 +27,7 @@ class SongBar extends React.Component {
       currentTime: 0,
       volume: 1,
       isVolumeVisible: false,
+      c: 0
 
     }
     this.audioRef = React.createRef();
@@ -51,6 +52,32 @@ class SongBar extends React.Component {
 
     this.test= this.test.bind(this);
   }
+
+
+
+  audioTag() {
+
+    // if (this.state.song !==this.props.songPlaylist[0])   debugger
+
+
+    return (this.state.song ?
+      <audio
+        src={this.state.song.audioURL}
+        className='audio'
+        // key={this.state.song.id}
+        key = {this.props.songPlaylist[0].id}
+        // controls 
+        ref={this.audioRef}
+        onEnded={this.handleAudioEnded}
+        preload='auto'
+      />   
+      :
+      <audio className='audio' />
+    )
+
+
+  }
+
 
 
   playButton(){
@@ -96,7 +123,6 @@ class SongBar extends React.Component {
     }
 
     return (
-
       <button className='loop-button'
         onClick={(e)=>{          
           this.setState({
@@ -125,7 +151,7 @@ class SongBar extends React.Component {
         max='1'
         step = '.01'
         // defaultValue = '0'
-        value = {this.audioRef.current ? this.audioRef.current.currentTime/this.audioRef.current.duration : 0} //ugly
+        value = {this.state.song === this.props.songPlaylist[0] &&  this.audioRef.current ? this.audioRef.current.currentTime/this.audioRef.current.duration : 0} //ugly
         ref = {this.scrubberInputRangeRef}
         onChange = {this.handleTimeChange}
         style={{ background: styleString}}
@@ -203,6 +229,7 @@ class SongBar extends React.Component {
     }
     this.setState({ isPaused: this.audioRef.current.paused });
   }
+
 
 
   setThisInterval() { //Set this.interval
@@ -300,30 +327,6 @@ class SongBar extends React.Component {
   }
 
 
-  audioTag(){
-
-
-    
-  
-    return (this.state.song ?
-      <audio
-        src={this.state.song.audioURL}
-        className='audio'
-        key={this.state.song.id}
-        // controls 
-        ref={this.audioRef}
-        onEnded={this.handleAudioEnded}
-        preload = 'auto'
-      >
-        {/* <source src = {this.state.song.audioURL} /> */}
-
-      </audio>
-      :
-      <audio className='audio' />
-    )
-  
-
-  }
 
 
   //LIFECYCLE METHODS___________________
@@ -397,24 +400,109 @@ class SongBar extends React.Component {
   }
   
   componentDidMount() {
+    // debugger
     this.handleTheClick();
+    
   }
       
   componentDidUpdate(){
+    // debugger
     // this.prevPlaylistIndex;
     
+    // if (!this.state.song && this.props.songPlaylist.length > 0){
+    //   if (  !this.props.playlistIndex)   this.nextPlaylistSong();
+    //   else{
+    //     this.setState({
+    //       song:this.props.songPlaylist[this.props.playlistIndex],
+    //       isPaused: false
+    //     });
+    //   }
+    //        //else is already handled in constructor.
+    //       // this.setState({song: this.props.songPlaylist[0]});
+    // }
+    // if (this.state.song !== this.props.songPlaylist[0]){
+    //   debugger
+    //   this.setState({song: this.props.songPlaylist[0]})
+    // }
 
-    if (!this.state.song && this.props.songPlaylist.length > 0){
-      if (!this.props.playlistIndex)   this.nextPlaylistSong();
-      else{
-        this.setState({
-          song:this.props.songPlaylist[this.props.playlistIndex],
-          isPaused: false
-        });
-      }
-      //else is already handled in constructor.
-      // this.setState({song: this.props.songPlaylist[0]});
+    if (!this.audioRef.current && !this.interval){
+      this.interval = setInterval(()=>{
+       if (     this.state.song !== this.props.songPlaylist[0]    ){//!this.audioRef.current){
+        //  this.setState({c: this.state.c+1});
+         this.setState({song: this.props.songPlaylist[0]});
+        //  console.log(this.state.c)
+
+        }else{
+          clearInterval(this.interval)
+        }
+        
+      },1000)
+
     }
+    // if (!this.gate) this.gate = 0;
+    if (this.audioRef.current && this.state.song !== this.props.songPlaylist[0]){
+      debugger
+      let audio = this.audioRef.current;
+
+      this.setState({
+        song : this.props.songPlaylist[0],
+        // currentTime: 
+      });
+      // audio.pause();
+      if (!this.state.isPaused){
+        this.handlePlay();
+      }else{
+
+        this.setThisInterval();
+      }
+      audio.src = this.props.songPlaylist[0].audioURL;
+      audio.load();
+      audio.volume = this.state.volume;
+      // audio.play();
+      // audio.currentTime = 0;
+      
+      
+      setTimeout(()=>{
+        // audio.play();
+        this.handlePlay();
+        this.setState({currentTime: audio.currentTime})
+      }, Math.round(1300*audio.currentTime/30));
+      // setTimeout(()=>{
+
+
+      //   let audio = this.audioRef.current;
+      //   audio.pause();
+      //   audio.currentTime = 0;
+      //   audio.load();
+      //   // audio.play();
+      //   if (this.gate ===0){
+      //     this.gate++;
+      //     this.setState({
+      //       currentTime: 0,
+      //       isPaused:true
+      //     });
+      //   }
+      // },1000);
+      
+    }
+    
+    // if (!this.prevSong && this.state.song){
+    //   this.prevSong = this.state.song;
+    // }else if (this.prevSong!==this.state.song){
+    //   let audio = this.audioRef.current;
+    //   debugger;
+
+    //   this.setState({song: this.props.songPlaylist[0]})
+    //   // audio.pause();
+    //   // audio.currentTime=0;
+    //   // audio.play();
+
+    //   this.prevSong = this.state.song;
+    // }
+
+
+
+
     // if (this.props.playlistIndex){
     //   debugger
     //   if ( !this.prevPlaylistIndex){
@@ -437,11 +525,10 @@ class SongBar extends React.Component {
     // }
 
 
-    if (this.state.song && !this.interval) {
-      this.setThisInterval();
-      //reset volumeComponentInput here. maybe not
-      // this.volumeComponentInputRef.current.value  = 1;
-    }
+    // if (this.state.song && !this.interval) { ///
+    //   this.setThisInterval();
+      
+    // }
   }
   
   
@@ -453,7 +540,9 @@ class SongBar extends React.Component {
   }
 
   test(e){
-    // debugger
+    this.state;
+
+    debugger
   }
 
   handleTheClick(e) { //helper function to load 1 playlist song for development
@@ -471,7 +560,7 @@ class SongBar extends React.Component {
 
   const formatSeconds = (seconds)=>{
   // debugger
-    console.log(seconds, (typeof seconds));
+    // console.log(seconds, (typeof seconds));
     // if (seconds === NaN  || !(seconds instanceof Number)) return '--:--';
     if (Number.isNaN(seconds)) return '--:--';
     return new Date(1000 * Math.round(seconds))

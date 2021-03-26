@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchSongs , fetchSong} from '../../actions/song_actions';
+import {fetchSongs , fetchSong, fetchPlaylistSong} from '../../actions/song_actions';
 import { FaPlayCircle} from 'react-icons/fa';
 
 
@@ -9,13 +9,14 @@ const mapStateToProps= (state)=>{
   delete keys[keys.indexOf("songPlaylist")];
   delete keys[keys.indexOf("playlistIndex")]
   return {
-    songs: keys.map((k)=>state.entities.songs[k])
+    songList: keys.map((k)=>state.entities.songs[k])
   }
 }
 const mapDispatchToProps = (dispatch)=>{
   return {
     fetchSongs: ()=>{dispatch(fetchSongs())},
-    fetchSong: (id)=>{dispatch(fetchSong(id))}
+    fetchSong: (id)=>{dispatch(fetchSong(id))},
+    fetchPlaylistSong: (id)=>{dispatch(fetchPlaylistSong(id))}
   }
 }
 
@@ -29,11 +30,12 @@ class SongGrid extends React.Component{
     this.handleSongSelect = this.handleSongSelect.bind(this);
   }
 
-  songComponent(song){
+  songComponent(song, ind){
     return (
 
-      <div className = 'song-grid-element'  id = {song.id}>
+      <div className = 'song-grid-element'  key = {song.id} id= {song.id}>
         <button className = 'song-component-button'
+          data-index={ind}
           onClick = {this.handleSongSelect}
         >
           <img src={song.albumCoverURL} className = "song-component-album-cover"/>
@@ -49,6 +51,11 @@ class SongGrid extends React.Component{
   }
 
   handleSongSelect(e){
+    // debugger
+    // let idx = e.currentTarget.dataset.index;
+    // console.log(idx);
+    let songIdx = e.currentTarget.dataset.index;
+    this.props.fetchPlaylistSong(this.props.songList[songIdx].id);
 
   }
 
@@ -56,8 +63,8 @@ class SongGrid extends React.Component{
     return (
       <div className = 'song-grid'>
         {
-          this.props.songs.map((s)=>{
-            return this.songComponent(s);
+          this.props.songList.map((s,ind)=>{
+            return this.songComponent(s,ind);
           })
         }
       </div>

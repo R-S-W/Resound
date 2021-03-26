@@ -1,4 +1,6 @@
 import {shuffleArray} from '../util/misc_utils';
+import merge from 'lodash/merge'
+
 
 ///  #-# consider useing merge
 // const RECEIVESOMETHING= 'RECEIVESOMETHING';
@@ -12,7 +14,7 @@ import {
   SHUFFLE_PLAYLIST
  } from '../actions/song_actions'
 
-const songsReducer = (state= {songPlaylist:[], playlistIndex:null}, action)=>{
+const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#-#  !!!!!!!!!!
   let newState = {};
   Object.freeze(state);
   
@@ -21,14 +23,14 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:null}, action)=>{
       for(let i = 0; i< action.songs.length; i++){
         newState[action.songs[i].id] = action.songs[i];
       }
-      return Object.assign({}, state, newState);
+      return merge({}, state, newState);
 
     case RECEIVE_SONG:
       // debugger
-      return Object.assign({},state, {[action.song.id]:action.song});
+      return merge({},state, {[action.song.id]:action.song});
 
     case REMOVE_SONG:
-      newState = Object.assign({}, state);
+      newState = merge({}, state);
 
       let idx = newState.songPlaylist.indexOf(state[action.id]);
       if (idx !==-1) delete  newState.songPlaylist[idx];
@@ -39,25 +41,29 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:null}, action)=>{
       return newState;
 
     case ADD_PLAYLIST_SONG:
-      let arr = [action.song].concat(state.songPlaylist);
-      return Object.assign({},state,{songPlaylist:arr});
+      
+      // let arr = [action.song].concat(state.songPlaylist);
+      // return Object.assign({},state,{songPlaylist:arr});
+
+      return merge({},state,{songPlaylist:[action.song]});
+
     
     case NEXT_SONG:
-      newState = Object.assign({}, state);
+      newState = merge({}, state);
       if (!newState.playlistIndex) newState.playlistIndex = 0;
       newState.playlistIndex++;
       if (newState.playlistIndex === newState.songPlaylist.length) newState.playlistIndex = null;
       return newState;
 
     case PREVIOUS_SONG:
-      newState = Object.assign({}, state);
+      newState = merge({}, state);
       if (!newState.playlistIndex) newState.playlistIndex = newState.playlist.length;
       newState.playlistIndex--;
       if (newState.playlistIndex === -1) newState.playlistIndex = null;
       return newState;
 
     case SHUFFLE_PLAYLIST: 
-      newState = Object.assign({}, state);
+      newState = merge({}, state);
       newState.playlist = shuffleArray(newState.playlist);
       newState.playlistIndex = 0;
       return newState;
