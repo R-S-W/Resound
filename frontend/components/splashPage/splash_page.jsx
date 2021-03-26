@@ -31,7 +31,7 @@ class SplashPage extends React.Component{
         <header>
           <div className = 'logo-title'>
             {/* <img className= 'logo' src = {window.resoundLogoURL}/> */}
-            <img className='logo' src={window.resoundLogoWhiteBorderURL} />
+            <img className='logo' src={window.resoundLogoURL} />
             <h1 className = 'title'>RESOUND</h1>
           </div>
           <VerificationContainer
@@ -60,7 +60,7 @@ class SplashPage extends React.Component{
           null
         }
 
-        <h2 className = 'song-grid-header'>Hear what's trending for free in the Resound community</h2>
+        <div className = 'song-grid-header'>Hear what's trending for free in the Resound community</div>
 
 
         <SongGrid

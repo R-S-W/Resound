@@ -24,7 +24,7 @@ class LinkBar extends React.Component{
             </button>
             <div className = 'text-items'>
               <a href="#">{this.song.name}</a>
-              <a href="#">{this.song.artist_id}</a>
+              <a href="#">{this.song.artist_name}</a>
             </div>
           </div>
 

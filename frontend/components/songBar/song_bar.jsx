@@ -441,7 +441,7 @@ class SongBar extends React.Component {
     }
     // if (!this.gate) this.gate = 0;
     if (this.audioRef.current && this.state.song !== this.props.songPlaylist[0]){
-      debugger
+      // debugger
       let audio = this.audioRef.current;
 
       this.setState({
@@ -542,7 +542,7 @@ class SongBar extends React.Component {
   test(e){
     this.state;
 
-    debugger
+    // debugger
   }
 
   handleTheClick(e) { //helper function to load 1 playlist song for development

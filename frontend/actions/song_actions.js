@@ -17,7 +17,7 @@ export const receiveSong=(song)=>{
   }
 }
 
-export const recieveSongs = (songs)=>{
+export const receiveSongs = (songs)=>{
   return {
     type: RECEIVE_SONGS,
     songs

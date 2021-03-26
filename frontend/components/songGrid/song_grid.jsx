@@ -44,7 +44,7 @@ class SongGrid extends React.Component{
         <div className = 'text-div'>
           <span className= 'title' >{song.name}</span>
           {/* <br/> */}
-          <span className = "album-title"> {song.id} </span>
+          <span className = "album-title"> {song.artist_name} </span>
         </div>
       </div>
     )
@@ -71,16 +71,16 @@ class SongGrid extends React.Component{
     )
   }
   componentDidMount(){
-    // this.props.fetchSongs();
-    this.props.fetchSong(1);
-    this.props.fetchSong(2);
-    this.props.fetchSong(3)
+    this.props.fetchSongs();
+    // this.props.fetchSong(1);
+    // this.props.fetchSong(2);
+    // this.props.fetchSong(3)
 
 
   }
 
   conponentDidUpdate(){
-    debugger
+    // debugger
   }
 }
 
