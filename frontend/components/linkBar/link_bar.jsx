@@ -7,14 +7,14 @@ class LinkBar extends React.Component{
 
   constructor(props){       ///props has albumName
     super(props);
-    this.song = props.songPlaylist[0];
+    // this.song = props.songPlaylist[0];
   }
   
 
   render(){
   
     if (this.props.songPlaylist.length >0){
-      if (!this.song) this.song = this.props.songPlaylist[0];
+      this.song = this.props.songPlaylist[0];
 
       return (
         <nav className = 'link-bar'>
@@ -22,8 +22,10 @@ class LinkBar extends React.Component{
             <button className = 'album-cover-button'>
               <img   src = {this.song.albumCoverURL} />
             </button>
-            <a href="#">{this.song.name}</a>
-            {/* <a href="#">{this.props.albumName}</a> */}
+            <div className = 'text-items'>
+              <a href="#">{this.song.name}</a>
+              <a href="#">{this.song.artist_id}</a>
+            </div>
           </div>
 
 

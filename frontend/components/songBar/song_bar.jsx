@@ -466,7 +466,7 @@ class SongBar extends React.Component {
         // audio.play();
         this.handlePlay();
         this.setState({currentTime: audio.currentTime})
-      }, Math.round(1300*audio.currentTime/30));
+      }, Math.round(300*audio.currentTime/30));
       // setTimeout(()=>{
 
 

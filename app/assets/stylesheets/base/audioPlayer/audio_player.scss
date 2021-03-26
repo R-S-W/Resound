@@ -316,19 +316,26 @@ $volume-background-height: 20px;
 
 
     }
-    
-    a {
+    .text-items{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 4px 0;
 
-      overflow: hidden;
-      text-overflow: ellipsis;
-      
-      text-align: left;
-      white-space: nowrap;
-      margin-left: 8px;
-      
-      font-size: 13px;
-      text-decoration: none;
-      padding: 5px;
+      a {
+  
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        text-align: left;
+        white-space: nowrap;
+        margin-left: 8px;
+        
+        font-family: 'Quicksand', sans-serif;
+        font-size: 13px;
+        text-decoration: none;
+        padding: 5px;
+      }
     }
   }
 }
