@@ -7,7 +7,7 @@
 The application was built using a rails backend that accessed the database and managed http requests connected to a frontend that used React-Redux to build the app.  
 AJAX requests are used for database accession to provide an uninterrupted user experience.  
 
-## Main Focuses
+## Highlights
 
 ### Song Player
 The audio player allows users to control the audio by pausing and playing the media, choosing where in the song to start, changing the volume, and looping the song.  A main feature of the soundcloud player is its persistence  as one navigates different pages.  The resound player does the same, as all pages are made via frontend routes that do not send an http request.
@@ -21,7 +21,8 @@ I use .play(), .pause(), as well as accessors like .currentTime, the current loc
 
 I ran across some difficulties using the audio tag: some functionalities like autoplay are not available.  A main challenge was that the audio tag was not updating after renders.  The solution was to add a unique key property that would register as a change of state for the audio tag to trigger a rerender.  I realized later on that some properties go unnoticed by the audio element. One cannot change the song of the audio tag with a simple update of the src attribute: it is necessary to pause and reload, the song in the audio tag.
 
-To have a media scrubber that progresses forward as the song plays, one must constantly render the component and update its position accordingly.  The scrubber uses an input tag of type range, whose value attribute can be updated.  At the componentDidMount() function that occurs after the component mounts onto the DOM, a setInterval is called with the id of the interval stored in this.interval.  This solves the issue of the scrubber moving, but more fine tuning is needed.  The 
+To have a media scrubber that progresses forward as the song plays, one must constantly render the component and update its position accordingly.  The scrubber uses an input tag of type range, whose value attribute can be updated.  At the componentDidMount() function that occurs after the component mounts onto the DOM, a setInterval is called, executing a setState for the state's currentTime property every second.  The id of the interval is stored in this.interval to manage it.  
+This solves the issue of the scrubber moving, but more fine tuning is needed.  The pause button has it's own setState that modifies this.state.isPaused, which toggles the play button.  If the play button is used, the audio stops, but not necessarily the scrubber.  The scrubber updates every second, while the play button updates when pressed.  If someone pauses the audio a half second after the scrubber rerenders, it would take a half second to show the correct time position, making the player look unresponsive.  I remedy this by taking the current interval, clearing it, and creating a fresh, new one after the play button is pressed.  
 
 
 ### User Authentication
