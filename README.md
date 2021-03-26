@@ -23,7 +23,8 @@ I ran across some difficulties using the audio tag: some functionalities like au
 
 To have a media scrubber that progresses forward as the song plays, one must constantly render the component and update its position accordingly.  The scrubber uses an input tag of type range, whose value attribute can be updated.  At the componentDidMount() function that occurs after the component mounts onto the DOM, a setInterval is called, executing a setState for the state's currentTime property every second.  The id of the interval is stored in this.interval to manage it.  
 This solves the issue of the scrubber moving, but more fine tuning is needed.  The pause button has it's own setState that modifies this.state.isPaused, which toggles the play button.  If the play button is used, the audio stops, but not necessarily the scrubber.  The scrubber updates every second, while the play button updates when pressed.  If someone pauses the audio a half second after the scrubber rerenders, it would take a half second to show the correct time position, making the player look unresponsive.  I remedy this by taking the current interval, clearing it, and creating a fresh, new one after the play button is pressed.  In the onPressed callback below, setThisInterval() is called, which creates a new interval.  This means that the this.state.isPaused and the this.state.currentTime values are updated in sync, making the scrubber follow the play button.  
-<img width="406" alt="Screen Shot 2021-03-26 at 12 31 13 PM" src="https://user-images.githubusercontent.com/73966827/112663709-84f22180-8e2f-11eb-9bf8-ad53efdd9f2c.png">
+
+<img width="470" alt="Screen Shot 2021-03-26 at 12 30 58 PM" src="https://user-images.githubusercontent.com/73966827/112663829-a6530d80-8e2f-11eb-97e2-bff2a2472158.png">
 <img width="406" alt="Screen Shot 2021-03-26 at 12 31 13 PM" src="https://user-images.githubusercontent.com/73966827/112663744-8e7b8980-8e2f-11eb-8878-fff45e5a23d1.png">
 
 
