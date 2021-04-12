@@ -13,6 +13,7 @@ $sesh-form-width : 450px;
   flex-direction: column;
   align-items: center;
   border : 1px solid black; 
+  z-index: 3;
 }
 
 .session-form-component.hide-modal {

@@ -4,6 +4,7 @@ import VerificationContainer from '../verification/verification_container';
 import LoginFormContainer from '../sessionForm/login_form_container';
 import SignupFormContainer from '../sessionForm/signup_form_container';
 import SongGrid from '../songGrid/song_grid';
+import Footer from'../footer';
 
 class SplashPage extends React.Component{
   constructor(props){
@@ -63,9 +64,9 @@ class SplashPage extends React.Component{
         <div className = 'song-grid-header'>Hear what's trending for free in the Resound community</div>
 
 
-        <SongGrid
-        
-        />
+        {/* <SongGrid      /> */}
+
+        <Footer/>
         
 
       </div>
