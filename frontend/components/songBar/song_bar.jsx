@@ -169,8 +169,12 @@ class SongBar extends React.Component {
         onMouseLeave = {this.handleVolumeModal}
       >
         {
-          this.state.isVolumeVisible && this.state.song ?
+          (this.state.isVolumeVisible && this.state.song) ? 
           <div className = "volume-background ">
+            
+            <div className = 'volume-slider-colorbar'
+              style={{ background: `linear-gradient(90deg, #ff0000  ${100*this.state.volume}%, #000000 ${100*this.state.volume}%)`}}
+            ></div>
 
             <input className = 'volume-slider-input slider' 
               type="range"
@@ -179,7 +183,7 @@ class SongBar extends React.Component {
               value = {this.state.volume}
               ref= {this.volumeComponentInputRef}
               onChange = {this.handleVolumeChange}
-              style={{ background: `linear-gradient(90deg, #ff0000  ${100*this.state.volume}%, #000000 ${100*this.state.volume}%)`}}
+
             />
           </div>
           :

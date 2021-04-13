@@ -9,14 +9,19 @@
 // }
 
 
-$audio-player-text-color: lightgray;
+$audio-player-text-color: rgb(112, 112, 112);
 // $audio-player-background-color: rgb(58, 58, 58);
 
+$audio-player-button-padding: 8px;
 
-$volume-component-width: 80px;
+
+$volume-input-padding: 15px;
+$volume-component-width:  80px;
 $volume-component-height: 15px;
 
-$volume-background-height: 20px;
+$volume-icon-side-dim :18px;
+
+$volume-background-height:2*$volume-input-padding +10px;
 
 
 .audio-player {
@@ -26,6 +31,9 @@ $volume-background-height: 20px;
   height: $audio-player-height;
   background: $slider-background-color;
   display: flex;
+  border-top:1px solid darkgray;
+
+  
 
 
 
@@ -38,7 +46,7 @@ $volume-background-height: 20px;
   }
   button {
     background: $slider-background-color;
-    padding: 0 8px;
+    padding: 0 $audio-player-button-padding;
     outline: none;
   }
 
@@ -53,6 +61,8 @@ $volume-background-height: 20px;
   display: flex;
   height:100%;
   // width: 75%;
+
+  margin-left: auto;
   
 
   margin-right: 20px;
@@ -63,8 +73,8 @@ $volume-background-height: 20px;
   }
 
   .play-button{
-    margin-left: 75px;
-    margin-right: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
   }
 
 
@@ -244,23 +254,56 @@ $volume-background-height: 20px;
     .volume-background{
       // opacity: 0;
       // background-color: violet;
-
+      
       position:absolute;
       width: $volume-component-width;
       height:$volume-background-height;
       padding:  0 10px;
       transform: 
-        translateX(-.5*$volume-component-width + 0px)
         rotate(-90deg )
-        translateX(.5*$volume-component-width+.5*$audio-player-height - 4px)
-        translateY($volume-background-height/2 - 4px);
+        translate(
+          50%, 
+          -(2px + $volume-icon-side-dim/2 + $audio-player-button-padding + $volume-input-padding)
+        )
+        translate($volume-background-height/2 - 3px, 0);
+
+      background-color: $slider-background-color;
+      border:1px solid darkgray;
+
+      z-index: 1;
+        
+      //   translateX(-.5*$volume-component-width + 0px)
+      //   translateX(.5*$volume-component-width+.5*$audio-player-height - 4px)
+      //   translateY($volume-background-height/2 - 4px);
 
         // translateX(-$volume-component-width/2 + $volume-component-height) ;//when unrotated, this actually shifts the input to the left
         // translateX(($volume-component-width+$audio-player-height)/2 ); //has to be x after rotation
       
-        input {
-        transform: TranslateY(50%);
-        }
+      // display: flex;
+// rotate(-90deg) translate(50%, -32px) translate(25px,0)
+
+      .volume-slider-colorbar{
+        position: absolute;
+        width: $volume-component-width;
+        height:2px;
+        top: 50%;
+        transform: translate(0,-50%);
+
+      }
+
+      input {
+        margin:0;
+        padding: $volume-input-padding 0 ;
+        background: transparent;
+        width: $volume-component-width;
+
+
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+      
+      }
 
     }
       
@@ -272,8 +315,8 @@ $volume-background-height: 20px;
       // margin: auto;
 
       .volume-icon{
-        height:18px;
-        width: 18px;
+        height:$volume-icon-side-dim;
+        width: $volume-icon-side-dim;
       }
     }
   }
@@ -292,7 +335,11 @@ $volume-background-height: 20px;
 
 .link-bar{
   display: flex;
-  width: 100%;
+  width: 200px;
+
+
+  margin-right: auto;
+
   .song-links{
     // display: grid;
     // grid-template-columns: auto 160px ;
@@ -331,9 +378,9 @@ $volume-background-height: 20px;
         text-align: left;
         white-space: nowrap;
         margin-left: 8px;
-        
-        font-family: 'Quicksand', sans-serif;
-        font-size: 13px;
+        font-family: 'Lucida Grande','Lucida Sans Unicode','Lucida Sans','Garuda','Verdana','Tahoma',sans-serif;
+        font-size: 12px;
+        font-weight:100;
         text-decoration: none;
         padding: 5px;
       }

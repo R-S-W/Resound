@@ -23,7 +23,7 @@ class AudioPlayer extends React.Component {
             shufflePlaylist = {this.props.shufflePlaylist}
             
             
-            />
+          />
 
           <LinkBar
             songPlaylist =  {this.props.songPlaylist}
