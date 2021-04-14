@@ -168,27 +168,38 @@ class SongBar extends React.Component {
         onMouseEnter = {this.handleVolumeModal}
         onMouseLeave = {this.handleVolumeModal}
       >
+        <button className = 'volume-button'  
+          onClick = {this.handleMute}
+        >
+          {volumeIcon()}
+        </button>
         {
           (this.state.isVolumeVisible && this.state.song) ? 
-          <div className = "volume-background ">
-            
-            <div className = 'volume-slider-colorbar'
-              style={{ background: `linear-gradient(90deg, #ff0000  ${100*this.state.volume}%, #000000 ${100*this.state.volume}%)`}}
-            ></div>
+          <div className = "volume-background">
+            <div className = 'volume-background-rectangle'>
 
-            <input className = 'volume-slider-input slider' 
-              type="range"
-              max='1' 
-              step = '.01'
-              value = {this.state.volume}
-              ref= {this.volumeComponentInputRef}
-              onChange = {this.handleVolumeChange}
+              
+              <div className = 'volume-slider-colorbar'
+                style={{ background: `linear-gradient(90deg, #ff0000  ${100*this.state.volume}%, #000000 ${100*this.state.volume}%)`}}
+              ></div>
 
-            />
+              <input className = 'volume-slider-input slider' 
+                type="range"
+                max='1' 
+                step = '.01'
+                value = {this.state.volume}
+                ref= {this.volumeComponentInputRef}
+                onChange = {this.handleVolumeChange}
+
+              />
+            </div>
+            <div className = 'volume-background-border-triangle'></div>
+            <div className = 'volume-background-triangle'></div>
           </div>
           :
           null
         }
+        
         <button className = 'volume-button'  
           onClick = {this.handleMute}
         >

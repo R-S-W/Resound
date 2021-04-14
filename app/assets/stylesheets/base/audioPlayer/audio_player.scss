@@ -22,6 +22,10 @@ $volume-component-height: 15px;
 $volume-icon-side-dim :18px;
 
 $volume-background-height:2*$volume-input-padding +10px;
+$volume-background-padding: 10px;
+
+$border-triangle-side: 8px;
+$border-triangle-height: $volume-background-padding;
 
 
 .audio-player {
@@ -258,19 +262,15 @@ $volume-background-height:2*$volume-input-padding +10px;
       position:absolute;
       width: $volume-component-width;
       height:$volume-background-height;
-      padding:  0 10px;
+      padding:  0 $volume-background-padding;
       transform: 
         rotate(-90deg )
         translate(
           50%, 
           -(2px + $volume-icon-side-dim/2 + $audio-player-button-padding + $volume-input-padding)
         )
-        translate($volume-background-height/2 - 3px, 0);
+        translate($volume-background-height/2 - 0*3px, 0);
 
-      background-color: $slider-background-color;
-      border:1px solid darkgray;
-
-      z-index: 1;
         
       //   translateX(-.5*$volume-component-width + 0px)
       //   translateX(.5*$volume-component-width+.5*$audio-player-height - 4px)
@@ -280,30 +280,76 @@ $volume-background-height:2*$volume-input-padding +10px;
         // translateX(($volume-component-width+$audio-player-height)/2 ); //has to be x after rotation
       
       // display: flex;
-// rotate(-90deg) translate(50%, -32px) translate(25px,0)
+      // rotate(-90deg) translate(50%, -32px) translate(25px,0)
+      > * {
+        position: relative;
+      }
+      .volume-background-rectangle{
+        background-color: $slider-background-color;
+        border:1px solid darkgray;
+        width: 100%;
+        height: 100%;
+        
+        top:50%;
+        transform: translateY(-50%);
+        z-index: 3;
+        
+        > *{
+          width: $volume-component-width*.9;
 
-      .volume-slider-colorbar{
-        position: absolute;
-        width: $volume-component-width;
-        height:2px;
-        top: 50%;
-        transform: translate(0,-50%);
-
+        }
+        
+        .volume-slider-colorbar{
+          position: absolute;
+          height:2px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          
+        }
+        
+        input {
+          margin:0;
+          padding: $volume-input-padding 0 ;
+          background: transparent;
+          // width: $volume-component-width;
+          
+          
+          position: absolute;
+          top: 50%;
+          right: 50%;
+          transform: translate(50%, -50%);
+          
+        }
       }
 
-      input {
-        margin:0;
-        padding: $volume-input-padding 0 ;
-        background: transparent;
-        width: $volume-component-width;
+      .volume-background-triangle{
+        	width: 0;
+          height: 0;
+          z-index: 4;
+          border-top: $border-triangle-side  solid transparent;
+          border-right: $border-triangle-height - 1px  solid $slider-background-color;
+          border-bottom: $border-triangle-side  solid transparent;
+          transform: 
+            translate(-100%,-50%) 
+            translateY(-2px - $volume-background-height/2)
+            translateY(-100%)
+            translate(1px,0);
 
+      }
+      .volume-background-border-triangle{
+        width: 0;
+        height: 0;
+        border-top: $border-triangle-side solid transparent;
+        border-right: $border-triangle-height solid darkgray;
+        border-bottom: $border-triangle-side solid transparent;
 
-        position: absolute;
-        top: 50%;
-        right: 50%;
-        transform: translate(50%, -50%);
+        transform: 
+          translate(-100%,-50%) 
+          translateY(-2px - $volume-background-height/2)
+
+      }
       
-      }
 
     }
       
