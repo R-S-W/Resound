@@ -6,6 +6,7 @@ import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp} from 'react-icons/io5';
 import { ImShuffle, ImLoop} from 'react-icons/im';
 import { RiVolumeDownFill, RiVolumeUpFill, RiVolumeMuteFill} from 'react-icons/ri';
 import { MdRepeatOne} from 'react-icons/md';
+// import {sliderProgressBarBackgroundColor} from '../../../app/assets/stylesheets/_variables.scss';
 
 
 class SongBar extends React.Component {
@@ -128,9 +129,9 @@ class SongBar extends React.Component {
     let styleString;
     if (this.audioRef.current){
       let progPercent = this.audioRef.current.currentTime/this.audioRef.current.duration;
-      styleString = `linear-gradient(90deg, #ff0000  ${100 * progPercent}%, #000000 ${100 * progPercent}%)`
+      styleString = `linear-gradient(90deg, #ff0000  ${100 * progPercent}%, #cccccc ${100 * progPercent}%)` // '#cccccc'
     }else{
-      styleString  = '##000000'
+      styleString  = '#cccccc'
     }
 
     return (
@@ -384,7 +385,7 @@ class SongBar extends React.Component {
         
           <div className='control-bar'>
             
-            <div className='scrubber-background' ref = {this.scrubberBackgroundRef}></div>
+            {/* <div className='scrubber-background' ref = {this.scrubberBackgroundRef}></div> */}
             {this.scrubber()}
 
           </div>

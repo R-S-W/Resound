@@ -23,8 +23,8 @@ class LinkBar extends React.Component{
               <img   src = {this.song.albumCoverURL} />
             </button>
             <div className = 'text-items'>
+              <a className = 'artist-link'  href="#">{this.song.artist_name}</a>
               <a href="#">{this.song.name}</a>
-              <a href="#">{this.song.artist_name}</a>
             </div>
           </div>
 
