@@ -255,6 +255,10 @@ $border-triangle-height: $volume-background-padding;
     display: flex;
     flex-direction: column;
     width: 30px;
+
+    // .animate__animated.animate__slideInUp {
+    //   --animate-duration: 2s;
+    // }
     
     .volume-background{
       // opacity: 0;

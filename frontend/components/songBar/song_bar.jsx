@@ -6,6 +6,9 @@ import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp} from 'react-icons/io5';
 import { ImShuffle, ImLoop} from 'react-icons/im';
 import { RiVolumeDownFill, RiVolumeUpFill, RiVolumeMuteFill} from 'react-icons/ri';
 import { MdRepeatOne} from 'react-icons/md';
+// import "animate.css";
+
+
 // import {sliderProgressBarBackgroundColor} from '../../../app/assets/stylesheets/_variables.scss';
 
 
@@ -176,7 +179,7 @@ class SongBar extends React.Component {
         </button>
         {
           (this.state.isVolumeVisible && this.state.song) ? 
-          <div className = "volume-background">
+          <div className = "volume-background animate__animated animate__slideInUp">
             <div className = 'volume-background-rectangle'>
 
               

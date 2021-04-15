@@ -27,7 +27,7 @@ class AudioPlayer extends React.Component {
 
           <LinkBar
             songPlaylist =  {this.props.songPlaylist}
-            />
+          />
 
         </div>
       )
