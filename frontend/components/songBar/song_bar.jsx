@@ -132,7 +132,7 @@ class SongBar extends React.Component {
     let styleString;
     if (this.audioRef.current){
       let progPercent = this.audioRef.current.currentTime/this.audioRef.current.duration;
-      styleString = `linear-gradient(90deg, #ff0000  ${100 * progPercent}%, #cccccc ${100 * progPercent}%)` // '#cccccc'
+      styleString = `linear-gradient(90deg, #ff5000  ${100 * progPercent}%, #cccccc ${100 * progPercent}%)` // '#cccccc'
     }else{
       styleString  = '#cccccc'
     }
@@ -184,7 +184,7 @@ class SongBar extends React.Component {
 
               
               <div className = 'volume-slider-colorbar'
-                style={{ background: `linear-gradient(90deg, #ff0000  ${100*this.state.volume}%, #000000 ${100*this.state.volume}%)`}}
+                style={{ background: `linear-gradient(90deg, #ff5000  ${100*this.state.volume}%, #000000 ${100*this.state.volume}%)`}}
               ></div>
 
               <input className = 'volume-slider-input slider' 
@@ -399,7 +399,6 @@ class SongBar extends React.Component {
             </span>
             :
             <span className='song-length'>--:--</span>
-
           }
         </div>
 

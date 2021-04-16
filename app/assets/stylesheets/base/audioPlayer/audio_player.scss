@@ -7,7 +7,7 @@
 //   flex-direction: column;
 //   justify-content: space-between;
 // }
-
+$a:1px;
 
 $audio-player-text-color:rgb(51, 51, 51); //rgb(112, 112, 112);
 $audio-player-artist-text-color: #999999;
@@ -17,7 +17,7 @@ $audio-player-button-padding: 8px;
 
 
 $volume-input-padding: 15px;
-$volume-component-width:  80px;
+$volume-component-width: 80px;
 $volume-component-height: 15px;
 
 $volume-icon-side-dim :18px;
@@ -30,7 +30,7 @@ $border-triangle-height: $volume-background-padding;
 
 
 .audio-player {
-  position: fixed;
+  position:fixed;
   bottom: 0;
   width: 100%;
   height: $audio-player-height;
@@ -222,6 +222,7 @@ $border-triangle-height: $volume-background-padding;
     // width: 100%;
     // padding: 0;
     // outline: none;
+
     position: absolute;
     margin: auto;
     width: 100%;
