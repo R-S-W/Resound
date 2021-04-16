@@ -55,7 +55,6 @@ class SongGrid extends React.Component{
             </div>
             :
             <div className = 'cover-div'>
-
               <img src={song.albumCoverURL} className = "song-component-album-cover"/>
             </div>
 
