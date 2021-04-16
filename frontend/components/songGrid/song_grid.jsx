@@ -29,10 +29,11 @@ class SongGrid extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      isHoverOnSong: false
+      songHoverList: new Array(this.props.length).fill(false)
     }
     this.handleSongSelect = this.handleSongSelect.bind(this);
     this.handleSongHover = this.handleSongHover.bind(this);
+    this.aSongRef;
   }
 
   songComponent(song, ind){
@@ -42,12 +43,23 @@ class SongGrid extends React.Component{
         <button className = 'song-component-button'
           data-index={ind}
           onClick = {this.handleSongSelect}
-          onMouseEnter = {this.handleSongHover}
-          onMouseLeave  = {this.handleSongHover}
+          onMouseEnter = {this.handleSongHover('enter', ind)}
+          onMouseLeave  = {this.handleSongHover('leave', ind)}
         >
-            <img src={song.albumCoverURL} className = "song-component-album-cover"/>
-            <BsPlayFill className = 'play-icon-background'/>
-            <GoPlay className ='play-icon'/>
+          {this.state.songHoverList[ind]
+          ?
+            <div className = 'cover-div dark-gradient'>
+              <img src={song.albumCoverURL} className = "song-component-album-cover"/>
+              <BsPlayFill className = 'play-icon-background'/>
+              <GoPlay className ='play-icon'/>
+            </div>
+            :
+            <div className = 'cover-div'>
+
+              <img src={song.albumCoverURL} className = "song-component-album-cover"/>
+            </div>
+
+          }
         </button>
         <div className = 'text-div'>
           <span className= 'title' >{song.name}</span>
@@ -66,8 +78,13 @@ class SongGrid extends React.Component{
     this.props.fetchPlaylistSong(this.props.songList[songIdx].id);
   }
 
-  handleSongHover(e){
-    this.setState({isHoverOnSong: !this.state.isHoverOnSong});
+  handleSongHover(type, ind){
+    let value = type==='enter';
+    return (e)=>{
+      let newArr = new Array(this.props.length).fill(false);
+      newArr[ind] = value;      
+      this.setState({songHoverList: newArr});
+    }
   }
 
   render(){
