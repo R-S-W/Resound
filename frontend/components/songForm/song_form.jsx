@@ -12,7 +12,6 @@ class SongForm extends React.Component{
       audio: null,
       // audio_url: null,
       album_cover: null,
-      album_cover_url: null,
       name: null,
       info: null,
       artist_id: null,
@@ -21,7 +20,7 @@ class SongForm extends React.Component{
     if (props.formType === 'update'){
       this.songId = this.props.match.params.songId;
     }else{
-      this.defaultState.album_cover_url = window.defaultAlbumCoverURL;
+      this.defaultState.album_cover = window.defaultAlbumCover;
     }
     
     this.state = Object.assign({}, this.defaultState);
@@ -47,10 +46,10 @@ class SongForm extends React.Component{
     if (this.props.formType === 'update' && this.props.songs[this.songId]){
       this.song = this.props.songs[this.songId];
       this.setState({
-        album_cover_url: song.albumCover,
+        album_cover: song.albumCover,
         name:song.name,
         info: song.info, 
-        album_cover_url: song.albumCover,
+        album_cover: song.albumCover,
         artist_name: song.artist_name
         
       });
