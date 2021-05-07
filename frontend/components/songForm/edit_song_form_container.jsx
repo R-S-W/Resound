@@ -5,7 +5,8 @@ import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = (state)=>{
   return {
-    formType: 'update'
+    formType: 'update', 
+    songs: state.entities.songs
   }
 }
 const mapDispatchToProps=(dispatch)=>{

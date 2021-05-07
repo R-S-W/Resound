@@ -5,22 +5,20 @@ import {Redirect} from 'react-router-dom';//#-#
 
 class SongForm extends React.Component{
 
-
   constructor(props){
     super(props)
     this.defaultState = {
       audio: null,
       // audio_url: null,
-      album_cover: null,
+      albumCover: null,
       name: null,
       info: null,
-      artist_id: null,
       genre: null,
     }
     if (props.formType === 'update'){
       this.songId = this.props.match.params.songId;
     }else{
-      this.defaultState.album_cover = window.defaultAlbumCover;
+      this.defaultState.albumCover = window.defaultAlbumCover;
     }
     
     this.state = Object.assign({}, this.defaultState);
@@ -43,29 +41,30 @@ class SongForm extends React.Component{
   // }
 
   componentDidMount(){
+    console.log('mounted')
     if (this.props.formType === 'update' && this.props.songs[this.songId]){
-      this.song = this.props.songs[this.songId];
-      this.setState({
-        album_cover: song.albumCover,
-        name:song.name,
-        info: song.info, 
-        album_cover: song.albumCover,
-        artist_name: song.artist_name
-        
-      });
-
-
+      // this.updateSongState();
+      console.log('updatesongstate in componentdidmount')
     }else{
-      this.props.fetchSong(this.songId);
+      // this.props.fetchSong(this.songId);
     }
   }
-  componentDidUpdate(){
-    if (!this.song){
-      this.song = this.props.songs[this.songId];
-    }
+  // componentDidUpdate(){
+  //   // if (this.props.formType === 'update' && !this.song){
+  //   //   this.updateSongState();
+  //   // }
+  // }
+
+  updateSongState(){
+    this.song = this.props.songs[this.songId];
+    this.setState({
+      
+      name:song.name,
+      info: song.info, 
+      albumCover: song.albumCover || window.defaultAlbumCover,
+      artist_name: song.artist_name
+    });
   }
-
-
 
   stopDefaults(e){
     e.preventDefault();
@@ -100,7 +99,7 @@ class SongForm extends React.Component{
       fileReader.onloadend = ()=>{
         this.setState({
           [type]: aFile,
-          [type+"_url"]: fileReader.result
+          // [type+"_url"]: fileReader.result
         });
       };
       fileReader.readAsDataURL(aFile);
@@ -124,7 +123,7 @@ class SongForm extends React.Component{
     formData.append('song[info]', this.state.info);
     formData.append('song[artist_id]', this.props.currentUserId);
 
-    formData.append('song[album_cover]', this.state.album_cover);
+    formData.append('song[album_cover]', this.state.albumCover);
     formData.append('song[audio]', this.state.audio);
     formData.append('song[genre]', this.state.genre);
     // debugger
@@ -174,6 +173,7 @@ class SongForm extends React.Component{
 
 
   render(){
+    
     // if (this.state.isDragAndDrop){
     //   return this.songLoadComponent();
     // }
@@ -204,19 +204,25 @@ class SongForm extends React.Component{
             onDragOver = {this.stopDefaults}
             onDrop = {this.handleDrop}
           >
-            <img src="#"
+            <img 
+              src  = '#'
+              // src={this.state.albumCover}
               className = 'album-cover-image'
               ref = {this.imgRef}
             />
             <button>Song {this.songId} Upload Image
-              <input type="file" accept = 'image/*' onChange = {this.handleFile('album_cover')}/>
+              <input type="file" accept = 'image/*' onChange = {this.handleFile('albumCover')}/>
             </button>
           </div>
 
           <label>
             <span className = 'asterisk'>*</span>
             <span>Title</span>
-            <input type="text" className = 'title-input' onChange = {this.handleChange('name')}/>
+            <input type="text" 
+              className = 'title-input' 
+              onChange = {this.handleChange('name')}
+              // value = {this.state.title}
+            />
           </label>
 
           <label>
@@ -244,6 +250,7 @@ class SongForm extends React.Component{
               id="description"
               className = 'description' 
               onChange = {this.handleChange("info")}
+              // value = {this.state.info}
             >
             </textarea>         
           </label>
