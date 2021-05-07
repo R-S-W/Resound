@@ -49,13 +49,13 @@ class SongGrid extends React.Component{
           {this.state.songHoverList[ind]
           ?
             <div className = 'cover-div dark-gradient'>
-              <img src={song.albumCoverURL} className = "song-component-album-cover"/>
+              <img src={song.albumCover} className = "song-component-album-cover"/>
               <BsPlayFill className = 'play-icon-background'/>
               <GoPlay className ='play-icon'/>
             </div>
             :
             <div className = 'cover-div'>
-              <img src={song.albumCoverURL} className = "song-component-album-cover"/>
+              <img src={song.albumCover} className = "song-component-album-cover"/>
             </div>
 
           }

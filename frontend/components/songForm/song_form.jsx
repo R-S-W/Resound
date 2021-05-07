@@ -10,7 +10,7 @@ class SongForm extends React.Component{
     super(props)
     this.defaultState = {
       audio: null,
-      audio_url: null,
+      // audio_url: null,
       album_cover: null,
       album_cover_url: null,
       name: null,
@@ -44,8 +44,18 @@ class SongForm extends React.Component{
   // }
 
   componentDidMount(){
-    if (this.props.songs[this.songId]){
+    if (this.props.formType === 'update' && this.props.songs[this.songId]){
       this.song = this.props.songs[this.songId];
+      this.setState({
+        album_cover_url: song.albumCover,
+        name:song.name,
+        info: song.info, 
+        album_cover_url: song.albumCover,
+        artist_name: song.artist_name
+        
+      });
+
+
     }else{
       this.props.fetchSong(this.songId);
     }
@@ -176,7 +186,7 @@ class SongForm extends React.Component{
           this.props.formType === 'create'  ?
 
           <div className = 'audio-upload-box'>
-            { this.state.albumCoverURL ? <img src={this.state.albumCoverURL} /> : null}
+            { this.state.albumCover ? <img src={this.state.albumCover} /> : null}
             <span>Choose File to Upload:</span>
             <button className = 'audio-input-button'>
               <input type="file" accept='audio/*' onChange = {this.handleFile('audio')}/>

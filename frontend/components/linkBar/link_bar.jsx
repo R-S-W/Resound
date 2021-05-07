@@ -20,7 +20,7 @@ class LinkBar extends React.Component{
         <nav className = 'link-bar'>
           <div className = 'song-links'>
             <button className = 'album-cover-button'>
-              <img   src = {this.song.albumCoverURL} />
+              <img   src = {this.song.albumCover} />
             </button>
             <div className = 'text-items'>
               <a className = 'artist-link'  href="#">{this.song.artist_name}</a> 

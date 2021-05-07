@@ -62,7 +62,7 @@ class SongBar extends React.Component {
   audioTag() {
     return (this.state.song ?
       <audio
-        src={this.state.song.audioURL}
+        src={this.state.song.audio}
         className='audio'
         key = {this.props.songPlaylist[0].id}
         ref={this.audioRef}
@@ -289,7 +289,7 @@ class SongBar extends React.Component {
           //   let newSong = this.props.playlist[this.props.playlistIndex + 1];
           //   // this.setState({ song: newSong }); //
           //   debugger
-          //   audio.src = newSong.audioURL;
+          //   audio.src = newSong.audio;
           //   audio.pause();
           //   audio.load();
           //   audio.play();
@@ -438,7 +438,7 @@ class SongBar extends React.Component {
 
         this.setThisInterval();
       }
-      audio.src = this.props.songPlaylist[0].audioURL;
+      audio.src = this.props.songPlaylist[0].audio;
       audio.load();
       audio.volume = this.state.volume;
       
