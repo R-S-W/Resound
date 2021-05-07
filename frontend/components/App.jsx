@@ -29,7 +29,7 @@ const App = ()=>{
           <ProtectedRoute path='/songs/new' exact component={CreateSongFormContainer} />
           <ProtectedRoute path='/songs/edit' exact component={EditSongFormContainer} />
 
-        {/* <ProtectedRoute path='' component={ } />    also for albums */}
+          {/* <ProtectedRoute path='' component={ } />    also for albums */}
         </Switch>
           
         <AudioPlayerContainer/>

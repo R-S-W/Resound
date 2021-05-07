@@ -17,8 +17,12 @@ class SongForm extends React.Component{
       genre: null,
     }
     this.state = Object.assign({}, this.defaultState);
+
+    this.imgRef = React.createRef();
     // this.handleSearch = this.handleSearch.bind(this);
     // this.handleTest= this.handleTest.bind(this);
+    this.preventDefault = this.stopDefaults.bind(this);
+    this.handleDrop = this.handleDrop.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -29,6 +33,16 @@ class SongForm extends React.Component{
   // handleSearch(e){//throw the search files thingy
 
   // }
+  stopDefaults(e){
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  handleDrop(e){
+    this.stopDefaults(e);
+    let dt = e.dataTransfer;
+    let file = dt.files[0]
+    imageRef.current.src = URL.createObjectURL(file);
+  }
 
   handleCancel(e){ 
     // <Redirect to = '#'/>
@@ -39,9 +53,6 @@ class SongForm extends React.Component{
 
 
       //Should I prevent default if it submits?
-
-
-
 
   }
 
@@ -136,20 +147,33 @@ class SongForm extends React.Component{
       
       <div className = 'song-form-component'>
         //
-        {/* <h1 className='song-form-title'>{}</h1> */}
-        <div className = 'audio-upload-box'>
-          { this.state.albumCoverURL ? <img src={this.state.albumCoverURL} /> : null}
-          <span>Audio file:</span>
-          <button className = 'audio-input-button'>
-            <input type="file" accept='audio/*' onChange = {this.handleFile('audio')}/>
-          </button>
-        </div>
+        {
+          this.props.formType === 'create'  ?
+
+          <div className = 'audio-upload-box'>
+            { this.state.albumCoverURL ? <img src={this.state.albumCoverURL} /> : null}
+            <span>Choose File to Upload:</span>
+            <button className = 'audio-input-button'>
+              <input type="file" accept='audio/*' onChange = {this.handleFile('audio')}/>
+            </button>
+          </div>
+          :
+          null
+        }
         //
       
         <form className = 'song-form' onSubmit = {this.handleSubmit}>
 
-          <div className = 'image-upload-box'>
-            
+          <div className = 'image-upload-box'
+            onDragEnter = {this.stopDefaults}
+            onDragLeave = {this.stopDefaults} 
+            onDragOver = {this.stopDefaults}
+            onDrop = {this.handleDrop}
+          >
+            <img src="#"
+              className = 'album-cover-image'
+              ref = {this.imgRef}
+            />
             <button>Upload Image
               <input type="file" accept = 'image/*' onChange = {this.handleFile('album_cover')}/>
             </button>
@@ -202,5 +226,3 @@ class SongForm extends React.Component{
 
 }
 export default SongForm;
-
-

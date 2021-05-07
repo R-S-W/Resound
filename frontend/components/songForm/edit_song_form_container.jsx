@@ -4,7 +4,7 @@ import {updateSong} from '../../actions/song_actions';
 
 const mapStateToProps = (state)=>{
   return {
-    formtype: 'update'
+    formType: 'update'
   }
 }
 const mapDispatchToProps=(dispatch)=>{
