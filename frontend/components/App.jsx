@@ -27,7 +27,7 @@ const App = ()=>{
           <ProtectedRoute path='/users/:userId' exact component={ TestContainer} />
           {/* <ProtectedRoute path='/songs/:songId' exact component={ SongPageContainer} /> */}
           <ProtectedRoute path='/songs/new' exact component={CreateSongFormContainer} />
-          <ProtectedRoute path='/songs/edit' exact component={EditSongFormContainer} />
+          <ProtectedRoute path='/songs/edit/:songId' exact component={EditSongFormContainer} />
 
           {/* <ProtectedRoute path='' component={ } />    also for albums */}
         </Switch>

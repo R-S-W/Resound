@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import SongForm from './song_form'
-import {updateSong} from '../../actions/song_actions';
+import {updateSong, fetchSong} from '../../actions/song_actions';
+import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = (state)=>{
   return {
@@ -9,8 +10,10 @@ const mapStateToProps = (state)=>{
 }
 const mapDispatchToProps=(dispatch)=>{
   return {
-    handleSong: (s)=>{dispatch(updateSong(s))}
+    handleSong: (s)=>{dispatch(updateSong(s))},
+    fetchSong: (id)=>{dispatch(fetchSong(id))}
+
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SongForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SongForm));

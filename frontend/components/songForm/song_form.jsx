@@ -10,13 +10,22 @@ class SongForm extends React.Component{
     super(props)
     this.defaultState = {
       audio: null,
+      audio_url: null,
       album_cover: null,
+      album_cover_url: null,
       name: null,
       info: null,
       artist_id: null,
       genre: null,
     }
+    if (props.formType === 'update'){
+      this.songId = this.props.match.params.songId;
+    }else{
+      this.defaultState.album_cover_url = window.defaultAlbumCoverURL;
+    }
+    
     this.state = Object.assign({}, this.defaultState);
+
 
     this.imgRef = React.createRef();
     // this.handleSearch = this.handleSearch.bind(this);
@@ -33,6 +42,22 @@ class SongForm extends React.Component{
   // handleSearch(e){//throw the search files thingy
 
   // }
+
+  componentDidMount(){
+    if (this.props.songs[this.songId]){
+      this.song = this.props.songs[this.songId];
+    }else{
+      this.props.fetchSong(this.songId);
+    }
+  }
+  componentDidUpdate(){
+    if (!this.song){
+      this.song = this.props.songs[this.songId];
+    }
+  }
+
+
+
   stopDefaults(e){
     e.preventDefault();
     e.stopPropagation();
@@ -66,7 +91,7 @@ class SongForm extends React.Component{
       fileReader.onloadend = ()=>{
         this.setState({
           [type]: aFile,
-          [type+"Url"]: fileReader.result
+          [type+"_url"]: fileReader.result
         });
       };
       fileReader.readAsDataURL(aFile);
@@ -174,7 +199,7 @@ class SongForm extends React.Component{
               className = 'album-cover-image'
               ref = {this.imgRef}
             />
-            <button>Upload Image
+            <button>Song {this.songId} Upload Image
               <input type="file" accept = 'image/*' onChange = {this.handleFile('album_cover')}/>
             </button>
           </div>
