@@ -57,8 +57,10 @@ export const createSong = (song)=>dispatch=>{
     .then((s)=>{return dispatch(receiveSong(s) )})
 }
 
-export const updateSong = (song)=>{dispatch=>{
-  return SongAPIUtil.updateSong(song)
+export const updateSong = (formData, songId)=>{
+  console.log('in updateSong in song actions')
+  return dispatch=>{
+  return SongAPIUtil.updateSong(formData, songId)
     .then((s)=>{return dispatch(receiveSong(s));})
 }}
 

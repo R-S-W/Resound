@@ -36,13 +36,17 @@ export const fetchSongs = ()=>{
 
 
 
-export const updateSong = (songId)=>{
+export const updateSong = (formData, songId)=>{
+  // console.log(song)
   return $.ajax({
     method: "PATCH",
-    url: `api/songs/${songId}/edit`,
-    data: {
-      song,
-    }
+    url: `api/songs/${songId}`,
+    data: formData,
+    contentType: false,
+    processData: false
+    // data: {
+    //   song,
+    // }
   })
 }
 

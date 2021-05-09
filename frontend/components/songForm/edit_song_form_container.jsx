@@ -11,7 +11,7 @@ const mapStateToProps = (state)=>{
 }
 const mapDispatchToProps=(dispatch)=>{
   return {
-    handleSong: (s)=>{dispatch(updateSong(s))},
+    handleSong: (formData, songId)=>{dispatch(updateSong(formData, songId))},
     fetchSong: (id)=>{dispatch(fetchSong(id))}
 
   }

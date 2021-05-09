@@ -17,6 +17,7 @@ class SongForm extends React.Component{
     }
     if (props.formType === 'update'){
       this.songId = this.props.match.params.songId;
+      // this.defaultState.id = this.songId;
     }else{
       this.defaultState.albumCover = window.defaultAlbumCover;
     }
@@ -43,26 +44,26 @@ class SongForm extends React.Component{
   componentDidMount(){
     console.log('mounted')
     if (this.props.formType === 'update' && this.props.songs[this.songId]){
-      // this.updateSongState();
+      this.updateSongState();
       console.log('updatesongstate in componentdidmount')
     }else{
-      // this.props.fetchSong(this.songId);
+      this.props.fetchSong(this.songId);
     }
   }
-  // componentDidUpdate(){
-  //   // if (this.props.formType === 'update' && !this.song){
-  //   //   this.updateSongState();
-  //   // }
-  // }
+  componentDidUpdate(){
+    if (this.props.formType === 'update' && !this.song){
+      this.updateSongState();
+    }
+  }
 
   updateSongState(){
     this.song = this.props.songs[this.songId];
     this.setState({
       
-      name:song.name,
-      info: song.info, 
-      albumCover: song.albumCover || window.defaultAlbumCover,
-      artist_name: song.artist_name
+      name:this.song.name,
+      info: this.song.info, 
+      albumCover: this.song.albumCover || window.defaultAlbumCover,
+      artist_name: this.song.artist_name
     });
   }
 
@@ -116,6 +117,7 @@ class SongForm extends React.Component{
   }
 
   handleSubmit(e){
+    console.log('trying to submit')
     // debugger
     e.preventDefault();
     const formData = new FormData();
@@ -126,8 +128,10 @@ class SongForm extends React.Component{
     formData.append('song[album_cover]', this.state.albumCover);
     formData.append('song[audio]', this.state.audio);
     formData.append('song[genre]', this.state.genre);
+    // formData.append('song[id]', this.songId);
     // debugger
-    this.props.handleSong(formData);
+    debugger
+    this.props.handleSong(formData, this.songId);
 
     // this.props.handleSong(this.state);
 
@@ -205,8 +209,8 @@ class SongForm extends React.Component{
             onDrop = {this.handleDrop}
           >
             <img 
-              src  = '#'
-              // src={this.state.albumCover}
+              // src  = '#'
+              src={this.state.albumCover}
               className = 'album-cover-image'
               ref = {this.imgRef}
             />
@@ -221,7 +225,7 @@ class SongForm extends React.Component{
             <input type="text" 
               className = 'title-input' 
               onChange = {this.handleChange('name')}
-              // value = {this.state.title}
+              value = {this.state.name}
             />
           </label>
 
@@ -250,7 +254,7 @@ class SongForm extends React.Component{
               id="description"
               className = 'description' 
               onChange = {this.handleChange("info")}
-              // value = {this.state.info}
+              value = {this.state.info}
             >
             </textarea>         
           </label>
