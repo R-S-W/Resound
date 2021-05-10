@@ -6,6 +6,7 @@ import {withRouter} from 'react-router-dom'
 const mapStateToProps = (state)=>{
   return {
     formType: 'update', 
+    currentUserId: state.session.id,
     songs: state.entities.songs
   }
 }
