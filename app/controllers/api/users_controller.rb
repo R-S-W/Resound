@@ -15,6 +15,7 @@ class Api::UsersController < ApplicationController
       render json: ['Invalid email.  Please try again.'], status: 401
     elsif @user.save!
       login!(@user)
+      @song_ids = @user.songs.map {|s| s.id}
       render :show
     else
       render json: ['Invalid username or password.  Please try again.'], status: 422

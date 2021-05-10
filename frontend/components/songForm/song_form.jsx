@@ -130,7 +130,6 @@ class SongForm extends React.Component{
     if (this.state.genre) formData.append('song[genre]', this.state.genre);
     // formData.append('song[id]', this.songId);
     // debugger
-    debugger
     this.props.handleSong(formData, this.songId);
 
     // this.props.handleSong(this.state);
