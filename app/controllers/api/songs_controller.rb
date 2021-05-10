@@ -23,7 +23,7 @@ class Api::SongsController < ApplicationController
   def update
     debugger
     @song = Song.find(params[:id])
-    if @song && song_params[:name] && song_params[:artist_id]
+    if @song 
       @song[:name] =      song_params[:name]
       @song[:length] =    song_params[:length]
       @song[:artist_id] = song_params[:artist_id]
