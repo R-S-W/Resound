@@ -1,0 +1,17 @@
+
+@import '../../variables';
+
+body{
+  background-color: $page-background-color;
+  margin: 0 $page-side-margin;
+  
+  // justify-content: center;
+}
+
+.app{
+  // position: absolute;
+  margin: auto ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
