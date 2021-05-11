@@ -46,7 +46,7 @@ class Api::SongsController < ApplicationController
       @song.destroy
       render json: {}
     else
-      render json: ['Song not found.'], 409 
+      render json: ['Song not found.'], status: 409 
     end
   end
 
