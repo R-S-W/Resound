@@ -3,7 +3,7 @@ import React from 'react';
 import VerificationContainer from '../verification/verification_container';
 import LoginFormContainer from '../sessionForm/login_form_container';
 import SignupFormContainer from '../sessionForm/signup_form_container';
-import SongGrid from '../songGrid/song_grid';
+import SongGrid from './song_grid';
 import Footer from'../footer';
 
 class SplashPage extends React.Component{
