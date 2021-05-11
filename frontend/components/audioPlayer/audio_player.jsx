@@ -1,7 +1,7 @@
 
 import React from 'react';
-import SongBar from '../songBar/song_bar';
-import LinkBar from '../linkBar/link_bar';
+import SongBar from './song_bar';
+import LinkBar from './link_bar';
 
 
 
