@@ -176,7 +176,11 @@ class SongForm extends React.Component{
 
 
   render(){
-    
+    if (this.props.formType === 'update' && 
+      !this.props.users[this.props.currentUserId][this.songId]){
+      return <Redirect to='/'/>
+
+    }
     // if (this.state.isDragAndDrop){
     //   return this.songLoadComponent();
     // }

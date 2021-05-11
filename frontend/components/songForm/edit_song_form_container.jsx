@@ -7,7 +7,8 @@ const mapStateToProps = (state)=>{
   return {
     formType: 'update', 
     currentUserId: state.session.id,
-    songs: state.entities.songs
+    songs: state.entities.songs, 
+    users: state.entities.users
   }
 }
 const mapDispatchToProps=(dispatch)=>{
