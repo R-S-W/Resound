@@ -2,14 +2,14 @@
 import {RECEIVE_CURRENT_USER,LOGOUT_CURRENT_USER} from '../actions/session_actions';
 
 
-const defaultState= {id: null};
+const defaultState= {id: null, songIds: null};
 
-const sessionReducer = (state=defaultState, action)=>{
+const sessionReducer = (state=defaultState, action)=>{  
   
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_CURRENT_USER:
-      return  Object.assign({}, state,{id:action.currentUser.id});
+      return  Object.assign({}, state,{id:action.currentUser.id, songIds: action.currentUser.songIds});
     case LOGOUT_CURRENT_USER:
       return defaultState; //Object.assign({}, state, { session: { id:null } });
     default:

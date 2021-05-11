@@ -14,9 +14,10 @@ class SongForm extends React.Component{
       name: null,
       info: null,
       genre: null,
+      songId: undefined
     }
     if (props.formType === 'update'){
-      this.songId = this.props.match.params.songId;
+      this.defaultState.songId = parseInt(this.props.match.params.songId);
       // this.defaultState.id = this.songId;
     }else{
       this.defaultState.albumCover = window.defaultAlbumCover;
@@ -43,21 +44,38 @@ class SongForm extends React.Component{
 
   componentDidMount(){
     console.log('mounted')
-    if (this.props.formType === 'update' && this.props.songs[this.songId]){
+    if (this.props.formType === 'update' && this.props.songs[this.state.songId]){
       this.updateSongState();
       console.log('updatesongstate in componentdidmount')
     }else{
-      this.props.fetchSong(this.songId);
+      this.props.fetchSong(this.state.songId);
     }
+    //listen to changes in the url string
+    this.unlisten = this.props.history.listen((location, action)=>{
+      debugger
+      let lastSlashIdx = location.pathname.lastIndexOf('/');
+      let songIdNum = parseInt(location.pathname.slice(lastSlashIdx+1));
+      this.setState({songId: songIdNum });
+
+    })
   }
   componentDidUpdate(){
     if (this.props.formType === 'update' && !this.song){
       this.updateSongState();
     }
+    //If the url path is changed 
+    if (this.props.formType==='update' && this.song.id !== this.state.songId){
+      this.song = undefined;
+      this.props.fetchSong(this.state.songId);
+    }
+  }
+
+  componentWillUnmount(){
+    this.unlisten();
   }
 
   updateSongState(){
-    this.song = this.props.songs[this.songId];
+    this.song = this.props.songs[this.state.songId];
     this.setState({
       
       name:this.song.name,
@@ -128,9 +146,9 @@ class SongForm extends React.Component{
     if (this.state.albumCover) formData.append('song[album_cover]', this.state.albumCover);
     if (this.state.audio) formData.append('song[audio]', this.state.audio);
     if (this.state.genre) formData.append('song[genre]', this.state.genre);
-    // formData.append('song[id]', this.songId);
+    // formData.append('song[id]', this.state.songId);
     // debugger
-    this.props.handleSong(formData, this.songId);
+    this.props.handleSong(formData, this.state.songId);
 
     // this.props.handleSong(this.state);
 
@@ -176,8 +194,10 @@ class SongForm extends React.Component{
 
 
   render(){
+    debugger
     if (this.props.formType === 'update' && 
-      !this.props.users[this.props.currentUserId][this.songId]){
+      // !this.props.users[this.props.currentUserId].songIds.includes(this.songId)){
+      !this.props.currentUserSongIds.includes(this.state.songId)){
       return <Redirect to='/'/>
 
     }
@@ -217,7 +237,7 @@ class SongForm extends React.Component{
               className = 'album-cover-image'
               ref = {this.imgRef}
             />
-            <button>Song {this.songId} Upload Image
+            <button>Song {this.state.songId} Upload Image
               <input type="file" accept = 'image/*' onChange = {this.handleFile('albumCover')}/>
             </button>
           </div>
