@@ -34,6 +34,12 @@ export const fetchSongs = ()=>{
   })
 }
 
+export const fetchUserSongs = (id) =>{
+  return $.ajax({
+    method: 'GET',
+    url: `api/users/${id}/songs`
+  })
+}
 
 
 export const updateSong = (formData, songId)=>{

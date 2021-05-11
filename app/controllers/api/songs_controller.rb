@@ -15,7 +15,11 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
+    if params.has_key?(:user_id)
+      @songs = Songs.where(artist_id: params[:user_id])
+    else
+      @songs = Song.all
+    end
     render :index
   end
 
