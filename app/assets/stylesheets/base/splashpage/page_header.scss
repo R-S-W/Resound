@@ -1,0 +1,130 @@
+
+@import '../../variables';
+
+$header-font-color: $text-color;
+// $header-font-color : lightgray;
+$logo-pic-height: 70px;
+$stars-pic-width: 1240px;//1154px;
+
+
+.splash-page {
+  background-color: white;
+  // margin: 0 $page-side-margin 0 $page-side-margin;  /////
+  margin: 0 auto;
+  max-width: $stars-pic-width;
+  // margin: 0 auto;
+
+  header *{
+    z-index: 2;
+  }
+}
+
+.rectangle {
+  height: 4px;
+  width: $stars-pic-width;
+  background: red;
+}
+
+
+.logo-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .logo {
+    max-height: $logo-pic-height;
+    width: auto;
+    margin-left: 10px;
+    // z-index:2;
+    /* object-fit: contain; */
+  }
+
+  .title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: red;
+  }
+
+}
+
+.splash-page header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.verification-buttons{
+  margin-right: 5px;
+  // z-index:2;
+}
+
+// #verification-buttons button{
+//   padding: 8px 15px;
+//   font-size: 12px;
+//   margin:5px;
+//   /* outline: none; */
+
+//   * {
+//     color: lightgray; 
+//     // $header-font-color;
+//     text-decoration: none;
+//     font-family: 'Quicksand', sans-serif;
+//   }
+// }
+
+
+.login-button{
+  background: transparent;
+  border-style: none;
+  border: 1px solid $header-font-color;
+  border-radius: 3px;
+}
+
+.sign-up-button {
+  // width: 100px;
+  background: rgb(202, 0, 0);
+  border-style: none;
+  border-radius: 3px;
+}
+.demo-login-button{
+  background: transparent;
+  border-style: none;
+}
+
+.logout-button {
+  background: transparent;
+  border: 1px solid $header-font-color;
+  border-radius: 3px;
+  color: $header-font-color;
+
+}
+
+.stars-pic {
+  width: $stars-pic-width;
+  // height: 418px;
+  height: auto;
+  position: relative;
+  margin-top: -$logo-pic-height;
+  z-index: 0;
+}
+
+
+
+.song-grid-header{
+  position:relative;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+  
+  left: 620px;
+  transform: translateX(-50%);
+
+  margin: 40px 0;
+}
+

@@ -1,26 +1,45 @@
 class Api::UsersController < ApplicationController
 
   def create
-    @u = User.new(user_params)
-    if @u.find_by(username: user_params[:username])
-      render json: ['Username already taken.'],status: 401     ###
-    elsif @u.save!
-      login!(@u)
+    if user_params[:password].size <6
+      render json: ['Please create a password greater than 6 characters.'],status: 401 
+      return 
+    end
+    @user = User.new(user_params)
+    if User.find_by(username: user_params[:username])
+      render json: ['Username already taken.'], status: 401
+    elsif User.find_by(email: user_params[:email])
+      render json:  ["A user has already registered an account with this email."], status: 401
+    
+    elsif !user_params[:email].include?('@')
+      render json: ['Invalid email.  Please try again.'], status: 401
+    elsif @user.save!
+      login!(@user)
+      @song_ids = @user.songs.map {|s| s.id}
       render :show
     else
-      render json:  @user.errors.full_messages, status: 422 #['Invalid username or password.  Please try again.']
+      render json: ['Invalid username or password.  Please try again.'], status: 422
     end
   end
   
-  def destroy
-    @u = current_user ##User.find_by_credentials(user_params[:username], user_params[:password])
-    if @u
-      logout
-      @u.destroy
-      render 'api/users/show'    ####render somewhere
-    else
-      render json: ['Invalid username or password.  Please try again.'], status: 404
-  end
+  # def destroy
+  #   @u = current_user ##User.find_by_credentials(user_params[:username], user_params[:password])
+  #   if @u
+  #     logout
+  #     @u.destroy
+  #     render 'api/users/show'    ####render somewhere
+  #   else
+  #     render json: ['Invalid username or password.  Please try again.'], status: 404
+  #   end
+  # end
+
+  # def show  didnt make the appropriate route either
+  #   @user = User.find_by_credentials(user_params)
+  #   if @user
+  #     render :show
+  #   else
+  #     render json:  @user.errors.full_messages, status: 422
+  # end
 
 
   private
@@ -28,3 +47,8 @@ class Api::UsersController < ApplicationController
       params.require(:user).permit(:username, :email, :password)
     end
 end
+
+
+# class UsersController < Knock::AuthTokenController
+#   skip_before_action :verify_authenticity_token
+# end

@@ -1,0 +1,6 @@
+//json.partial! 'api/sessions/user', user: @u
+
+
+
+I took this away from .gitignore
+app/assets/images/

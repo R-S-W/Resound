@@ -1,0 +1,445 @@
+
+
+@import '../../variables';
+
+// .app {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+// }
+$a:1px;
+
+$audio-player-text-color:rgb(51, 51, 51); //rgb(112, 112, 112);
+$audio-player-artist-text-color: #999999;
+// $audio-player-background-color: rgb(58, 58, 58);
+
+$audio-player-button-padding: 8px;
+
+
+$volume-input-padding: 15px;
+$volume-component-width: 80px;
+$volume-component-height: 15px;
+
+$volume-icon-side-dim :18px;
+
+$volume-background-height:2*$volume-input-padding +10px;
+$volume-background-padding: 10px;
+
+$border-triangle-side: 8px;
+$border-triangle-height: $volume-background-padding;
+
+
+.audio-player {
+  position:fixed;
+  bottom: 0;
+  width: 100%;
+  height: $audio-player-height;
+  background: $slider-background-color;
+  display: flex;
+  border-top:1px solid darkgray;
+
+  
+
+
+
+  * {
+    color: $audio-player-text-color;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    
+  }
+  button {
+    background: $slider-background-color;
+    padding: 0 $audio-player-button-padding;
+    outline: none;
+  }
+
+
+  // button:hover {
+  //   filter: brightness(125%);
+  // }
+}
+
+
+.song-bar{
+  display: flex;
+  height:100%;
+  // width: 75%;
+
+  margin-left: auto;
+  
+
+  margin-right: 20px;
+  margin-right: 40px;
+
+  .reverse-button, .play-button, .forward-button, .shuffle-button{
+    margin-left:4.5px;
+  }
+
+  .play-button{
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+
+
+  .forward-button{
+    display: none;
+    .forward-icon{
+      
+      // opacity: 0; /////
+    }
+  }
+
+  .reverse-button{
+    display:none;
+    .reverse-icon{
+      // opacity: 0; /////
+      margin-left: 16px;
+    }
+  }
+  // .play-icon{
+  //   margin-left: 5px;
+  // }
+  // .forward-icon{
+  //   margin-left: 1px;
+  // }
+  .shuffle-button{
+    display: none;
+    .shuffle-icon{
+      // opacity: 0;/////
+      height: 16px;
+      width: 16px;  
+    }
+  }
+  .loop-icon{
+    height: 16px;
+    width:16px;
+  }
+
+  .loop-icon-1{
+    height: 20px;
+    width: 20px;
+    margin:0 -2px;
+  }
+
+  .loop-icon.active-loop-icon{
+    fill: $soundcloud-color;
+  }
+  
+  .song-time-bar {
+    
+    display: flex;
+    // flex-direction: row;
+    width: 545px;    
+    width: 610px;
+    
+    margin-right: 20px;
+    font-size: 10.5px;
+
+
+    .current-time{
+      margin-left: 22px;
+    }
+  }
+  
+  .control-bar{
+    // height: 30px;
+    width: 100%;
+    
+    // background: rgb(31, 28, 41);
+    margin: 0 2px;
+    // margin: 0 0 0 -25px;
+     
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    position: relative;
+
+
+    > *{
+      width: 90%;
+
+    }
+
+    // .scrubber-background{
+      
+    //   background: $slider-background-color;
+    //   height: 2px;
+    //   position: absolute;
+    //   // display: block;
+    //   // margin: auto;
+      
+    // }
+
+    
+      
+    //   // .progress-bar{
+        
+    //     // }
+      
+    //   .progress-bar{
+    //     width:90%;
+    //     height: 2px;
+    //     display: flex;
+    //     flex-direction: row-reverse;
+    //     background: $slider-progress-bar-color;
+    //     // align-items: center;
+    //     margin: auto 0;
+        
+        
+    //     .progress-bar-slider-button{
+    //       height: 10px;
+    //       opacity: 0;
+    //       position:absolute;
+    //       transform: translate(50%,-44%);
+    //       background: none;
+    //       color: none;
+    //       * {
+    //         color: inherit;
+    //       }
+          
+    //     }
+        
+    //   }
+    // }
+    // .scrubber:hover{
+    //     .progress-bar-slider-button{
+    //       display:inline-block;
+    //       color:red;
+    //       opacity: 100%;
+
+    //     }
+    // }
+    
+  }
+
+
+  .scrubber-input-range {
+    // background: red;
+    // background:transparent;
+    // height:100%;
+    // width: 100%;
+    // padding: 0;
+    // outline: none;
+
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    background-color:$slider-progress-bar-background-color;
+
+    // display: flex;
+    // align-content: center;
+    // justify-content: center;
+
+  }
+
+
+  span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    padding: 0 5px;
+    // text-align: center;
+
+  }
+
+  // .current-time, .song-length {
+  //   // text-align: center;
+  //   margin: auto, 0;
+  // }
+
+  
+  .volume-component{
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+
+    // .animate__animated.animate__slideInUp {
+    //   --animate-duration: 2s;
+    // }
+    
+    .volume-background{
+      // opacity: 0;
+      // background-color: violet;
+      
+      position:absolute;
+      width: $volume-component-width;
+      height:$volume-background-height;
+      padding:  0 $volume-background-padding;
+      transform: 
+        rotate(-90deg )
+        translate(
+          50%, 
+          -(2px + $volume-icon-side-dim/2 + $audio-player-button-padding + $volume-input-padding)
+        )
+        translate($volume-background-height/2 - 0*3px, 0);
+
+        
+      //   translateX(-.5*$volume-component-width + 0px)
+      //   translateX(.5*$volume-component-width+.5*$audio-player-height - 4px)
+      //   translateY($volume-background-height/2 - 4px);
+
+        // translateX(-$volume-component-width/2 + $volume-component-height) ;//when unrotated, this actually shifts the input to the left
+        // translateX(($volume-component-width+$audio-player-height)/2 ); //has to be x after rotation
+      
+      // display: flex;
+      // rotate(-90deg) translate(50%, -32px) translate(25px,0)
+      > * {
+        position: relative;
+      }
+      .volume-background-rectangle{
+        background-color: $slider-background-color;
+        border:1px solid darkgray;
+        width: 100%;
+        height: 100%;
+        
+        top:50%;
+        transform: translateY(-50%);
+        z-index: 3;
+        
+        > *{
+          width: $volume-component-width*.9;
+
+        }
+        
+        .volume-slider-colorbar{
+          position: absolute;
+          height:2px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          
+        }
+        
+        input {
+          margin:0;
+          padding: $volume-input-padding 0 ;
+          background: transparent;
+          // width: $volume-component-width;
+          
+          
+          position: absolute;
+          top: 50%;
+          right: 50%;
+          transform: translate(50%, -50%);
+          
+        }
+      }
+
+      .volume-background-triangle{
+        	width: 0;
+          height: 0;
+          z-index: 4;
+          border-top: $border-triangle-side  solid transparent;
+          border-right: $border-triangle-height - 1px  solid $slider-background-color;
+          border-bottom: $border-triangle-side  solid transparent;
+          transform: 
+            translate(-100%,-50%) 
+            translateY(-2px - $volume-background-height/2)
+            translateY(-100%)
+            translate(1px,0);
+
+      }
+      .volume-background-border-triangle{
+        width: 0;
+        height: 0;
+        border-top: $border-triangle-side solid transparent;
+        border-right: $border-triangle-height solid darkgray;
+        border-bottom: $border-triangle-side solid transparent;
+
+        transform: 
+          translate(-100%,-50%) 
+          translateY(-2px - $volume-background-height/2)
+
+      }
+      
+
+    }
+      
+    .volume-button{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height:$audio-player-height - 1px;
+      // margin: auto;
+
+      .volume-icon{
+        height:$volume-icon-side-dim;
+        width: $volume-icon-side-dim;
+      }
+    }
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+.link-bar{
+  display: flex;
+  width: 200px;
+
+
+  margin-right: auto;
+
+  .song-links{
+    // display: grid;
+    // grid-template-columns: auto 160px ;
+    display: flex;
+    align-items: center;
+
+    .album-cover-button {
+      height: $audio-player-height;
+      width: $audio-player-height;
+      background-size:cover ;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img{
+        width: 80%;
+        height: auto;
+        // padding: 8px;
+        // object-fit: scale-down;
+      }
+
+
+    }
+    .text-items{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 4px 0;
+
+      a {
+  
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        text-align: left;
+        white-space: nowrap;
+        margin-left: 8px;
+        font-family: 'Lucida Grande','Lucida Sans Unicode','Lucida Sans','Garuda','Verdana','Tahoma',sans-serif;
+        font-size: 12px;
+        font-weight:100;
+        text-decoration: none;
+        padding: 3px 5px 3px 5px;
+      }
+      .artist-link{
+        color: $audio-player-artist-text-color;
+      }
+    }
+  }
+}
+
