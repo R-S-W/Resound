@@ -64,7 +64,7 @@ class SplashPage extends React.Component{
         <div className = 'song-grid-header'>Hear what's trending for free in the Resound community</div>
 
 
-        <SongGrid      />
+        {/* <SongGrid      /> */}
 
         <Footer/>
         

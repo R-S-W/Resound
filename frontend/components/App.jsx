@@ -9,6 +9,7 @@ import Test2 from './test2';
 import AudioPlayerContainer from './audioPlayer/audio_player_container';
 import CreateSongFormContainer from '../components/songForm/create_song_form_container';
 import EditSongFormContainer from '../components/songForm/edit_song_form_container';
+import UserPageContainer from '../components/userPage/user_page_container'
 
 import SongPageContainer from '../components/songPage/song_page_container';
 
@@ -24,12 +25,13 @@ const App = ()=>{
           <AuthRoute  path = "/login" exact component={LoginFormContainer}/>
           <AuthRoute path="/signup" exact component={SignupFormContainer} />
 
-          <ProtectedRoute path='/users/:userId' exact component={ TestContainer} />
-          {/* <ProtectedRoute path='/songs/:songId' exact component={ SongPageContainer} /> */}
           <ProtectedRoute path='/songs/new' exact component={CreateSongFormContainer} />
           <ProtectedRoute path='/songs/edit/:songId' exact component={EditSongFormContainer} />
-
-          {/* <ProtectedRoute path='' component={ } />    also for albums */}
+          
+          <Route path='/users/:userId' exact component={UserPageContainer} />
+          
+          {/* <ProtectedRoute path='/songs/:songId' exact component={ SongPageContainer} /> */}
+          
         </Switch>
           
         <AudioPlayerContainer/>

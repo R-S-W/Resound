@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import UserPage from './user_page';
 import {fetchUserSongs} from '../../actions/song_actions'
 
@@ -20,4 +21,4 @@ const mapDispatchToProps = (dispatch) =>{
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
+export default  withRouter(connect(mapStateToProps, mapDispatchToProps)(UserPage));
