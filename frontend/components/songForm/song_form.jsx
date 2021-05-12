@@ -146,13 +146,12 @@ class SongForm extends React.Component{
     if (this.state.albumCover) formData.append('song[album_cover]', this.state.albumCover);
     if (this.state.audio) formData.append('song[audio]', this.state.audio);
     if (this.state.genre) formData.append('song[genre]', this.state.genre);
-    // formData.append('song[id]', this.state.songId);
-    // debugger
+
+    if (this.props.formType === 'create'){
+      formData.append('song[artist_name', this.props.currentUserUsername);
+    }
+
     this.props.handleSong(formData, this.state.songId);
-
-    // this.props.handleSong(this.state);
-
-
     this.setState(this.defaultState);
 
   }

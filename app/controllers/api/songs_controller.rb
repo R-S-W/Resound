@@ -34,6 +34,7 @@ class Api::SongsController < ApplicationController
       
       @song[:album_id] = song_params[:album_id] || @song[:album_id]
       @song[:info]     = song_params[:info] || @song[:info]    
+      @song[:artist_name] = song_params[:artist_name] || @song[:artist_name]
       @song[:genre]    = song_params[:genre] || @song[:genre]   
 
       @song.save!

@@ -8,6 +8,7 @@ const mapStateToProps = (state)=>{
   return {
     formType:'create',
     currentUserId: state.session.id,
+    currentUserUsername: state.entities.users[state.session.id].username,
     songs: state.entities.songs
   }
 }
