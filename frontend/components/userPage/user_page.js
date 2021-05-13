@@ -73,12 +73,10 @@ class UserPage extends React.Component{
           <li id = {`song-${s.id}`}>
             <img className = 'album-pic' href=  '#'></img>
             <button className = 'song-play'></button>
-            <span>{this.props.currentUser.name}</span>
+            <span>{s.artist_name}</span>
             <span>{s.name}</span>
-
-            
-
-
+            <span>{s.created_at}</span>
+            <img className='song-wave-pic' href= {window.defaultSongWave}></img>
           </li>
         })
       }
