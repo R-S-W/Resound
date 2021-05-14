@@ -10,8 +10,8 @@ class Api::SongsController < ApplicationController
   end
 
   def show
-    @song = Song.find(params[:id])
     debugger
+    @song = Song.find(params[:id])
     render :show 
   end
 
