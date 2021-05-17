@@ -525,7 +525,14 @@ class SongBar extends React.Component {
 
   handleTheClick(e) { //helper function to load 1 playlist song for development
     // setTimeout(() => { console.log("World!"); }, 2000);
+
+
+
     setTimeout(() => { this.props.fetchPlaylistSong(1); }, 500);
+    
+    
+    
+    
     // setTimeout(() => { this.props.fetchPlaylistSong(4); }, 1000);
     // setTimeout(() => { this.props.fetchPlaylistSong(7); }, 1500);
       //4, 7. 15,16
