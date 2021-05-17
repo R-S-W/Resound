@@ -16,3 +16,8 @@ config/master.key
 !/log/.keep
 !/tmp/.keep
 
+
+master.key
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
