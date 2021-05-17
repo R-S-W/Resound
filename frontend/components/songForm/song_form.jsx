@@ -236,9 +236,10 @@ class SongForm extends React.Component{
               className = 'album-cover-image'
               ref = {this.imgRef}
             />
-            <button>Song {this.state.songId} Upload Image
+            <label className = 'image-upload'>
               <input type="file" accept = 'image/*' onChange = {this.handleFile('albumCover')}/>
-            </button>
+              Upload Image
+            </label>
           </div>
 
           <label>
