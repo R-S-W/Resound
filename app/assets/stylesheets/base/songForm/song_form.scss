@@ -120,19 +120,26 @@ $image-upload-box-width : 260px;
       }
       .form-buttons{
         display: flex;
-
+        align-items: center;
+        
         border-top: 1px solid $input-border-color;
         border-bottom: 1px solid $input-border-color;
         padding: 25px 0;
         
-
+        
         button{
-          padding:10px;
+          padding: 2px 10px;
           font-family: 'Open Sans', sans-serif;
-
+          font-weight: bolder;
+          border-radius: 4px;
+          height:30px;
         }
         .cancel-button{
-          
+          background-color:transparent;
+        }
+        .save-button{
+          background-color: $soundcloud-color;
+          color: white;
         }
         
         .spacer{
