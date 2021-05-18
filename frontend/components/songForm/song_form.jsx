@@ -78,7 +78,6 @@ class SongForm extends React.Component{
       // !this.props.users[this.props.currentUserId].songIds.includes(this.songId)){
       !this.props.currentUserSongIds.includes(this.state.songId)){
       return <Redirect to='/'/>
-
     }
     // if (this.state.isDragAndDrop){
     //   return this.songLoadComponent();
@@ -86,23 +85,23 @@ class SongForm extends React.Component{
     return (    
       
       <div className = 'song-form-component'>
-        //
-        {
-          this.props.formType === 'create'  ?
 
-          <div className = 'audio-upload-box'>
-            { this.state.albumCover ? <img src={this.state.albumCover} /> : null}
-            <span>Choose File to Upload:</span>
-            <button className = 'audio-input-button'>
-              <input type="file" accept='audio/*' onChange = {this.handleFile('audio')}/>
-            </button>
-          </div>
-          :
-          null
-        }
-        //
       
         <form className = 'song-form' onSubmit = {this.handleSubmit}>
+          {
+            this.props.formType === 'create'  ?
+            <div className = 'audio-upload-box'>
+              {/* { this.state.albumCover ? <img src={this.state.albumCover} /> : null} */}
+              <span className = 'audio-title'>Drag and drop your track here</span>
+              <label className = 'audio-upload'>
+                <input type="file" accept='audio/*' onChange = {this.handleFile('audio')}/>
+                <div className = 'audio-button-text'>or choose files to upload</div>
+              </label>
+
+            </div>
+            :
+            null
+          }
           <div className = 'form-inputs'>
             <div className = 'image-upload-box'
             onDragEnter = {this.stopDefaults}
