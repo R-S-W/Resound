@@ -34,6 +34,11 @@ $image-upload-box-width : 260px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-top: 1px solid $input-border-color;
+    border-bottom: 1px solid $input-border-color;
+    margin-bottom: 30px;
+
+
 
     .audio-title, .audio-button-text{
       font-family: 'Overpass', sans-serif;
@@ -77,17 +82,17 @@ $image-upload-box-width : 260px;
   .song-form{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 98%;
 
     justify-content: center;
 
-    margin: 20px;
+    margin: 20px 0;
 
 
     .form-inputs{
       display: flex;
       width: 100%;
-      justify-content: center;
+      justify-content: space-between;
       margin-bottom: 30px;
 
     }
