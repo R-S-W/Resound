@@ -103,8 +103,8 @@ class SongForm extends React.Component{
         //
       
         <form className = 'song-form' onSubmit = {this.handleSubmit}>
-
-          <div className = 'image-upload-box'
+          <div className = 'form-inputs'>
+            <div className = 'image-upload-box'
             onDragEnter = {this.stopDefaults}
             onDragLeave = {this.stopDefaults} 
             onDragOver = {this.stopDefaults}
@@ -122,59 +122,59 @@ class SongForm extends React.Component{
               <span>Upload Image</span>
             </label>
           </div>
-          <div className= 'column-2'>
-            <label className = 'title'>
-              <div className = 'title-text'>
-                <span className ='input-name'>Title</span>
-                <span className = 'asterisk'>*</span>
-              </div>
-              <input type="text" 
-                className = 'title-input' 
-                onChange = {this.handleChange('name')}
-                value = {this.state.name}
-                />
-            </label>
-            <label className = 'genre'>
-              <span className ='input-name'>Genre</span>
-              <select className = 'genre-select' 
-                name="Genres" 
-                id="genres"
-                onChange = {this.handleChange('genre')}
-                >
-                {
-                }
-                <option value="Alternative">Alternative</option>
-                <option value="Classical">Classical</option>
-                <option value="Electronic">Electronic</option>
-                <option value="Hip-hop">Hip-hop</option>
-                <option value="Jazz">Jazz</option>
-                <option value="Pop">Pop</option>
-                <option value="Rock">Rock</option>
-                <option value="World">World</option>
-              </select>
-            </label>
-            <label className = 'description'>
-              <span className = 'input-name'>Description</span>
-              <textarea name="description" 
-                id="description"
-                className = 'description' 
-                onChange = {this.handleChange("info")}
-                value = {this.state.info}
-                >
-              </textarea>         
-            </label>
-          
-            <div className = 'form-buttons'>
-              <span className = 'asterisk'>*</span>
-              <span className= 'input-name'>Required fields</span>
-              <span className=  'spacer'></span>
-              <button className= 'cancel-button' 
-                onClick = {this.handleCancel}>Cancel
-              </button>
-              <button className = 'save-button'>Save</button>
+            <div className= 'column-2'>
+              <label className = 'title'>
+                <div className = 'title-text'>
+                  <span className ='input-name'>Title</span>
+                  <span className = 'asterisk'>*</span>
+                </div>
+                <input type="text" 
+                  className = 'title-input' 
+                  onChange = {this.handleChange('name')}
+                  value = {this.state.name}
+                  />
+              </label>
+              <label className = 'genre'>
+                <span className ='input-name'>Genre</span>
+                <select className = 'genre-select' 
+                  name="Genres" 
+                  id="genres"
+                  onChange = {this.handleChange('genre')}
+                  >
+                  {
+                  }
+                  <option value="Alternative">Alternative</option>
+                  <option value="Classical">Classical</option>
+                  <option value="Electronic">Electronic</option>
+                  <option value="Hip-hop">Hip-hop</option>
+                  <option value="Jazz">Jazz</option>
+                  <option value="Pop">Pop</option>
+                  <option value="Rock">Rock</option>
+                  <option value="World">World</option>
+                </select>
+              </label>
+              <label className = 'description'>
+                <span className = 'input-name'>Description</span>
+                <textarea name="description" 
+                  id="description"
+                  className = 'description' 
+                  onChange = {this.handleChange("info")}
+                  value = {this.state.info}
+                  >
+                </textarea>         
+              </label>
             </div>
-            
           </div>
+          
+          <div className = 'form-buttons'>
+            <span className = 'asterisk'>*</span>
+            <span className= 'input-name'>Required fields</span>
+            <span className=  'spacer'></span>
+            <button className= 'cancel-button' 
+              onClick = {this.handleCancel}>Cancel
+            </button>
+            <button className = 'save-button'>Save</button>
+          </div>          
         </form>
         <span className = 'legal-stuff input-name' >
           By uploading, you confirm that your sounds comply with our Terms of Use and you don't infringe anyone else's rights.

@@ -8,7 +8,8 @@ $image-upload-box-width : 260px;
   flex-direction: column;
   align-items: center;
   margin: 0 $page-side-margin;
-
+  background-color: white;
+  padding: 0 20px 40px 20px;
   
   input, select, textarea{
     border-radius: 4px;
@@ -46,6 +47,7 @@ $image-upload-box-width : 260px;
 
   .song-form{
     display: flex;
+    flex-direction: column;
     width: 100%;
 
     justify-content: center;
@@ -53,7 +55,13 @@ $image-upload-box-width : 260px;
     margin: 20px;
 
 
+    .form-inputs{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 30px;
 
+    }
     .image-upload-box{
       width: $image-upload-box-width;
       height: $image-upload-box-width;
@@ -118,41 +126,41 @@ $image-upload-box-width : 260px;
         flex-direction: column;
         padding-bottom: 20px;
       }
-      .form-buttons{
-        display: flex;
-        align-items: center;
-        
-        border-top: 1px solid $input-border-color;
-        border-bottom: 1px solid $input-border-color;
-        padding: 25px 0;
-        
-        
-        button{
-          padding: 2px 10px;
-          font-family: 'Open Sans', sans-serif;
-          font-weight: bolder;
-          border-radius: 4px;
-          height:30px;
-        }
-        .cancel-button{
-          background-color:transparent;
-        }
-        .save-button{
-          background-color: $soundcloud-color;
-          color: white;
-        }
-        
-        .spacer{
-          flex-grow: 1;
-        }
-      }
+      
 
 
       // .title{}
       // .genre{}
       // .description{}
     }
-
+    .form-buttons{
+      display: flex;
+      align-items: center;
+      
+      border-top: 1px solid $input-border-color-light;
+      border-bottom: 1px solid $input-border-color-light;
+      padding: 25px 0;
+      
+      
+      button{
+        padding: 2px 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bolder;
+        border-radius: 4px;
+        height:30px;
+      }
+      .cancel-button{
+        background-color:transparent;
+      }
+      .save-button{
+        background-color: $soundcloud-color;
+        color: white;
+      }
+      
+      .spacer{
+        flex-grow: 1;
+      }
+    }
   }
 
   .input-name{
