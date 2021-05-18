@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';//#-#
+import {AiFillCamera} from 'react-icons/ai';
 
 
 
@@ -69,6 +70,113 @@ class SongForm extends React.Component{
       this.props.fetchSong(this.state.songId);
     }
   }
+
+  
+  render(){
+    debugger
+    if (this.props.formType === 'update' && 
+      // !this.props.users[this.props.currentUserId].songIds.includes(this.songId)){
+      !this.props.currentUserSongIds.includes(this.state.songId)){
+      return <Redirect to='/'/>
+
+    }
+    // if (this.state.isDragAndDrop){
+    //   return this.songLoadComponent();
+    // }
+    return (    
+      
+      <div className = 'song-form-component'>
+        //
+        {
+          this.props.formType === 'create'  ?
+
+          <div className = 'audio-upload-box'>
+            { this.state.albumCover ? <img src={this.state.albumCover} /> : null}
+            <span>Choose File to Upload:</span>
+            <button className = 'audio-input-button'>
+              <input type="file" accept='audio/*' onChange = {this.handleFile('audio')}/>
+            </button>
+          </div>
+          :
+          null
+        }
+        //
+      
+        <form className = 'song-form' onSubmit = {this.handleSubmit}>
+
+          <div className = 'image-upload-box'
+            onDragEnter = {this.stopDefaults}
+            onDragLeave = {this.stopDefaults} 
+            onDragOver = {this.stopDefaults}
+            onDrop = {this.handleDrop}
+          >
+            <img 
+              // src  = '#'
+              src={this.state.albumCover}
+              className = 'album-cover-image'
+              ref = {this.imgRef}
+            />
+            <label className = 'image-upload'>
+              <input type="file" accept = 'image/*' onChange = {this.handleFile('albumCover')}/>
+              <AiFillCamera/> 
+              <span>Upload Image</span>
+            </label>
+          </div>
+          <div className= 'column-2'>
+            <label className = 'title'>
+              <div className = 'title-text'>
+                <span className ='input-name'>Title</span>
+                <span className = 'asterisk'>*</span>
+              </div>
+              <input type="text" 
+                className = 'title-input' 
+                onChange = {this.handleChange('name')}
+                value = {this.state.name}
+                />
+            </label>
+            <label className = 'genre'>
+              <span className ='input-name'>Genre</span>
+              <select className = 'genre-select' 
+                name="Genres" 
+                id="genres"
+                onChange = {this.handleChange('genre')}
+                >
+                {
+                }
+                <option value="Alternative">Alternative</option>
+                <option value="Classical">Classical</option>
+                <option value="Electronic">Electronic</option>
+                <option value="Hip-hop">Hip-hop</option>
+                <option value="Jazz">Jazz</option>
+                <option value="Pop">Pop</option>
+                <option value="Rock">Rock</option>
+                <option value="World">World</option>
+              </select>
+            </label>
+            <label className = 'description'>
+              <span className = 'input-name'>Description</span>
+              <textarea name="description" 
+                id="description"
+                className = 'description' 
+                onChange = {this.handleChange("info")}
+                value = {this.state.info}
+                >
+              </textarea>         
+            </label>
+          
+            <div className = 'form-buttons'>
+              <button className= 'cancel-button' 
+                onClick = {this.handleCancel}>Cancel
+              </button>
+              <button>Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    )
+  }
+
+
 
   componentWillUnmount(){
     this.unlisten();
@@ -192,105 +300,6 @@ class SongForm extends React.Component{
   }
 
 
-  render(){
-    debugger
-    if (this.props.formType === 'update' && 
-      // !this.props.users[this.props.currentUserId].songIds.includes(this.songId)){
-      !this.props.currentUserSongIds.includes(this.state.songId)){
-      return <Redirect to='/'/>
-
-    }
-    // if (this.state.isDragAndDrop){
-    //   return this.songLoadComponent();
-    // }
-    return (    
-      
-      <div className = 'song-form-component'>
-        //
-        {
-          this.props.formType === 'create'  ?
-
-          <div className = 'audio-upload-box'>
-            { this.state.albumCover ? <img src={this.state.albumCover} /> : null}
-            <span>Choose File to Upload:</span>
-            <button className = 'audio-input-button'>
-              <input type="file" accept='audio/*' onChange = {this.handleFile('audio')}/>
-            </button>
-          </div>
-          :
-          null
-        }
-        //
-      
-        <form className = 'song-form' onSubmit = {this.handleSubmit}>
-
-          <div className = 'image-upload-box'
-            onDragEnter = {this.stopDefaults}
-            onDragLeave = {this.stopDefaults} 
-            onDragOver = {this.stopDefaults}
-            onDrop = {this.handleDrop}
-          >
-            <img 
-              // src  = '#'
-              src={this.state.albumCover}
-              className = 'album-cover-image'
-              ref = {this.imgRef}
-            />
-            <label className = 'image-upload'>
-              <input type="file" accept = 'image/*' onChange = {this.handleFile('albumCover')}/>
-              Upload Image
-            </label>
-          </div>
-
-          <label>
-            <span className = 'asterisk'>*</span>
-            <span>Title</span>
-            <input type="text" 
-              className = 'title-input' 
-              onChange = {this.handleChange('name')}
-              value = {this.state.name}
-            />
-          </label>
-
-          <label>
-            <span className = 'asterisk'>*</span>
-            <span>Genre</span>
-            <select className = 'genre-select' 
-              name="Genres" 
-              id="genres"
-              onChange = {this.handleChange('genre')}
-            >
-              {
-              }
-              <option value="Alternative">Alternative</option>
-              <option value="Classical">Classical</option>
-              <option value="Electronic">Electronic</option>
-              <option value="Hip-hop">Hip-hop</option>
-              <option value="Jazz">Jazz</option>
-              <option value="Pop">Pop</option>
-              <option value="Rock">Rock</option>
-              <option value="World">World</option>
-            </select>
-          </label>
-          <label>Description
-            <textarea name="description" 
-              id="description"
-              className = 'description' 
-              onChange = {this.handleChange("info")}
-              value = {this.state.info}
-            >
-            </textarea>         
-          </label>
-        
-          <button className= 'cancel-button' 
-            onClick = {this.handleCancel}>Cancel
-          </button>
-          <button>Submit</button>
-        
-        </form>
-      </div>
-    )
-  }
 
 }
 export default SongForm;
