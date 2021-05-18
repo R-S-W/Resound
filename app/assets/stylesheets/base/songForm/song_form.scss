@@ -8,12 +8,23 @@ $image-upload-box-width : 260px;
   flex-direction: column;
   align-items: center;
   margin: 0 $page-side-margin;
-  // .song-form-title{
 
-  // }
   
-  // margin: auto;
-      //this is outside of the form tag
+  input, select, textarea{
+    border-radius: 4px;
+    border: 1px solid  $input-border-color;
+    padding: 0px 10px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  input, select{
+    height: 25px;
+  }
+  textarea{
+    height: 100px;
+    padding-top: 4px;
+  }
+  
+  
   .audio-upload-box{
     width: 70%;
     height: 130px;
@@ -24,13 +35,19 @@ $image-upload-box-width : 260px;
     justify-content: center;
 
   }
+  .asterisk{
+    display: inline-block;
+    transform: translateY(-3px);
+    color: red;
+    font-size: 11px;
+    padding-right: 2px;
 
+  }
 
   .song-form{
     display: flex;
     width: 100%;
 
-    font-family: 'Open Sans', sans-serif;
     justify-content: center;
 
     margin: 20px;
@@ -60,12 +77,15 @@ $image-upload-box-width : 260px;
 
         width: 118px;
         height: 25px;
-        border: 1px solid black;
+        border: 1px solid $input-border-color;
         border-radius: 3px;
+
         padding: 5px 10px;
 
         background-color: rgb(228, 230, 233);
-        font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+        // font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+        font-family: 'Open Sans', sans-serif;
+
         font-size: 14px;
      
         
@@ -90,32 +110,33 @@ $image-upload-box-width : 260px;
       width: 75%;
       margin-left: 20px;
 
+
+
       
       label{
         display: flex;
         flex-direction: column;
-
         padding-bottom: 20px;
+      }
+      .form-buttons{
+        display: flex;
 
-        .input-name{
-          font-size: 12px;
+        border-top: 1px solid $input-border-color;
+        border-bottom: 1px solid $input-border-color;
+        padding: 25px 0;
+        
+
+        button{
+          padding:10px;
+          font-family: 'Open Sans', sans-serif;
+
         }
-
-        .asterisk{
-          color: red;
-          font-size: 11px;
-          transform: translateY(-3px);
-          display: inline-block;
+        .cancel-button{
           
         }
-
-        input, select{
-          height: 25px;
-          padding: 0 2px;
-        }
-
-        .form-buttons{
-          // display:flex;
+        
+        .spacer{
+          flex-grow: 1;
         }
       }
 
@@ -127,4 +148,9 @@ $image-upload-box-width : 260px;
 
   }
 
+  .input-name{
+    font-size: 12px;
+    font-family: Lucida Grande;
+
+  }
 }

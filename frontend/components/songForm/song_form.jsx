@@ -165,13 +165,20 @@ class SongForm extends React.Component{
             </label>
           
             <div className = 'form-buttons'>
+              <span className = 'asterisk'>*</span>
+              <span className= 'input-name'>Required fields</span>
+              <span className=  'spacer'></span>
               <button className= 'cancel-button' 
                 onClick = {this.handleCancel}>Cancel
               </button>
-              <button>Submit</button>
+              <button className = 'save-button'>Save</button>
             </div>
+            
           </div>
         </form>
+        <span className = 'legal-stuff input-name' >
+          By uploading, you confirm that your sounds comply with our Terms of Use and you don't infringe anyone else's rights.
+        </span>
       </div>
     )
   }
