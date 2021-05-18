@@ -1,8 +1,9 @@
 import * as SongAPIUtil from '../util/song_api_utils';
 
 export const RECEIVE_SONG = 'RECEIVE_SONG';
-export const REMOVE_SONG  = 'REMOVE_SONG';
 export const RECEIVE_SONGS = 'RECEIVE_SONGS';
+export const REMOVE_SONG  = 'REMOVE_SONG';
+export const RECEIVE_UPDATED_SONG = "RECEIVE_UPDATED_SONG";
 export const ADD_PLAYLIST_SONG = 'ADD_PLAYLIST_SONG';
 export const NEXT_SONG  = 'NEXT_SONG';
 export const PREVIOUS_SONG = 'PREVIOUS_SONG'
@@ -23,7 +24,13 @@ export const receiveSongs = (songs)=>{
     songs
   }
 }
+export const receiveUpdatedSong = (song) =>{
+  return {
+    type:RECEIVE_UPDATED_SONG,
+    song
+  }
 
+}
 export const removeSong = ()=>{
   return {
     type: REMOVE_SONG
@@ -58,10 +65,10 @@ export const createSong = (song)=>dispatch=>{
 }
 
 export const updateSong = (formData, songId)=>{
-  console.log('in updateSong in song actions')
+  // console.log('in updateSong in song actions')
   return dispatch=>{
   return SongAPIUtil.updateSong(formData, songId)
-    .then((s)=>{return dispatch(receiveSong(s));})
+    .then((s)=>{return dispatch(receiveUpdatedSong(s));})
 }}
 
 export const fetchSongs = ()=>dispatch=>{

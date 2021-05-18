@@ -7,6 +7,7 @@ import merge from 'lodash/merge'
 import {
   RECEIVE_SONGS,
   RECEIVE_SONG,
+  RECEIVE_UPDATED_SONG,
   REMOVE_SONG,
   ADD_PLAYLIST_SONG,
   NEXT_SONG,
@@ -26,7 +27,8 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#
       return merge({}, state, newState);
 
     case RECEIVE_SONG:
-      // debugger
+      return merge({},state, {[action.song.id]:action.song});
+    case RECEIVE_UPDATED_SONG:
       return merge({},state, {[action.song.id]:action.song});
 
     case REMOVE_SONG:
