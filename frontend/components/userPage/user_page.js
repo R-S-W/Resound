@@ -8,12 +8,14 @@ class UserPage extends React.Component{
 
 
 
-    this.state = {}
-    this.isMissingSongs = true;
+    this.state = {
+      isMissingASong: true
+    }
+    
   }
 
   componentDidMount(){
-    this.getUserSongs();
+    this.manageMissingSongs();
   }
 
 
@@ -52,22 +54,40 @@ class UserPage extends React.Component{
   }
 
   componentDidUpdate(){
-    this.isMissingSongs = false;
+    console.log('comp Did update in userpage')
+    debugger
+    this.manageMissingSongs();
   }
 
-  getUserSongs(){
-    this.isMissingSongs = false;
+  // getUserSongs(){
+  //   for (let i =0; i< this.props.currentUser.songIds.length; i++){
+  //     if (!this.props.songs[this.props.currentUser.songIds[i]]){
+  //       this.props.fetchUserSongs(this.userId);
+  //       break;
+  //     }
+  //   } 
+  // }
+
+  manageMissingSongs(){
+    if (this.isThereMissingSong()){
+      this.props.fetchUserSongs(this.userId);
+      if (!this.state.isMissingASong) this.setState({isMissingASong : true});
+    }else{
+      if (this.state.isMissingASong)  this.setState({isMissingASong:false});
+    }
+  }
+
+  isThereMissingSong(){
     for (let i =0; i< this.props.currentUser.songIds.length; i++){
       if (!this.props.songs[this.props.currentUser.songIds[i]]){
-        this.props.fetchUserSongs(this.userId);
-        this.isMissingSongs = true;
-        break;
+        return true;
       }
-    } 
+    }
+    return false;
   }
 
   trackList(){
-    if (this.isMissingSongs){
+    if (this.state.isMissingASong){
       return <div>Tracklist empty</div>
     }
     let songList=[];
@@ -76,13 +96,13 @@ class UserPage extends React.Component{
     });
 
     debugger
+    
 
 
     return <ul>
       {
-        songList.forEach((s)=>{
-
-          <li id = {`song-${s.id}`}>
+        songList.map((s)=>{
+          return <li id = {`song-${s.id}`}>
             <img className = 'album-pic' href=  '#'></img>
             <button className = 'song-play'></button>
             <span>{s.artist_name}</span>
