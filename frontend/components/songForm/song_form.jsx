@@ -91,7 +91,12 @@ class SongForm extends React.Component{
         <form className = 'song-form' onSubmit = {this.handleSubmit}>
           {
             this.props.formType === 'create' && !this.state.audio ?
-            <div className = 'audio-upload-box'>
+            <div className = 'audio-upload-box'
+              onDragEnter = {this.stopDefaults}
+              onDragLeave = {this.stopDefaults} 
+              onDragOver = {this.stopDefaults}
+              onDrop = {this.handleDrop}
+            >
               <span className = 'audio-title'>Drag & drop your track here</span>
               <label className = 'audio-upload'>
                 <input type="file" accept='audio/*' onChange = {this.handleFile('audio')}/>
@@ -110,12 +115,7 @@ class SongForm extends React.Component{
             null
           }
           <div className = 'form-inputs'>
-            <div className = 'image-upload-box'
-            onDragEnter = {this.stopDefaults}
-            onDragLeave = {this.stopDefaults} 
-            onDragOver = {this.stopDefaults}
-            onDrop = {this.handleDrop}
-          >
+            <div className = 'image-upload-box'>
             <img 
               // src  = '#'
               src={this.state.albumCoverURL}
@@ -143,7 +143,7 @@ class SongForm extends React.Component{
                   className = 'title-input' 
                   onChange = {this.handleChange('name')}
                   value = {this.state.name}
-                  />
+                />
               </label>
               <label className = 'genre'>
                 <span className ='input-name'>Genre</span>
@@ -218,8 +218,19 @@ class SongForm extends React.Component{
   handleDrop(e){
     this.stopDefaults(e);
     let dt = e.dataTransfer;
-    let file = dt.files[0]
-    imageRef.current.src = URL.createObjectURL(file);
+    let aFile = dt.files[0]
+    // imageRef.current.src = URL.createObjectURL(file);
+    
+    const fileReader  = new FileReader();
+      fileReader.onloadend = ()=>{
+        debugger
+        this.setState({
+          audio: aFile,
+          audioURL:URL.createObjectURL(aFile)
+          // [type+"_url"]: fileReader.result
+        });
+      };
+      fileReader.readAsDataURL(aFile);
   }
 
   handleCancel(e){ 
