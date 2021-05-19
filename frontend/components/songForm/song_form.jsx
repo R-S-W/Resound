@@ -10,7 +10,6 @@ class SongForm extends React.Component{
     super(props)
     this.defaultState = {
       audio: null,
-      // audio_url: null,
       albumCover: null,
       albumCoverURL:null,
       name: null,
@@ -20,7 +19,6 @@ class SongForm extends React.Component{
     }
     if (props.formType === 'update'){
       this.defaultState.songId = parseInt(this.props.match.params.songId);
-      // this.defaultState.id = this.songId;
     }else{
       this.defaultState.albumCoverURL = window.defaultAlbumCoverURL;
     }
@@ -28,9 +26,7 @@ class SongForm extends React.Component{
     this.state = Object.assign({}, this.defaultState);
 
 
-    this.imgRef = React.createRef();
-    // this.handleSearch = this.handleSearch.bind(this);
-    // this.handleTest= this.handleTest.bind(this);
+
     this.preventDefault = this.stopDefaults.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
@@ -40,9 +36,6 @@ class SongForm extends React.Component{
   }
 
 
-  // handleSearch(e){//throw the search files thingy
-
-  // }
 
   componentDidMount(){
     console.log('mounted')
@@ -80,9 +73,6 @@ class SongForm extends React.Component{
       !this.props.currentUserSongIds.includes(this.state.songId)){
       return <Redirect to='/'/>
     }
-    // if (this.state.isDragAndDrop){
-    //   return this.songLoadComponent();
-    // }
     return (    
       
       <div className = 'song-form-component'>
@@ -117,10 +107,8 @@ class SongForm extends React.Component{
           <div className = 'form-inputs'>
             <div className = 'image-upload-box'>
             <img 
-              // src  = '#'
               src={this.state.albumCoverURL}
               className = 'album-cover-image'
-              ref = {this.imgRef}
             />
             {
               !this.state.albumCover ?
@@ -219,7 +207,6 @@ class SongForm extends React.Component{
     this.stopDefaults(e);
     let dt = e.dataTransfer;
     let aFile = dt.files[0]
-    // imageRef.current.src = URL.createObjectURL(file);
     
     const fileReader  = new FileReader();
       fileReader.onloadend = ()=>{
@@ -227,13 +214,13 @@ class SongForm extends React.Component{
         this.setState({
           audio: aFile,
           audioURL:URL.createObjectURL(aFile)
-          // [type+"_url"]: fileReader.result
         });
       };
       fileReader.readAsDataURL(aFile);
   }
 
   handleCancel(e){ 
+    e.preventDefault();
     // <Redirect to = '#'/>
     // this.setState({
       //   isDragAndDrop: false,
@@ -257,7 +244,6 @@ class SongForm extends React.Component{
         this.setState({
           [type]: aFile,
           [`${type}URL`]:URL.createObjectURL(aFile)
-          // [type+"_url"]: fileReader.result
         });
       };
       fileReader.readAsDataURL(aFile);
@@ -265,7 +251,6 @@ class SongForm extends React.Component{
   }
 
   handleChange(type){
-    // debugger
     return (e)=>{
       this.setState({
         [type]: e.currentTarget.value
@@ -275,7 +260,6 @@ class SongForm extends React.Component{
 
   handleSubmit(e){
     console.log('trying to submit')
-    // debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append('song[name]', this.state.name);
@@ -294,43 +278,5 @@ class SongForm extends React.Component{
     this.setState(this.defaultState);
 
   }
-
-  // handleTest(e){
-  //   debugger
-  //   this.setState({
-  //     isShowForm:true,
-  //     isDragAndDrop: false
-  //   })
-
-  // }
-
-  songLoadComponent(){
-    // return (
-    //   <div className='song-load-component'>
-        
-    //     <button onClick={this.handleTest }>Test the form</button>
-
-
-    //     { this.state.isDragAndDrop ?
-    //       <div className='drag-and-drop-component' >
-    //         <span>Drag and drop your tracks here</span>
-    //         <button className='search-button'
-    //           onClick={this.handleSearch}
-    //         >or choose files to upload
-    //         </button>
-    //       </div>
-    //       :
-    //       <div className='search-thingy'>
-
-    //       </div>
-    //     }
-
-    //   </div>
-    // )
-
-  }
-
-
-
 }
 export default SongForm;
