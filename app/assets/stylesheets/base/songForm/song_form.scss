@@ -26,6 +26,15 @@ $image-upload-box-width : 260px;
     padding-top: 4px;
   }
   
+
+
+
+
+  .audio-title{
+    font-family: 'Overpass', sans-serif;
+    font-size:25px;
+    margin-bottom: 20px;
+  }
   
   .audio-upload-box{
     width: 100%;
@@ -37,16 +46,11 @@ $image-upload-box-width : 260px;
     justify-content: center;
     border-top: 1px solid $input-border-color;
     border-bottom: 1px solid $input-border-color;
-    margin-bottom: 30px;
 
 
 
-    .audio-title, .audio-button-text{
+    .audio-button-text{
       font-family: 'Overpass', sans-serif;
-    }
-    .audio-title{
-      font-size:25px;
-      margin-bottom: 20px;
     }
 
     .audio-upload{
@@ -86,6 +90,7 @@ $image-upload-box-width : 260px;
     width: 98%;
 
     justify-content: center;
+    align-items: center;
 
     margin: 20px 0;
 
@@ -94,7 +99,8 @@ $image-upload-box-width : 260px;
       display: flex;
       width: 100%;
       justify-content: space-between;
-      margin-bottom: 30px;
+      margin: 30px 0;
+      
 
     }
     .image-upload-box{
@@ -172,6 +178,7 @@ $image-upload-box-width : 260px;
       display: flex;
       align-items: center;
       
+      width: 100%;
       border-top: 1px solid $input-border-color-light;
       border-bottom: 1px solid $input-border-color-light;
       padding: 25px 0;

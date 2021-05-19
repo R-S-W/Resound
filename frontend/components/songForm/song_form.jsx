@@ -90,15 +90,21 @@ class SongForm extends React.Component{
       
         <form className = 'song-form' onSubmit = {this.handleSubmit}>
           {
-            this.props.formType === 'create'  ?
+            this.props.formType === 'create' && !this.state.audio ?
             <div className = 'audio-upload-box'>
-              {/* { this.state.albumCover ? <img src={this.state.albumCover} /> : null} */}
-              <span className = 'audio-title'>Drag and drop your track here</span>
+              <span className = 'audio-title'>Drag & drop your track here</span>
               <label className = 'audio-upload'>
                 <input type="file" accept='audio/*' onChange = {this.handleFile('audio')}/>
                 <div className = 'audio-button-text'>or choose files to upload</div>
-              </label>
-
+              </label>      
+            </div>
+            :
+            null
+          }
+          {
+            this.state.audio  ?
+            <div className= 'audio-success-box'>
+              <span className = 'audio-title'>File Loaded</span>
             </div>
             :
             null
