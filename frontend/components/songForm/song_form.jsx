@@ -12,6 +12,7 @@ class SongForm extends React.Component{
       audio: null,
       // audio_url: null,
       albumCover: null,
+      albumCoverURL:null,
       name: null,
       info: null,
       genre: null,
@@ -21,7 +22,7 @@ class SongForm extends React.Component{
       this.defaultState.songId = parseInt(this.props.match.params.songId);
       // this.defaultState.id = this.songId;
     }else{
-      this.defaultState.albumCover = window.defaultAlbumCover;
+      this.defaultState.albumCoverURL = window.defaultAlbumCoverURL;
     }
     
     this.state = Object.assign({}, this.defaultState);
@@ -111,15 +112,20 @@ class SongForm extends React.Component{
           >
             <img 
               // src  = '#'
-              src={this.state.albumCover}
+              src={this.state.albumCoverURL}
               className = 'album-cover-image'
               ref = {this.imgRef}
             />
-            <label className = 'image-upload'>
-              <input type="file" accept = 'image/*' onChange = {this.handleFile('albumCover')}/>
-              <AiFillCamera/> 
-              <span>Upload Image</span>
-            </label>
+            {
+              !this.state.albumCover ?
+              <label className = 'image-upload'>
+                <input type="file" accept = 'image/*' onChange = {this.handleFile('albumCover')}/>
+                <AiFillCamera/> 
+                <span>Upload Image</span>
+              </label>
+              :
+              null
+            }
           </div>
             <div className= 'column-2'>
               <label className = 'title'>
@@ -194,7 +200,7 @@ class SongForm extends React.Component{
       
       name:this.song.name,
       info: this.song.info, 
-      albumCover: this.song.albumCover || window.defaultAlbumCover,
+      albumCoverURL: this.song.albumCoverURL || window.defaultAlbumCoverURL,
       artist_name: this.song.artist_name
     });
   }
@@ -230,8 +236,10 @@ class SongForm extends React.Component{
       const fileReader  = new FileReader();
 
       fileReader.onloadend = ()=>{
+        debugger
         this.setState({
           [type]: aFile,
+          [`${type}URL`]:URL.createObjectURL(aFile)
           // [type+"_url"]: fileReader.result
         });
       };
