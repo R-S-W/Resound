@@ -9,6 +9,7 @@ class UserPage extends React.Component{
 
 
     this.state = {}
+    this.isMissingSongs = true;
   }
 
   componentDidMount(){
@@ -50,20 +51,31 @@ class UserPage extends React.Component{
     </div>
   }
 
+  componentDidUpdate(){
+    this.isMissingSongs = false;
+  }
+
   getUserSongs(){
+    this.isMissingSongs = false;
     for (let i =0; i< this.props.currentUser.songIds.length; i++){
       if (!this.props.songs[this.props.currentUser.songIds[i]]){
         this.props.fetchUserSongs(this.userId);
+        this.isMissingSongs = true;
+        break;
       }
     } 
   }
 
   trackList(){
-
-    let songList;
+    if (this.isMissingSongs){
+      return <div>Tracklist empty</div>
+    }
+    let songList=[];
     this.props.currentUser.songIds.forEach(sid=>{
-      songList.append(this.props.songs[sid])  ;
+      songList.push(this.props.songs[sid])  ;
     });
+
+    debugger
 
 
     return <ul>

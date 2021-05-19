@@ -83,7 +83,8 @@ export const fetchSong = (songId) => dispatch=>{
 
 export const fetchUserSongs = (id) => dispatch => {
   return SongAPIUtil.fetchUserSongs(id)
-    .then((songs)=>{return dispatch(receiveSongs(songs))})
+    .then((songs)=>{
+      return dispatch(receiveSongs(songs))})
 }
 
 export const deleteSong = (songId)=>dispatch=>{
