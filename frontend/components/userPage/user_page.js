@@ -23,10 +23,10 @@ class UserPage extends React.Component{
     return <div className = 'user-page-component'>
       <header>
         <img className = 'cover-pic'
-          href = '#'
+          src = '#'
         ></img>
         <img className = 'profile-pic'
-          href = '#'
+          src = '#'
         ></img>
       </header>
       
@@ -46,7 +46,7 @@ class UserPage extends React.Component{
 
 
       <footer>
-        <img className = 'footer-pic' href = '#'></img>
+        <img className = 'footer-pic' src = '#'></img>
       </footer>
 
 
@@ -87,9 +87,8 @@ class UserPage extends React.Component{
   }
 
   trackList(){
-    if (this.state.isMissingASong){
-      return <div>Tracklist empty</div>
-    }
+    if (this.state.isMissingASong) return <div>Tracklist empty</div>
+    
     let songList=[];
     this.props.currentUser.songIds.forEach(sid=>{
       songList.push(this.props.songs[sid])  ;
@@ -103,12 +102,12 @@ class UserPage extends React.Component{
       {
         songList.map((s)=>{
           return <li id = {`song-${s.id}`}>
-            <img className = 'album-pic' href=  '#'></img>
+            <img className = 'album-pic' src= {s.albumCover}></img>
             <button className = 'song-play'></button>
             <span>{s.artist_name}</span>
             <span>{s.name}</span>
             <span>{s.created_at}</span>
-            <img className='song-wave-pic' href= {window.defaultSongWave}></img>
+            <img className='song-wave-pic' src= {window.defaultSongWave}></img>
           </li>
         })
       }
