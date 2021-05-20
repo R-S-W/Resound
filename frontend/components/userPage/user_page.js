@@ -106,7 +106,7 @@ class UserPage extends React.Component{
             <button className = 'song-play'></button>
             <span>{s.artist_name}</span>
             <span>{s.name}</span>
-            <span>{s.created_at}</span>
+            <span>{this.props.printHowLongAgo(s.created_at)}</span>
             <img className='song-wave-pic' src= {window.defaultSongWave}></img>
           </li>
         })

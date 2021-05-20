@@ -74,7 +74,7 @@ const isNoRepeatElements = (arr) => {
 
 
 export const printHowLongAgo = (t)=>{
-  let time = (t instanceof String) ? new Date(t) : t ;
+  let time = (typeof t === "string") ? new Date(t) : t ;
   let now = new Date();
   let diff = (now - time)/86400000;
 
