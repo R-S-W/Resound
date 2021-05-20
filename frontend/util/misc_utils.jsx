@@ -71,3 +71,19 @@ const isNoRepeatElements = (arr) => {
   }
   return true;
 }
+
+
+export const printHowLongAgo = (t)=>{
+  let time = (t instanceof String) ? new Date(t) : t ;
+  let now = new Date();
+  let diff = (now - time)/86400000;
+
+  if (diff < 0) return 'error';
+  else if (0<= diff && diff < 1) return 'today';
+  else if (1< diff && diff < 2) return '1 day ago';
+  else if (2< diff && diff < 30) return `${Math.floor(diff)} days ago`
+  else if (30 < diff && diff < 60) return '1 month ago'
+  else if (60 < diff && diff < 365) return `${Math.floor(diff/30)} months ago`
+  else if (365 < diff && diff < 730) return '1 year ago'
+  else return `${Math.floor(diff/365)} years ago`
+}
