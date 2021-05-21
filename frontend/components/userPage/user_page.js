@@ -1,5 +1,7 @@
 import { divide } from 'lodash';
 import React from 'react';
+import { GoPlay} from 'react-icons/go';
+import {BsPlayFill} from 'react-icons/bs';
 
 class UserPage extends React.Component{
   constructor(props){
@@ -87,9 +89,9 @@ class UserPage extends React.Component{
   }
 
   trackList(){
+    let songList=[];
     if (this.state.isMissingASong) return <div>Tracklist empty</div>
     
-    let songList=[];
     this.props.currentUser.songIds.forEach(sid=>{
       songList.push(this.props.songs[sid])  ;
     });
@@ -98,16 +100,22 @@ class UserPage extends React.Component{
     
 
 
-    return <ul>
+    return <ul className = 'track-list'>
       {
         songList.map((s)=>{
           return <li id = {`song-${s.id}`}>
             <img className = 'album-pic' src= {s.albumCover}></img>
-            <button className = 'song-play'></button>
-            <span>{s.artist_name}</span>
-            <span>{s.name}</span>
-            <span>{this.props.printHowLongAgo(s.created_at)}</span>
+            <button className = 'play-button'>
+              <BsPlayFill className = 'play-icon-background'/>
+              <GoPlay className ='play-icon'/>
+            </button>
+            <article className = 'text'>
+              <span className = 'artist-name'>{s.artist_name}</span>
+              <span className = 'song-name'>{s.name}</span>
+            </article>
+            <span className="time-ago">{this.props.printHowLongAgo(s.created_at)}</span>
             <img className='song-wave-pic' src= {window.defaultSongWave}></img>
+            <article className = 'bottom-buttons'></article>
           </li>
         })
       }

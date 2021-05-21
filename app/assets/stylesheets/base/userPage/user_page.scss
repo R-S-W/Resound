@@ -1,0 +1,96 @@
+@import '../../variables';
+
+
+$album-pic-length:165px;
+$play-button-length: 36px;
+$song-wave-height: 60px;
+$small-font-size: 12px;
+
+.user-page-component {
+  font-family: 'Quicksand', sans-serif;
+}
+
+nav{
+  font-family: 'Overpass', sans-serif;
+  font-weight: bolder;
+}
+
+.track-list{
+  width: 820px;
+  padding: 30px;
+
+  li{
+    display: grid;
+    // grid-gap: 5px;
+    grid-template-areas: 
+      'album-pic  play-button    text            .               time-ago'
+      'album-pic  song-wave-pic  song-wave-pic   song-wave-pic   song-wave-pic'
+      'album-pic  bottom-buttons bottom-buttons  bottom-buttons  bottom-buttons';
+    grid-template-columns: $album-pic-length+15px $play-button-length auto auto auto;
+    grid-template-rows: $play-button-length $song-wave-height auto;
+    background-color: white;
+    padding-top: 40px;
+
+  }
+
+
+  .album-pic{
+    grid-area: album-pic;
+    width: $album-pic-length;
+    height: $album-pic-length;
+  }
+
+  .play-button{
+    position: relative;
+    grid-area:play-button;
+  }
+
+  .play-icon-background, .play-icon{
+    height: $play-button-length;
+    width: $play-button-length;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+
+  }
+  .play-icon{
+    color: $soundcloud-color;
+    background-color: white;
+  }
+  // .play-icon-background{
+  // }
+
+  .text{
+    grid-area: text;
+    display:flex;
+    flex-direction: column;
+    padding-left: 5px;
+
+    .artist-name{
+      color: $text-color;
+      font-size:$small-font-size;
+      font-weight:bolder;
+    }
+    .song-name{
+      font-size: 15px;
+    }
+
+  }
+  .time-ago{
+    grid-area: time-ago;
+    color:$text-color;
+    font-size: $small-font-size;
+    font-weight:bolder;
+  }
+
+  .song-wave-pic{
+    grid-area: song-wave-pic;
+    width: 640px;
+    height: $song-wave-height;
+  }
+  .bottom-buttons{
+    grid-area: bottom-buttons;
+  }
+
+}
