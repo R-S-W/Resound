@@ -24,15 +24,15 @@ class UserPage extends React.Component{
   render(){
     return <div className = 'user-page-component'>
       <header>
-        <img className = 'cover-pic'
-          src = '#'
-        ></img>
         <img className = 'profile-pic'
-          src = '#'
+          src = {window.musicNote}
+        ></img>
+        <img className = 'cover-pic'
+          src = {window.musicSheet}
         ></img>
       </header>
       
-      <nav>
+      <nav className = 'list-buttons'>
         <button>All</button>
         <button>Popular Tracks</button>
         <button>Tracks</button>
