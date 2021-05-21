@@ -1,0 +1,40 @@
+@import '../variables';
+
+$navigation-background-color: #333333;
+$navigation-height: 45px;
+.navigation{
+  height: $navigation-height;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+
+  button{
+    // padding: 20px 30px;
+    
+    font-family:'Quicksand', sans-serif;
+    font-size: 12px;
+    color: white;
+  }
+  .splash-button {
+    background-color: $navigation-background-color;
+    width: 70px;
+    height: $navigation-height;
+    img{
+      width: 70px;
+      height: $navigation-height;
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .user-page-button {
+    width: 150px;
+    height: $navigation-height;
+    background-color: $navigation-background-color;
+    
+    img{
+      width:28px;
+      height:28px;
+      border-radius: 50%;
+    }
+  }
+}

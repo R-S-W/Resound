@@ -27,30 +27,36 @@ $small-font-size: 12px;
     padding-left:$page-side-margin;
     padding-right: $page-side-margin;
   }
+  
+  .cover-pic{
+    object-fit:cover;
+    object-position: 50% 50%;
+    
+    position: relative;
+    width: 1185px;
+    
+  }
+  .profile-pic{
+    position: absolute;
+    z-index: 2;
+    transform: translate(30px, -50%);
+    top: 50%;
+    
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+  }
 }
 
-.cover-pic{
-  object-fit:cover;
-  object-position: 50% 50%;
-
-  position: relative;
-  width: 1185px;
-
-}
-.profile-pic{
-  position: absolute;
-  z-index: 2;
-  transform: translate(30px, -50%);
-  top: 50%;
-
-  width:200px;
-  height:200px;
-  border-radius: 50%;
-}
 
 
-nav{
-  padding: $page-side-margin 10px;
+.list-buttons{
+  margin: 0 $page-side-margin;
+  padding: 10px 0;
+  border-bottom: 1px solid $input-border-color;
+  width: 70px;
+
+  // padding: $page-side-margin 10px;
   button{
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
@@ -61,16 +67,15 @@ nav{
   :last-child{
     margin-right:0;
   }
-}
-.list-buttons{
-  margin: 0 $page-side-margin;
-  padding: 10px 0;
-  border-bottom: 1px solid $input-border-color;
+
+
 }
 
 .track-list{
   width: 820px;
   padding: 0 30px;
+  margin-bottom: 60px;
+
   // position: relative;
   // left: 50%;
   // transform: translateX(-50%);
