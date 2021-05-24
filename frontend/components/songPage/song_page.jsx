@@ -1,20 +1,49 @@
 import React from 'react';
-
+import { GoPlay} from 'react-icons/go';
+import {BsPlayFill} from 'react-icons/bs';
 
 class SongPage extends React.Component{
   constructor(props){
     super(props);
+    let songId = this.props.match.params.songId 
     this.state = {
-      a:1
+      songId,
+      song: this.props.songs[songId]
     };
   }
+  componentDidMount(){
+    if (!this.state.song){
+      this.props.fetchSong(this.state.songId);
+    }
+  }
   render(){
-    return (
+    return  this.state.song ? 
+    (
       <div className = 'song-page-component'>
-        
-      </div>
+        <article className= 'song'>
+          <div className = 'play-button'>
+            <BsPlayFill className = 'play-icon-background'/>
+            <GoPlay className ='play-icon'/>
+          </div>
+          <section className = 'text'>
+            <span className = 'artist-name'>{this.state.song.artist_name}</span>
+            <span className = 'song-name'>{this.state.song.name}</span>
+          </section> 
+          <span className="time-ago">{this.props.printHowLongAgo(this.state.song.created_at)}</span>
+          <img className='song-wave-pic' src= {window.defaultSongWave}></img>
+          <img className = 'album-pic' src= {this.state.song.albumCover}></img>
+        </article>
 
+      </div>
     )
+    :
+    <div>Song Page Null</div>
+  }
+
+  componentDidUpdate(){
+    if (!this.state.song && this.props.songs[this.state.songId]){
+      this.setState({song: this.props.songs[this.state.songId]});
+    }
   }
 
 

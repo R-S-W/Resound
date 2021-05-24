@@ -22,9 +22,7 @@ const App = ()=>{
 
         <Navigation/>
 
-
         <Switch>
-
           <Route path='/' exact component={SplashPageContainer} />
           <AuthRoute  path = "/login" exact component={LoginFormContainer}/>
           <AuthRoute path="/signup" exact component={SignupFormContainer} />
@@ -33,9 +31,7 @@ const App = ()=>{
           <ProtectedRoute path='/songs/edit/:songId' exact component={EditSongFormContainer} />
           
           <Route path='/users/:userId' exact component={UserPageContainer} />
-          
-          {/* <ProtectedRoute path='/songs/:songId' exact component={ SongPageContainer} /> */}
-          
+          <Route path='/songs/:songId' exact component={ SongPageContainer} />
         </Switch>
           
         <AudioPlayerContainer/>

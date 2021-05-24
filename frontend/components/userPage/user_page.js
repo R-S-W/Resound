@@ -1,4 +1,3 @@
-import { divide } from 'lodash';
 import React from 'react';
 import { GoPlay} from 'react-icons/go';
 import {BsPlayFill} from 'react-icons/bs';
