@@ -1,6 +1,6 @@
 @import '../variables';
 
-$play-button-length:60px;
+$play-button-length:62px;
 $album-cover-length:340px;
 $sound-wave-width:820px;
 $reg-text-size: 18px;
@@ -54,6 +54,7 @@ $background-height: 385px;
     .play-button{
       position: relative;
       grid-area: play;
+      margin-right: 20px;
 
       .play-icon-background, .play-icon{
         height: $play-button-length;
@@ -75,15 +76,21 @@ $background-height: 385px;
       flex-direction: column;
 
       span{
-        background: rgba(0,0,0,.5);
+        background: rgba(0,0,0,.7);
       }
       .artist-name{
         color: $text-color;
         font-size:$reg-text-size;
+        padding:2px 7px 3px;
+        margin-right: auto;
+        margin-bottom: 5px;
+
+
       }
       .song-name{
         color: white;
         font-size: 24px;
+        padding:5px;
       }
     }
 
@@ -91,12 +98,15 @@ $background-height: 385px;
       grid-area: time;
       color: white;
       font-size: $reg-text-size;
+      margin-top: 10px;
+      margin-right: 20px;
     }
 
     .song-wave-pic{
       grid-area: wave;
       height: auto;
       width: $sound-wave-width;
+      margin-right: 20px;
     }
 
     .album-pic{
