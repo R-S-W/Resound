@@ -18,7 +18,7 @@ class Navigation extends React.Component {
     :
     <nav className = 'navigation'>
       <button className = 'splash-button'>
-        <img src = {window.resoundLogoURL}></img>
+        <img src = {window.resoundLogoWhiteURL}></img>
       </button>
       <button className = 'user-page-button'>
         <img className ='profile-pic' src = {window.musicNote}></img>

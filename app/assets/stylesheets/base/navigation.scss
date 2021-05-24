@@ -7,6 +7,7 @@ $navigation-height: 45px;
   width:100%;
   display: flex;
   justify-content: space-between;
+  background-color: $navigation-background-color;
 
   button{
     // padding: 20px 30px;
@@ -16,9 +17,10 @@ $navigation-height: 45px;
     color: white;
   }
   .splash-button {
-    background-color: $navigation-background-color;
+    background-color: red;
     width: 70px;
     height: $navigation-height;
+    margin-left: $page-side-margin;
     img{
       width: 70px;
       height: $navigation-height;
@@ -27,14 +29,21 @@ $navigation-height: 45px;
     }
   }
   .user-page-button {
-    width: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 150px;
     height: $navigation-height;
     background-color: $navigation-background-color;
+    margin-right: $page-side-margin;
+    padding: 10px;
     
     img{
       width:28px;
       height:28px;
       border-radius: 50%;
+      margin-right: 15px;
+
     }
   }
 }

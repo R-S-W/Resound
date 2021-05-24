@@ -1,9 +1,6 @@
 import {shuffleArray} from '../util/misc_utils';
 import merge from 'lodash/merge'
 
-
-///  #-# consider useing merge
-// const RECEIVESOMETHING= 'RECEIVESOMETHING';
 import {
   RECEIVE_SONGS,
   RECEIVE_SONG,

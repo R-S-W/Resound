@@ -10,7 +10,8 @@ class SongPage extends React.Component{
   }
   render(){
     return (
-      <div className = 'song-page-component'>S
+      <div className = 'song-page-component'>
+        
       </div>
 
     )

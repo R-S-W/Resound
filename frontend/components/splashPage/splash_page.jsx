@@ -28,7 +28,7 @@ class SplashPage extends React.Component{
   render(){
     return (
       <div className = 'splash-page'>
-        <div className = 'rectangle'></div>
+        {!this.props.currentUserId ? <div className = 'rectangle'></div> : null}
         <header>
           <div className = 'logo-title'>
             {/* <img className= 'logo' src = {window.resoundLogoURL}/> */}
