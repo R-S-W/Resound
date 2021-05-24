@@ -20,6 +20,9 @@ class SongPage extends React.Component{
     return  this.state.song ? 
     (
       <div className = 'song-page-component'>
+        <div className = 'song-background'>
+          <img src={this.state.song.albumCover} />
+        </div>
         <article className= 'song'>
           <div className = 'play-button'>
             <BsPlayFill className = 'play-icon-background'/>
@@ -30,14 +33,14 @@ class SongPage extends React.Component{
             <span className = 'song-name'>{this.state.song.name}</span>
           </section> 
           <span className="time-ago">{this.props.printHowLongAgo(this.state.song.created_at)}</span>
-          <img className='song-wave-pic' src= {window.defaultSongWave}></img>
+          <img className='song-wave-pic' src= {window.defaultSongWaveWhite}></img>
           <img className = 'album-pic' src= {this.state.song.albumCover}></img>
         </article>
 
       </div>
     )
     :
-    <div>Song Page Null</div>
+    null  
   }
 
   componentDidUpdate(){
