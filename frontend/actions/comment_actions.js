@@ -26,6 +26,7 @@ export const removeComment = (id)=>{
   }
 }
 
+
 export const createComment = (comment)=> (disp)=>{
   return CommentAPIUtil.createComment(comment)
     .then((com)=>disp(receiveComment(com)));
@@ -36,7 +37,7 @@ export const fetchComments = ()=>(disp) =>{
     .then((comments)=>disp(receiveComments(comments)));
 }
 
-export const fetchComment = (comment)=> disp=>{
+export const fetchComment = (comment)=>(disp)=>{
   return CommentAPIUtil.fetchComment()
     .then((com)=>disp(receiveComment(com)));
 }

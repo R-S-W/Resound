@@ -31,9 +31,10 @@ export const receiveUpdatedSong = (song) =>{
   }
 
 }
-export const removeSong = ()=>{
+export const removeSong = (id)=>{
   return {
-    type: REMOVE_SONG
+    type: REMOVE_SONG,
+    song_id: id
   }
 }
 
@@ -91,7 +92,6 @@ export const deleteSong = (songId)=>dispatch=>{
   return SongAPIUtil.deleteSong(songId)
     .then(()=>{return dispatch(removeSong(songId))})
 }
-
 
 export const fetchPlaylistSong = (songId) => dispatch => {
   return SongAPIUtil.fetchSong(songId).then((song) => {
