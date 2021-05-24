@@ -3,14 +3,23 @@
 $play-button-length:60px;
 $album-cover-length:340px;
 $sound-wave-width:820px;
-$reg-text-size: 16px;
+$reg-text-size: 18px;
 $background-width: 1240px;
 $background-height: 385px;
 
 .song-page-component{
-  // width:100%;
+  width:100%;
+  height:$background-height;
+  position: relative;
 
+  >* {
+    left: 50%;
+  }
+  
   .song-background{
+    position: absolute;
+    transform: translateX(-50%);
+
     width: $background-width;
     height: $background-height;
     overflow:hidden;
@@ -27,6 +36,7 @@ $background-height: 385px;
   }
 
   .song{
+    position: absolute;
     display: grid;
     grid-template-areas: 
       "play text .    time pic"
@@ -37,6 +47,9 @@ $background-height: 385px;
     background-color: transparent;
 
     font-family: Roboto, sans-serif;
+
+    transform: translate(-50%, -50%) translateY($background-height/2);
+
 
     .play-button{
       position: relative;
@@ -49,6 +62,7 @@ $background-height: 385px;
         bottom: 50%;
         right: 50%;
         transform: translate(50%, 50%);
+        color: white;
       }
       .play-icon{
         color: $soundcloud-color;
