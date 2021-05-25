@@ -10,7 +10,7 @@ $background-height: 385px;
 .song-page-component{
   width:100%;
   height:100%;
-  padding-bottom:40px;
+  padding-bottom:60px;
   background-color: white;
   
   .song-container{
@@ -145,6 +145,21 @@ $background-height: 385px;
 
       }
     }
+
   }
-  
+
+  .profile-and-comments{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img{
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 5px;
+    }
+    span{
+      font-family: 'Overpass', sans-serif;
+    }
+  }
 }
