@@ -9,112 +9,142 @@ $background-height: 385px;
 
 .song-page-component{
   width:100%;
-  height:$background-height;
-  position: relative;
-
-  >* {
-    left: 50%;
-  }
+  height:100%;
+  padding-bottom:40px;
+  background-color: white;
   
-  .song-background{
-    position: absolute;
-    transform: translateX(-50%);
-
-    width: $background-width;
-    height: $background-height;
-    overflow:hidden;
+  .song-container{
+    position: relative;
+    height:$background-height;
     
-    img{
-      width: 1*$background-width;
-      height: 1*$background-width;
-      -webkit-filter: blur(25px);
-      filter: blur(25px);
-      object-fit: cover;
-      object-position: 0  (-$background-width/2+ $background-height/2);
-      transform: scale(1.1);
+    >* {
+      left: 50%;
     }
+    
+    .song-background{
+      position: absolute;
+      transform: translateX(-50%);
+
+      width: $background-width;
+      height: $background-height;
+      overflow:hidden;
+      
+      img{
+        width: 1*$background-width;
+        height: 1*$background-width;
+        -webkit-filter: blur(25px);
+        filter: blur(25px);
+        object-fit: cover;
+        object-position: 0  (-$background-width/2+ $background-height/2);
+        transform: scale(1.1);
+      }
+    }
+
+    .song{
+      position: absolute;
+      display: grid;
+      grid-template-areas: 
+        "play text .    time pic"
+        ".    .    .    .    pic"
+        "wave wave wave wave pic";
+      grid-template-columns: $play-button-length auto auto auto $album-cover-length;
+      grid-template-rows: $play-button-length auto auto;
+      background-color: transparent;
+
+      font-family: Roboto, sans-serif;
+
+      transform: translate(-50%, -50%) translateY($background-height/2);
+
+
+      .play-button{
+        position: relative;
+        grid-area: play;
+        margin-right: 20px;
+
+        .play-icon-background, .play-icon{
+          height: $play-button-length;
+          width: $play-button-length;
+          position: absolute;
+          bottom: 50%;
+          right: 50%;
+          transform: translate(50%, 50%);
+          color: white;
+        }
+        .play-icon{
+          color: $soundcloud-color;
+        }
+      }
+
+      .text{
+        grid-area: text;
+        display: flex;
+        flex-direction: column;
+
+        span{
+          background: rgba(0,0,0,.7);
+        }
+        .artist-name{
+          color: $text-color;
+          font-size:$reg-text-size;
+          padding:2px 7px 3px;
+          margin-right: auto;
+          margin-bottom: 5px;
+
+
+        }
+        .song-name{
+          color: white;
+          font-size: 24px;
+          padding:5px;
+        }
+      }
+
+      .time-ago{
+        grid-area: time;
+        color: white;
+        font-size: $reg-text-size;
+        margin-top: 10px;
+        margin-right: 20px;
+      }
+
+      .song-wave-pic{
+        grid-area: wave;
+        height: auto;
+        width: $sound-wave-width;
+        margin-right: 20px;
+      }
+
+      .album-pic{
+        grid-area: pic;
+        width: $album-cover-length;
+        height: $album-cover-length;
+      }
+
+    }
+
   }
 
-  .song{
-    position: absolute;
-    display: grid;
-    grid-template-areas: 
-      "play text .    time pic"
-      ".    .    .    .    pic"
-      "wave wave wave wave pic";
-    grid-template-columns: $play-button-length auto auto auto $album-cover-length;
-    grid-template-rows: $play-button-length auto auto;
-    background-color: transparent;
+  .comment-form{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    padding: 30px $page-side-margin + 25px;
 
-    font-family: Roboto, sans-serif;
+    img{
+      width: 40px;
+      height: 40px;
+    }
+    .input-div{
+      background: $input-border-color-light;
+      padding:10px;
+      width: 100%;
 
-    transform: translate(-50%, -50%) translateY($background-height/2);
+      input{
+        width: 100%;
+            box-sizing: border-box;
 
-
-    .play-button{
-      position: relative;
-      grid-area: play;
-      margin-right: 20px;
-
-      .play-icon-background, .play-icon{
-        height: $play-button-length;
-        width: $play-button-length;
-        position: absolute;
-        bottom: 50%;
-        right: 50%;
-        transform: translate(50%, 50%);
-        color: white;
-      }
-      .play-icon{
-        color: $soundcloud-color;
       }
     }
-
-    .text{
-      grid-area: text;
-      display: flex;
-      flex-direction: column;
-
-      span{
-        background: rgba(0,0,0,.7);
-      }
-      .artist-name{
-        color: $text-color;
-        font-size:$reg-text-size;
-        padding:2px 7px 3px;
-        margin-right: auto;
-        margin-bottom: 5px;
-
-
-      }
-      .song-name{
-        color: white;
-        font-size: 24px;
-        padding:5px;
-      }
-    }
-
-    .time-ago{
-      grid-area: time;
-      color: white;
-      font-size: $reg-text-size;
-      margin-top: 10px;
-      margin-right: 20px;
-    }
-
-    .song-wave-pic{
-      grid-area: wave;
-      height: auto;
-      width: $sound-wave-width;
-      margin-right: 20px;
-    }
-
-    .album-pic{
-      grid-area: pic;
-      width: $album-cover-length;
-      height: $album-cover-length;
-    }
-
   }
   
 }

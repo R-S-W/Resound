@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     end
     resource :session, only: [:create, :destroy]
     resources :songs, only: [:create, :index, :show, :update, :destroy ]
-
+    resources :comments, only: [:create, :index,:show, :destroy]
   end
 end
