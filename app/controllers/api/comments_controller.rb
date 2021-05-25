@@ -30,7 +30,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def update 
-    @comment = Comment.find(params[:id]))
+    @comment = Comment.find(params[:id])
     if @comment
       @comment[:content] = comment_params[:content] || @comment[:content]
       @comment[:user_id] = comment_params[:user_id] || @comment[:user_id]
