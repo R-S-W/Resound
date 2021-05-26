@@ -9,7 +9,7 @@ class SongPage extends React.Component{
     this.state = {
       songId,
       song: this.props.songs[songId],
-      content: null,
+      content: '',
       comments:null
     };
 
@@ -21,7 +21,7 @@ class SongPage extends React.Component{
       this.props.fetchSong(this.state.songId);
     }
     if (!this.state.comments){
-      this.props.fetchSongComments(this.state.songId);
+      setTimeout(()=>{this.props.fetchSongComments(this.state.songId);}, 500);
     }
   }
   render(){
@@ -94,7 +94,6 @@ class SongPage extends React.Component{
   }
 
   handleSubmit(e){
-    debugger
     e.preventDefault();
     let data = {
       comment: {
@@ -114,7 +113,7 @@ class SongPage extends React.Component{
     return <ul className = 'comments'>
       {
         this.state.comments.map((c)=>{
-          return <li>
+          return <li id = {`comment-${c.id}`}>
             <span>{c.username}</span>
             <span>{c.content}</span>
             <span>{c.created_at}</span>
