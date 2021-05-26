@@ -11,9 +11,10 @@ class Api::CommentsController < ApplicationController
 
   def index
     if params.has_key?(:song_id)
-      @comments = Song.find(params[:id]).comments.reverse
+      @comments = Song.find(params[:song_id]).comments.reverse
     else
       @comments = Comment.all
+    end
     render :index
   end
 
@@ -46,7 +47,7 @@ class Api::CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content, :user_id, :song_id)
+    params.require(:comment).permit(:content, :user_id, :song_id, :username)
   end
 
 end
