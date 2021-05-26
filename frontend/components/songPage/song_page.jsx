@@ -9,7 +9,8 @@ class SongPage extends React.Component{
     this.state = {
       songId,
       song: this.props.songs[songId],
-      content: null
+      content: null,
+      comments:null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,6 +19,9 @@ class SongPage extends React.Component{
   componentDidMount(){
     if (!this.state.song){
       this.props.fetchSong(this.state.songId);
+    }
+    if (!this.state.comments){
+      this.props.fetchSongComments(this.state.songId);
     }
   }
   render(){
@@ -60,10 +64,8 @@ class SongPage extends React.Component{
             />
             <span>{this.state.song.artist_name}</span>
           </aside>
-          <ul className = 'comments'>
-            
-          </ul>
-
+          {this.commentsComponent()}
+          
         </div>
 
 
@@ -78,6 +80,7 @@ class SongPage extends React.Component{
     if (!this.state.song && this.props.songs[this.state.songId]){
       this.setState({song: this.props.songs[this.state.songId]});
     }
+    
   }
   
   handleChange(type){
@@ -100,7 +103,21 @@ class SongPage extends React.Component{
     this.setState({content:''});
   }
   
+  commentsComponent(){
 
+    return <ul className = 'comments'>
+      {
+        this.state.comments.map((c)=>{
+          return <li>
+
+          </li>
+        })
+      }
+
+            
+    </ul>
+
+  }
 
 }
 export default SongPage;

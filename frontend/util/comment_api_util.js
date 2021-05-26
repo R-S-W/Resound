@@ -22,6 +22,13 @@ export const fetchComment = (id) =>{
   })
 }
 
+export const fetchSongComments = (songId) =>{
+  return $.ajax({
+    method: 'GET',
+    url: `api/songs/${songId}/comments`
+  })
+}
+
 export const removeComment = (id) =>{
   return $.ajax({
     method: 'DELETE',

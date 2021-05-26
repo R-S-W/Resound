@@ -30,13 +30,16 @@ $background-height: 385px;
       overflow:hidden;
       
       img{
-        width: 1*$background-width;
-        height: 1*$background-width;
+        width: $background-width;
+        height: $background-width;
+        object-fit: cover;
         -webkit-filter: blur(25px);
         filter: blur(25px);
-        object-fit: cover;
         object-position: 0  (-$background-width/2+ $background-height/2);
         transform: scale(1.1);
+        
+        background: black;
+        opacity: 60%;
       }
     }
 
@@ -158,8 +161,15 @@ $background-height: 385px;
       height: 120px;
       margin-bottom: 5px;
     }
+    
     span{
       font-family: 'Overpass', sans-serif;
+    }
+
+    .profile-pic{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 }

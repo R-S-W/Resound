@@ -12,6 +12,8 @@ import {
   SHUFFLE_PLAYLIST
  } from '../actions/song_actions'
 
+ import {RECEIVE_SONG_COMMENTS} from '../actions/comment_actions';
+
 const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#-#  !!!!!!!!!!
   let newState = {};
   Object.freeze(state);
@@ -65,6 +67,12 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#
       newState = merge({}, state);
       newState.playlist = shuffleArray(newState.playlist);
       newState.playlistIndex = 0;
+      return newState;
+
+    case RECEIVE_SONG_COMMENTS:
+      let commentIds = action.songComments.map((c)=>c.id);
+      newState = merge({},state);
+      newState[action.songId].commentIds = commentIds;
       return newState;
     default:
       return state;

@@ -10,7 +10,10 @@ class Api::CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.all
+    if params.has_key?(:song_id)
+      @comments = Song.find(params[:id]).comments.reverse
+    else
+      @comments = Comment.all
     render :index
   end
 

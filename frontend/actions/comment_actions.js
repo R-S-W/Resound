@@ -3,6 +3,7 @@ import * as CommentAPIUtil from '../util/comment_api_util';
 
 export const RECEIVE_COMMENTS ="RECEIVE_COMMENTS";
 export const RECEIVE_COMMENT ="RECEIVE_COMMENT";
+export const RECEIVE_SONG_COMMENTS= "RECEIVE_SONG_COMMENTS";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
 export const receiveComments =  (comments)=>{
@@ -17,6 +18,12 @@ export const receiveComment = (comment)=>{
     type: RECEIVE_COMMENT,
     comment
   }
+}
+
+export const receiveSongComments = (songId, songComments)=>{
+  type: RECEIVE_SONG_COMMENTS,
+  songId,
+  songComments
 }
 
 export const removeComment = (id)=>{
@@ -41,6 +48,13 @@ export const fetchComment = (comment)=>(disp)=>{
   return CommentAPIUtil.fetchComment()
     .then((com)=>disp(receiveComment(com)));
 }
+
+export const fetchSongComments = (songId) => (disp)=>{
+  return CommentAPIUtil.fetchSongComments(songId)
+    .then((songComments)=>{receiveSongComments(songId,songComments)})
+}
+
+
 
 export const deleteComment = (id) =>(disp)=>{
   return CommentAPIUtil.removeComment()

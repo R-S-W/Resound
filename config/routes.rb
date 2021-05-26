@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       resources :songs, only: :index
     end
     resource :session, only: [:create, :destroy]
-    resources :songs, only: [:create, :index, :show, :update, :destroy ]
+    resources :songs, only: [:create, :index, :show, :update, :destroy ] do 
+      resources :comments, only: [:index]
+    end
     resources :comments, only: [:create, :index,:show, :destroy]
   end
 end
