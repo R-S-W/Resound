@@ -71,8 +71,9 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#
 
     case RECEIVE_SONG_COMMENTS:
       let commentIds = action.songComments.map((c)=>c.id);
-      newState = merge({},state);
-      newState[action.songId].commentIds = commentIds;
+      let s = merge({}, state[action.songId]);
+      s.commentIds = commentIds;
+      newState = merge({},state, {[action.songId]:s} );
       return newState;
     default:
       return state;

@@ -21,9 +21,11 @@ export const receiveComment = (comment)=>{
 }
 
 export const receiveSongComments = (songId, songComments)=>{
-  type: RECEIVE_SONG_COMMENTS,
-  songId,
-  songComments
+  return {
+    type: RECEIVE_SONG_COMMENTS,
+    songId,
+    songComments
+  }
 }
 
 export const removeComment = (id)=>{
@@ -51,7 +53,7 @@ export const fetchComment = (comment)=>(disp)=>{
 
 export const fetchSongComments = (songId) => (disp)=>{
   return CommentAPIUtil.fetchSongComments(songId)
-    .then((songComments)=>{receiveSongComments(songId,songComments)})
+    .then((songComments)=>{disp(receiveSongComments(songId,songComments))})
 }
 
 

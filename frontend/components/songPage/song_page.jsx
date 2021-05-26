@@ -80,6 +80,10 @@ class SongPage extends React.Component{
     if (!this.state.song && this.props.songs[this.state.songId]){
       this.setState({song: this.props.songs[this.state.songId]});
     }
+    if (!this.state.comments && this.props.songs[this.state.songId]?.commentIds){
+      let commentList = this.props.songs[this.state.songId].commentIds.map((cid)=>this.props.comments[cid]);
+      this.setState({comments:commentList});
+    }
     
   }
   
@@ -95,6 +99,7 @@ class SongPage extends React.Component{
     let data = {
       comment: {
         user_id: this.props.currentUserId,
+        username: this.props.username,
         song_id: this.state.songId,
         content: this.state.content
       }
@@ -104,11 +109,15 @@ class SongPage extends React.Component{
   }
   
   commentsComponent(){
+    if (!this.state.comments) return null;
 
     return <ul className = 'comments'>
       {
         this.state.comments.map((c)=>{
           return <li>
+            <span>{c.username}</span>
+            <span>{c.content}</span>
+            <span>{c.created_at}</span>
 
           </li>
         })
