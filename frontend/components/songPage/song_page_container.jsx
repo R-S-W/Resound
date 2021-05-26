@@ -9,7 +9,7 @@ import {printHowLongAgo} from '../../util/misc_utils';
 const mapStateToProps = (state) =>{
   return {
     currentUserId: state.session.id,//state.entities.users[state.session.id],
-    username: state.session.users[state.session.id].username,
+    username: state.entities.users[state.session.id]?.username,
     songs: state.entities.songs,
     comments: state.entities.comments,
     printHowLongAgo
