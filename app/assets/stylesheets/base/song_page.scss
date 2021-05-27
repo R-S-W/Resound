@@ -198,7 +198,7 @@ $background-height: 385px;
           "pic name     time"
           "pic comment  .";
         grid-template-columns: $comment-pfp-length auto auto ;
-        grid-template-rows: auto auto;
+        grid-template-rows: 1fr 1.5fr;
 
         font-size: 14px;
         column-gap: 10px;

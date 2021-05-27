@@ -13,10 +13,11 @@ export const receiveComments =  (comments)=>{
   }
 }
 
-export const receiveComment = (comment)=>{
+export const receiveComment = (comment, isNewComment = false)=>{
   return {
     type: RECEIVE_COMMENT,
-    comment
+    comment,
+    isNewComment
   }
 }
 
@@ -38,7 +39,7 @@ export const removeComment = (id)=>{
 
 export const createComment = (comment)=> (disp)=>{
   return CommentAPIUtil.createComment(comment)
-    .then((com)=>disp(receiveComment(com)));
+    .then((com)=>disp(receiveComment(com, true)));
 }
 
 export const fetchComments = ()=>(disp) =>{

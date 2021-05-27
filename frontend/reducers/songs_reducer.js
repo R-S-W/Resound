@@ -12,7 +12,7 @@ import {
   SHUFFLE_PLAYLIST
  } from '../actions/song_actions'
 
- import {RECEIVE_SONG_COMMENTS} from '../actions/comment_actions';
+ import {RECEIVE_COMMENT, RECEIVE_SONG_COMMENTS} from '../actions/comment_actions';
 
 const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#-#  !!!!!!!!!!
   let newState = {};
@@ -75,6 +75,15 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#
       s.commentIds = commentIds;
       newState = merge({},state, {[action.songId]:s} );
       return newState;
+
+      case RECEIVE_COMMENT:
+        if (action.isNewComment){
+          let song = merge({},state[action.comment.song_id]);
+          song.commentIds.unshift(action.comment.id);
+          newState[action.comment.song_id] = song;
+          return merge({}, state, newState);
+        }
+        return state;
     default:
       return state;
   }

@@ -80,10 +80,16 @@ class SongPage extends React.Component{
     if (!this.state.song && this.props.songs[this.state.songId]){
       this.setState({song: this.props.songs[this.state.songId]});
     }
-    if (!this.state.comments && this.props.songs[this.state.songId]?.commentIds){
+    let songCommentIds = this.props.songs[this.state.songId]?.commentIds;
+    if ((!this.state.comments && songCommentIds)  || 
+      (this.state.comments && this.state.comments.length !== songCommentIds.length)){
       let commentList = this.props.songs[this.state.songId].commentIds.map((cid)=>this.props.comments[cid]);
       this.setState({comments:commentList});
     }
+
+    
+
+
     
   }
   
