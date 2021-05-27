@@ -117,7 +117,7 @@ class SongPage extends React.Component{
             <img src={window.profilePic}/>
             <span className = 'comment-username'>{c.username}</span>
             <span className = 'comment-content'>{c.content}</span>
-            <span className = 'comment-time'>{c.created_at}</span>
+            <span className = 'comment-time'>{this.props.printHowLongAgo(c.created_at)}</span>
 
           </li>
         })

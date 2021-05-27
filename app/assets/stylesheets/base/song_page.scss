@@ -139,6 +139,8 @@ $background-height: 385px;
     }
     .input-div{
       background: $input-border-color-light;
+      border: 1px solid $input-border-color;
+      border-left: none; 
       padding:10px;
       width: 100%;
 
@@ -153,8 +155,12 @@ $background-height: 385px;
 
   .profile-and-comments{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    
+    border-top: 1px solid $input-border-color-light;
+    padding-top: 20px;
+    margin: 0 40px;
+
     img{
       border-radius: 50%;
       width: 120px;
@@ -166,23 +172,38 @@ $background-height: 385px;
       font-family: 'Overpass', sans-serif;
     }
 
+
+    
+
     .profile-pic{
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      margin-right: 30px;
+      span{
+        text-align: center;
+      }
     }
 
     .comments{
       $comment-pfp-length: 40px;
+      $comment-text-color: #999999;
+      width: 100%;
 
 
       li{
         display: grid;
         grid-template-areas: 
-          "pic name    .  time"
-          "pic comment .  .";
-        grid-template-columns: $comment-pfp-length auto auto auto;
+          "pic name     time"
+          "pic comment  .";
+        grid-template-columns: $comment-pfp-length auto auto ;
         grid-template-rows: auto auto;
+
+        font-size: 14px;
+        column-gap: 10px;
+        padding: 10px 0;
+
         img{
           grid-area: pic;
           width: $comment-pfp-length;
@@ -190,12 +211,16 @@ $background-height: 385px;
         }
         .comment-username{
           grid-area: name;
+          color: $comment-text-color;
         }
         .comment-content{
           grid-area: comment;
         }
         .comment-time{
           grid-area: time;
+          color: $comment-text-color;
+          text-align: end;
+          margin-right: 20px;
         }
 
 
