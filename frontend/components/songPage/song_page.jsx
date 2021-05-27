@@ -114,9 +114,10 @@ class SongPage extends React.Component{
       {
         this.state.comments.map((c)=>{
           return <li id = {`comment-${c.id}`}>
-            <span>{c.username}</span>
-            <span>{c.content}</span>
-            <span>{c.created_at}</span>
+            <img src={window.profilePic}/>
+            <span className = 'comment-username'>{c.username}</span>
+            <span className = 'comment-content'>{c.content}</span>
+            <span className = 'comment-time'>{c.created_at}</span>
 
           </li>
         })

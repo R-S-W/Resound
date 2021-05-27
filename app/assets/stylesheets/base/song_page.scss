@@ -171,5 +171,35 @@ $background-height: 385px;
       flex-direction: column;
       align-items: center;
     }
+
+    .comments{
+      $comment-pfp-length: 40px;
+
+
+      li{
+        display: grid;
+        grid-template-areas: 
+          "pic name    .  time"
+          "pic comment .  .";
+        grid-template-columns: $comment-pfp-length auto auto auto;
+        grid-template-rows: auto auto;
+        img{
+          grid-area: pic;
+          width: $comment-pfp-length;
+          height: $comment-pfp-length;
+        }
+        .comment-username{
+          grid-area: name;
+        }
+        .comment-content{
+          grid-area: comment;
+        }
+        .comment-time{
+          grid-area: time;
+        }
+
+
+      }
+    }
   }
 }
