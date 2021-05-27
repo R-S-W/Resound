@@ -1,6 +1,7 @@
 import React from 'react';
 import { GoPlay} from 'react-icons/go';
 import {BsPlayFill} from 'react-icons/bs';
+import {FaCommentAlt} from 'react-icons/fa';
 
 class SongPage extends React.Component{
   constructor(props){
@@ -116,21 +117,30 @@ class SongPage extends React.Component{
   commentsComponent(){
     if (!this.state.comments) return null;
 
-    return <ul className = 'comments'>
-      {
-        this.state.comments.map((c)=>{
-          return <li id = {`comment-${c.id}`}>
-            <img src={window.profilePic}/>
-            <span className = 'comment-username'>{c.username}</span>
-            <span className = 'comment-content'>{c.content}</span>
-            <span className = 'comment-time'>{this.props.printHowLongAgo(c.created_at)}</span>
+    let title = this.state.comments.length !==1 ? 'comments' : 'comment';
+    title = `${this.state.comments.length}` + title;
 
-          </li>
-        })
-      }
+    return <aside className = 'comments'>
+      <span>
+        <FaCommentAlt className = 'comment-icon'/>
+        {title}
+      </span>
+      <ul>
+        {
+          this.state.comments.map((c)=>{
+            return <li id = {`comment-${c.id}`}>
+              <img src={window.profilePic}/>
+              <span className = 'comment-username'>{c.username}</span>
+              <span className = 'comment-content'>{c.content}</span>
+              <span className = 'comment-time'>{this.props.printHowLongAgo(c.created_at)}</span>
 
-            
-    </ul>
+            </li>
+          })
+        }
+
+              
+      </ul>
+    </aside>
 
   }
 
