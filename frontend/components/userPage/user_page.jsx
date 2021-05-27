@@ -6,6 +6,7 @@ class UserPage extends React.Component{
   constructor(props){
     super(props);
     this.userId = parseInt(this.props.match.params.userId);
+    this.user = this.props.users[this.userId];
 
 
 
@@ -16,7 +17,10 @@ class UserPage extends React.Component{
   }
 
   componentDidMount(){
-    this.manageMissingSongs();
+    if (!this.props.users[this.userId]){
+      this.props.fetchUser(this.userId);
+    }
+    // this.manageMissingSongs();
   }
 
 
@@ -57,6 +61,7 @@ class UserPage extends React.Component{
   componentDidUpdate(){
     console.log('comp Did update in userpage')
     debugger
+    if (!this.user) this.user = this.props.users[this.userId];
     this.manageMissingSongs();
   }
 
@@ -79,8 +84,9 @@ class UserPage extends React.Component{
   }
 
   isThereMissingSong(){
-    for (let i =0; i< this.props.currentUser.songIds.length; i++){
-      if (!this.props.songs[this.props.currentUser.songIds[i]]){
+    if (this.user.songIds.length === 0) return false;
+    for (let i =0; i< this.user.songIds.length; i++){
+      if (!this.props.songs[this.user.songIds[i]]){
         return true;
       }
     }
@@ -91,7 +97,7 @@ class UserPage extends React.Component{
     let songList=[];
     if (this.state.isMissingASong) return <div>Tracklist empty</div>
     
-    this.props.currentUser.songIds.forEach(sid=>{
+    this.user.songIds.forEach(sid=>{
       songList.push(this.props.songs[sid])  ;
     });
 
