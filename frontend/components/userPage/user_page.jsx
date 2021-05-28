@@ -40,19 +40,14 @@ class UserPage extends React.Component{
         <button>Popular Tracks</button>
         <button>Tracks</button>
       </nav>
-{/* 
-      <ul>
-        {
-
-        }
-      </ul> */}
 
       {this.trackList()}
-
-
+      
       <footer>
-        <img className = 'footer-pic' src = '#'></img>
+        <img className = 'footer-pic' src = {window.resoundLogoGrayURL}/>
+        <div className = 'line'></div>
       </footer>
+      
 
 
     </div>
