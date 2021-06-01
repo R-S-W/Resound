@@ -33,7 +33,7 @@ class Navigation extends React.Component {
         </button>
       </Link>
       <div className = 'spacer'></div>
-      <Link to = 'songs/new'>
+      <Link to = '/songs/new'>
         <button className = 'upload-button'>
           <span>Upload</span> 
         </button>

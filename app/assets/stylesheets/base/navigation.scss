@@ -9,6 +9,10 @@ $navigation-height: 45px;
   justify-content: space-between;
   background-color: $navigation-background-color;
 
+  a{
+    text-decoration: none;
+  }
+
   button{
     // padding: 20px 30px;
     

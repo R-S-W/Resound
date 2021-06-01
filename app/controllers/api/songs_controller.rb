@@ -1,6 +1,7 @@
 
 class Api::SongsController < ApplicationController
   def create
+    debugger
     @song = Song.new(song_params)
     if @song.save!
       render :show
@@ -45,7 +46,7 @@ class Api::SongsController < ApplicationController
   end
 
   def destroy
-    @song = Song.find(id: params[:id])
+    @song = Song.find(params[:id])
     if (@song)
       @song.destroy
       render json: {}
@@ -63,6 +64,7 @@ class Api::SongsController < ApplicationController
         :artist_id,
         :audio,
         :album_cover,  
+        :artist_name,
         :info, 
         :album_id, 
         :genre)

@@ -42,7 +42,7 @@ class SongForm extends React.Component{
     if (this.props.formType === 'update' && this.props.songs[this.state.songId]){
       this.updateSongState();
       console.log('updatesongstate in componentdidmount')
-    }else{
+    }else if(this.props.formType === 'update'){
       this.props.fetchSong(this.state.songId);
     }
     //listen to changes in the url string
@@ -262,8 +262,10 @@ class SongForm extends React.Component{
     if (this.state.genre) formData.append('song[genre]', this.state.genre);
 
     if (this.props.formType === 'create'){
-      formData.append('song[artist_name', this.props.currentUserUsername);
+      formData.append('song[artist_name]', this.props.currentUserUsername);
     }
+
+    debugger
 
     this.props.handleSong(formData, this.state.songId);
     this.setState(this.defaultState);
