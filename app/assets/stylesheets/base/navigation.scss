@@ -28,6 +28,24 @@ $navigation-height: 45px;
       transform: translate(-50%, -50%);
     }
   }
+  .spacer{
+    width:100%;
+  }
+
+  .upload-button{
+    background-color: $navigation-background-color;
+    text-align: center;
+    position: relative;
+    width: 60px;
+    height: 100%;
+
+    span{
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+
   .user-page-button {
     display: flex;
     justify-content: space-around;

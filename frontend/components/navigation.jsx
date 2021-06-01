@@ -32,6 +32,12 @@ class Navigation extends React.Component {
           <img src = {window.resoundLogoWhiteURL}></img>
         </button>
       </Link>
+      <div className = 'spacer'></div>
+      <Link to = 'songs/new'>
+        <button className = 'upload-button'>
+          <span>Upload</span> 
+        </button>
+      </Link>
       <Link to = {`users/${this.props.currentUser.id}`}>
         <button className = 'user-page-button' onClick = {this.handleUserPageButton}>
           <img className ='profile-pic' src = {window.musicNote}></img>
