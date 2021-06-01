@@ -3,6 +3,7 @@ import { GoPlay} from 'react-icons/go';
 import {BsPlayFill} from 'react-icons/bs';
 import {FaCommentAlt} from 'react-icons/fa';
 import {MdDelete} from 'react-icons/md';
+import {ImPencil} from 'react-icons/im';
 
 class SongPage extends React.Component{
   constructor(props){
@@ -59,6 +60,24 @@ class SongPage extends React.Component{
             />
           </div>
         </form>
+        
+        {
+          this.props.currentUserId === this.state.song.artist_id  ? 
+          <article className = {'song-UD'}>
+            <button className = 'update-button'>
+              <span>Edit</span>
+              <ImPencil/>
+            </button>
+            <button className = 'delete-button'>
+              <span>Delete</span>
+              <MdDelete/>
+
+            </button>
+          </article>
+          :
+          null
+        }
+
         <div className = 'profile-and-comments'>
           <aside className = 'profile-pic'>
             <img 
@@ -117,7 +136,7 @@ class SongPage extends React.Component{
   commentsComponent(){
     if (!this.state.comments) return null;
 
-    let title = this.state.comments.length !==1 ? 'comments' : 'comment';
+    let title = this.state.comments.length !==1 ? ' comments' : ' comment';
     title = `${this.state.comments.length}` + title;
 
     return <aside className = 'comments'>

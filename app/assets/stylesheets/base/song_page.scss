@@ -34,12 +34,13 @@ $background-height: 385px;
         height: $background-width;
         object-fit: cover;
         -webkit-filter: blur(25px);
-        filter: blur(25px);
+        filter: blur(21px) brightness(.8);
         object-position: 0  (-$background-width/2+ $background-height/2);
         transform: scale(1.1);
+        background: white;
         
-        background: black;
-        opacity: 60%;
+        // background: black;
+        // opacity: 60%;
       }
     }
 
@@ -131,7 +132,7 @@ $background-height: 385px;
     height: 40px;
     display: flex;
     flex-direction: row;
-    padding: 30px $page-side-margin + 25px;
+    padding: 30px $page-side-margin + 25px  20px  $page-side-margin+25px;
 
     img{
       width: 40px;
@@ -151,6 +152,35 @@ $background-height: 385px;
       }
     }
 
+  }
+
+  .song-UD{
+    width:  100%;
+    height: 25px;
+    display: flex;
+    padding-left: 45px;
+    padding-bottom: 10px;
+
+    button{
+      display: flex;
+      align-items: center;
+      height: 100%;
+      
+      background: white;
+      border: 1px solid $input-border-color;
+      border-radius: 3px;
+      margin-right: 10px;
+
+      span{
+        font-family: 'Overpass', sans-serif;
+        margin-right: 5px;
+      }
+      svg{
+        width: 13px;
+        height: 13px;
+      }
+      
+    }
   }
 
   .profile-and-comments{
