@@ -91,7 +91,6 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#
         let sidx = cids.indexOf(action.commentId);
         cids.splice(sidx,1);
         song.commentIds = cids;
-        debugger
         newState[action.songId] = song;
         return Object.assign({}, state, newState);
 

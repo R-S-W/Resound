@@ -47,7 +47,6 @@ class SongForm extends React.Component{
     }
     //listen to changes in the url string
     this.unlisten = this.props.history.listen((location, action)=>{
-      debugger
       let lastSlashIdx = location.pathname.lastIndexOf('/');
       let songIdNum = parseInt(location.pathname.slice(lastSlashIdx+1));
       this.setState({songId: songIdNum });
@@ -67,7 +66,6 @@ class SongForm extends React.Component{
 
   
   render(){
-    debugger
     if (this.props.formType === 'update' && 
       // !this.props.users[this.props.currentUserId].songIds.includes(this.songId)){
       !this.props.currentUserSongIds.includes(this.state.songId)){
@@ -210,7 +208,6 @@ class SongForm extends React.Component{
     
     const fileReader  = new FileReader();
       fileReader.onloadend = ()=>{
-        debugger
         this.setState({
           audio: aFile,
           audioURL:URL.createObjectURL(aFile)
@@ -240,7 +237,6 @@ class SongForm extends React.Component{
       const fileReader  = new FileReader();
 
       fileReader.onloadend = ()=>{
-        debugger
         this.setState({
           [type]: aFile,
           [`${type}URL`]:URL.createObjectURL(aFile)
