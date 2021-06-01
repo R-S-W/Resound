@@ -71,11 +71,14 @@ class SongPage extends React.Component{
                   <ImPencil/>
               </button>
             </Link>
-            <button className = 'delete-button'>
-              <span>Delete</span>
-              <MdDelete/>
-
-            </button>
+            <Link to = {`/users/${this.props.currentUserId}`}>
+              <button className = 'delete-button' 
+                onClick = {()=>{this.props.deleteSong(this.state.song.id)}}
+                >
+                <span>Delete</span>
+                <MdDelete/>
+              </button>
+            </Link>
           </article>
           :
           null
