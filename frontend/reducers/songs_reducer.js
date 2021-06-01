@@ -12,7 +12,7 @@ import {
   SHUFFLE_PLAYLIST
  } from '../actions/song_actions'
 
- import {RECEIVE_COMMENT, RECEIVE_SONG_COMMENTS} from '../actions/comment_actions';
+ import {RECEIVE_COMMENT, RECEIVE_SONG_COMMENTS, REMOVE_COMMENT} from '../actions/comment_actions';
 
 const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#-#  !!!!!!!!!!
   let newState = {};
@@ -84,6 +84,17 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#
           return merge({}, state, newState);
         }
         return state;
+      
+      case REMOVE_COMMENT:
+        let song = merge({},state[action.songId]);
+        let cids = new Array(...song.commentIds);
+        let sidx = cids.indexOf(action.commentId);
+        cids.splice(sidx,1);
+        song.commentIds = cids;
+        debugger
+        newState[action.songId] = song;
+        return Object.assign({}, state, newState);
+
     default:
       return state;
   }

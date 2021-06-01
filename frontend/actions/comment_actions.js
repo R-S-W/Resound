@@ -29,10 +29,11 @@ export const receiveSongComments = (songId, songComments)=>{
   }
 }
 
-export const removeComment = (id)=>{
+export const removeComment = (commentId, songId)=>{
   return {
     type: REMOVE_COMMENT,
-    comment_id: id
+    commentId,
+    songId
   }
 }
 
@@ -58,8 +59,7 @@ export const fetchSongComments = (songId) => (disp)=>{
 }
 
 
-
-export const deleteComment = (id) =>(disp)=>{
-  return CommentAPIUtil.removeComment()
-    .then((id)=> disp(removeComment(id)));
+export const deleteComment = (commentId,songId) =>(disp)=>{
+  return CommentAPIUtil.removeComment(commentId)
+    .then(()=> disp(removeComment(commentId, songId)));
 }
