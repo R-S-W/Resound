@@ -11,7 +11,7 @@ class SongForm extends React.Component{
     this.defaultState = {
       audio: null,
       albumCover: null,
-      albumCoverURL:null,
+      // albumCoverURL:null,
       name: null,
       info: null,
       genre: null,
@@ -20,7 +20,7 @@ class SongForm extends React.Component{
     if (props.formType === 'update'){
       this.defaultState.songId = parseInt(this.props.match.params.songId);
     }else{
-      this.defaultState.albumCoverURL = window.defaultAlbumCoverURL;
+      this.defaultState.albumCover = window.defaultAlbumCoverURL;
     }
     
     this.state = Object.assign({}, this.defaultState);
@@ -105,7 +105,7 @@ class SongForm extends React.Component{
           <div className = 'form-inputs'>
             <div className = 'image-upload-box'>
             <img 
-              src={this.state.albumCoverURL}
+              src={this.state.albumCover}
               className = 'album-cover-image'
             />
             {
@@ -188,11 +188,11 @@ class SongForm extends React.Component{
 
   updateSongState(){
     this.song = this.props.songs[this.state.songId];
+    debugger
     this.setState({
-      
       name:this.song.name,
       info: this.song.info, 
-      albumCoverURL: this.song.albumCoverURL || window.defaultAlbumCoverURL,
+      albumCover: this.song.albumCover || window.defaultAlbumCoverURL,
       artist_name: this.song.artist_name
     });
   }
