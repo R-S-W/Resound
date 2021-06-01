@@ -211,7 +211,7 @@ $background-height: 385px;
         display: grid;
         grid-template-areas: 
           "pic name     time"
-          "pic comment  .";
+          "pic comment  del";
         grid-template-columns: $comment-pfp-length auto auto ;
         grid-template-rows: 1fr 1.5fr;
 
@@ -237,8 +237,33 @@ $background-height: 385px;
           text-align: end;
           margin-right: 20px;
         }
+        .comment-delete{
+          grid-area: del;
+          height:20px;
+          width: 25px;
+          padding:0;
+          background-color: white;
+          border: 1px solid $input-border-color;
+          border-radius: 2px;
+          margin: 3px 25px 0 auto;
 
+          svg{
+            height: 17px;
+            width: 17px;
+          }
+        }
 
+      }
+      .user-comment{
+        background-color: $input-border-color-light;
+        .comment-delete{
+          opacity: 0;
+        }
+      }
+      .user-comment:hover{
+        .comment-delete{
+          opacity:1;
+        }
       }
     }
   }

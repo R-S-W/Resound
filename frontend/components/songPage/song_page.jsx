@@ -2,6 +2,7 @@ import React from 'react';
 import { GoPlay} from 'react-icons/go';
 import {BsPlayFill} from 'react-icons/bs';
 import {FaCommentAlt} from 'react-icons/fa';
+import {MdDelete} from 'react-icons/md';
 
 class SongPage extends React.Component{
   constructor(props){
@@ -113,7 +114,6 @@ class SongPage extends React.Component{
     this.props.createComment(data);
     this.setState({content:''});
   }
-  
   commentsComponent(){
     if (!this.state.comments) return null;
 
@@ -128,11 +128,23 @@ class SongPage extends React.Component{
       <ul>
         {
           this.state.comments.map((c)=>{
-            return <li id = {`comment-${c.id}`}>
+            let liClasses = "";
+            if (c.user_id === this.props.currentUserId) liClasses +=' user-comment';
+            
+            return <li id = {`comment-${c.id}`} className = {liClasses}>
               <img src={window.profilePic}/>
               <span className = 'comment-username'>{c.username}</span>
               <span className = 'comment-content'>{c.content}</span>
               <span className = 'comment-time'>{this.props.printHowLongAgo(c.created_at)}</span>
+              {
+                c.user_id === this.props.currentUserId ? 
+                  <button className = 'comment-delete' onClick= {()=>{this.props.deleteComment(c.id, c.song_id);
+}}>
+                    <MdDelete/>
+                  </button>
+                  :
+                  null
+              }
 
             </li>
           })
