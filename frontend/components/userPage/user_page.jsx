@@ -1,6 +1,7 @@
 import React from 'react';
 import { GoPlay} from 'react-icons/go';
 import {BsPlayFill} from 'react-icons/bs';
+import {Link} from 'react-router-dom'
 
 class UserPage extends React.Component{
   constructor(props){
@@ -38,9 +39,7 @@ class UserPage extends React.Component{
       </header>
       
       <nav className = 'list-buttons'>
-        <button>All</button>
-        <button>Popular Tracks</button>
-        <button>Tracks</button>
+        <button>All Tracks</button>
       </nav>
 
       {this.trackList()}
@@ -57,7 +56,6 @@ class UserPage extends React.Component{
 
   componentDidUpdate(){
     console.log('comp Did update in userpage')
-    debugger
     if (!this.user) this.user = this.props.users[this.userId];
     this.manageMissingSongs();
   }
@@ -92,13 +90,13 @@ class UserPage extends React.Component{
 
   trackList(){
     let songList=[];
-    if (this.state.isMissingASong) return <div>Tracklist empty</div>
+    if (this.state.isMissingASong) return null;
     
     this.user.songIds.forEach(sid=>{
       songList.push(this.props.songs[sid])  ;
     });
 
-    debugger
+    
     
 
 
@@ -106,14 +104,20 @@ class UserPage extends React.Component{
       {
         songList.map((s)=>{
           return <li id = {`song-${s.id}`}>
-            <img className = 'album-pic' src= {s.albumCover}></img>
+            <Link to= {`/songs/${s.id}`} className = 'album-pic-link'>
+              <img className = 'album-pic' src= {s.albumCover}></img>
+            </Link>
             <button className = 'play-button'>
               <BsPlayFill className = 'play-icon-background'/>
               <GoPlay className ='play-icon'/>
             </button>
             <article className = 'text'>
               <span className = 'artist-name'>{s.artist_name}</span>
-              <span className = 'song-name'>{s.name}</span>
+              <span className = 'song-name'>
+                <Link to = {`/songs/${s.id}`}>
+                  {s.name}
+                </Link>
+              </span>
             </article>
             <span className="time-ago">{this.props.printHowLongAgo(s.created_at)}</span>
             <img className='song-wave-pic' src= {window.defaultSongWave}></img>

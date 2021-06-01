@@ -48,11 +48,12 @@ $small-font-size: 12px;
   }
 
   .list-buttons{
-    margin: 0 $page-side-margin;
+    display: flex;
+    justify-content: center;
+    width: 50%;
     padding: 10px 0;
     border-bottom: 1px solid $input-border-color;
 
-    // padding: $page-side-margin 10px;
     button{
       font-family: 'Roboto', sans-serif;
       font-weight: bold;
@@ -91,11 +92,12 @@ $small-font-size: 12px;
 
     }
 
-
-    .album-pic{
+    .album-pic-link{
       grid-area: album-pic;
-      width: $album-pic-length;
-      height: $album-pic-length;
+      .album-pic{
+        width: $album-pic-length;
+        height: $album-pic-length;
+      }
     }
 
     .play-button{
@@ -126,13 +128,21 @@ $small-font-size: 12px;
       flex-direction: column;
       padding-left: 5px;
 
+      span{
+        a{
+          color: black;
+          text-decoration: none;
+        }
+      }
+
       .artist-name{
-        color: $text-color;
+        color: $comment-text-color;
         font-size:$small-font-size;
         font-weight:bolder;
       }
       .song-name{
         font-size: 15px;
+        
       }
 
     }

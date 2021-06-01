@@ -138,8 +138,7 @@ class SongPage extends React.Component{
               <span className = 'comment-time'>{this.props.printHowLongAgo(c.created_at)}</span>
               {
                 c.user_id === this.props.currentUserId ? 
-                  <button className = 'comment-delete' onClick= {()=>{this.props.deleteComment(c.id, c.song_id);
-}}>
+                  <button className = 'comment-delete' onClick= {()=>{this.props.deleteComment(c.id, c.song_id);}}>
                     <MdDelete/>
                   </button>
                   :
