@@ -20,7 +20,9 @@ class UserPage extends React.Component{
     if (!this.props.users[this.userId]){
       this.props.fetchUser(this.userId);
     }
-    // this.manageMissingSongs();
+    else if (this.props.users[this.userId].id === this.props.currentUser.id){
+      this.manageMissingSongs();
+    }
   }
 
 
