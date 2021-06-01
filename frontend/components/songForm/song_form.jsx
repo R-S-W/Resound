@@ -108,16 +108,11 @@ class SongForm extends React.Component{
               src={this.state.albumCover}
               className = 'album-cover-image'
             />
-            {
-              !this.state.albumCover ?
               <label className = 'image-upload'>
                 <input type="file" accept = 'image/*' onChange = {this.handleFile('albumCover')}/>
                 <AiFillCamera/> 
                 <span>Upload Image</span>
               </label>
-              :
-              null
-            }
           </div>
             <div className= 'column-2'>
               <label className = 'title'>
@@ -239,7 +234,7 @@ class SongForm extends React.Component{
       fileReader.onloadend = ()=>{
         this.setState({
           [type]: aFile,
-          [`${type}URL`]:URL.createObjectURL(aFile)
+          [`${type}`]:URL.createObjectURL(aFile)
         });
       };
       fileReader.readAsDataURL(aFile);
