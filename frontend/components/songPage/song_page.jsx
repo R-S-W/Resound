@@ -83,10 +83,12 @@ class SongPage extends React.Component{
 
         <div className = 'profile-and-comments'>
           <aside className = 'profile-pic'>
-            <img 
-              src={ this.state.song.artist_id === this.props.currentUserId ? window.profilePic : window.musicNote}
-            />
-            <span>{this.state.song.artist_name}</span>
+            <Link to = {`/users/${this.state.song.artist_id}`}>
+              <img 
+                src={ this.state.song.artist_id === this.props.currentUserId ? window.profilePic : window.musicNote}
+              />
+              <span>{this.state.song.artist_name}</span>
+            </Link>
           </aside>
           {this.commentsComponent()}
           
