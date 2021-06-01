@@ -7,7 +7,7 @@ const mapStateToProps = (state)=>{
   return {
     formType: 'update', 
     currentUserId: state.session.id,
-    currentUserSongIds: state.session.songIds,
+    currentUserSongIds: state.entities.users[state.session.id].songIds,
     songs: state.entities.songs, 
     users: state.entities.users
   }

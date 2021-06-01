@@ -161,6 +161,10 @@ $background-height: 385px;
     padding-left: 45px;
     padding-bottom: 10px;
 
+    a{
+      text-decoration: none;
+    }
+    
     button{
       display: flex;
       align-items: center;
@@ -174,6 +178,7 @@ $background-height: 385px;
       span{
         font-family: 'Overpass', sans-serif;
         margin-right: 5px;
+        text-decoration: none;
       }
       svg{
         width: 13px;

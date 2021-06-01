@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import { GoPlay} from 'react-icons/go';
 import {BsPlayFill} from 'react-icons/bs';
 import {FaCommentAlt} from 'react-icons/fa';
@@ -64,10 +65,12 @@ class SongPage extends React.Component{
         {
           this.props.currentUserId === this.state.song.artist_id  ? 
           <article className = {'song-UD'}>
-            <button className = 'update-button'>
-              <span>Edit</span>
-              <ImPencil/>
-            </button>
+            <Link to = {`/songs/edit/${this.state.songId}`}>
+              <button className = 'update-button'>
+                  <span>Edit</span>
+                  <ImPencil/>
+              </button>
+            </Link>
             <button className = 'delete-button'>
               <span>Delete</span>
               <MdDelete/>
