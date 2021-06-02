@@ -187,8 +187,8 @@ class SongForm extends React.Component{
     this.setState({
       name:this.song.name,
       info: this.song.info, 
-      albumCover: this.song.albumCover,
-      albumCoverURL: URL.createObjectURL(this.song.albumCover)|| window.defaultAlbumCoverURL,
+      albumCover: this.song.albumCover ,    //for some reason, albumCover and albumCoverURL can be equivalent here before any updates.
+      albumCoverURL: this.song.albumCover || window.defaultAlbumCoverURL,
       artist_name: this.song.artist_name
     });
   }
