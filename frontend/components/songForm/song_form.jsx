@@ -15,7 +15,8 @@ class SongForm extends React.Component{
       name: null,
       info: null,
       genre: null,
-      songId: undefined
+      songId: undefined,
+      isSubmitted: false
     }
     if (props.formType === 'update'){
       this.defaultState.songId = parseInt(this.props.match.params.songId);
@@ -70,6 +71,9 @@ class SongForm extends React.Component{
       // !this.props.users[this.props.currentUserId].songIds.includes(this.songId)){
       !this.props.currentUserSongIds.includes(this.state.songId)){
       return <Redirect to='/'/>
+    }else if(this.state.isSubmitted){
+      return <Redirect to ={`/users/${this.props.currentUserId}`}/>
+
     }
     return (    
       
@@ -269,7 +273,11 @@ class SongForm extends React.Component{
     debugger
 
     this.props.handleSong(formData, this.state.songId);
-    this.setState(this.defaultState);
+    let finalState = this.defaultState;
+    finalState.isSubmitted = true;
+    this.setState(finalState);
+
+    
 
   }
 }

@@ -32,7 +32,7 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#
 
     case REMOVE_SONG:
       newState = merge({}, state);
-
+      debugger
       let idx = newState.songPlaylist.indexOf(state[action.id]);
       if (idx !==-1) delete  newState.songPlaylist[idx];
       if (idx===newState.playlistIndex) newState.playlistIndex  = null;
@@ -76,23 +76,23 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#
       newState = merge({},state, {[action.songId]:s} );
       return newState;
 
-      case RECEIVE_COMMENT:
-        if (action.isNewComment){
-          let song = merge({},state[action.comment.song_id]);
-          song.commentIds.unshift(action.comment.id);
-          newState[action.comment.song_id] = song;
-          return merge({}, state, newState);
-        }
-        return state;
-      
-      case REMOVE_COMMENT:
-        let song = merge({},state[action.songId]);
-        let cids = new Array(...song.commentIds);
-        let sidx = cids.indexOf(action.commentId);
-        cids.splice(sidx,1);
-        song.commentIds = cids;
-        newState[action.songId] = song;
-        return Object.assign({}, state, newState);
+    case RECEIVE_COMMENT:
+      if (action.isNewComment){
+        let song = merge({},state[action.comment.song_id]);
+        song.commentIds.unshift(action.comment.id);
+        newState[action.comment.song_id] = song;
+        return merge({}, state, newState);
+      }
+      return state;
+    
+    case REMOVE_COMMENT:
+      let song = merge({},state[action.songId]);
+      let cids = new Array(...song.commentIds);
+      let sidx = cids.indexOf(action.commentId);
+      cids.splice(sidx,1);
+      song.commentIds = cids;
+      newState[action.songId] = song;
+      return Object.assign({}, state, newState);
 
     default:
       return state;
