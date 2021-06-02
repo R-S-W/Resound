@@ -11,7 +11,7 @@ class SongForm extends React.Component{
     this.defaultState = {
       audio: null,
       albumCover: null,
-      // albumCoverURL:null,
+      albumCoverURL:null,  //Necessary, albumCover is the file while albumCoverURL is a url for img tags
       name: null,
       info: null,
       genre: null,
@@ -20,7 +20,7 @@ class SongForm extends React.Component{
     if (props.formType === 'update'){
       this.defaultState.songId = parseInt(this.props.match.params.songId);
     }else{
-      this.defaultState.albumCover = window.defaultAlbumCoverURL;
+      this.defaultState.albumCoverURL = window.defaultAlbumCoverURL;
     }
     
     this.state = Object.assign({}, this.defaultState);
@@ -105,7 +105,7 @@ class SongForm extends React.Component{
           <div className = 'form-inputs'>
             <div className = 'image-upload-box'>
             <img 
-              src={this.state.albumCover}
+              src={this.state.albumCoverURL}
               className = 'album-cover-image'
             />
               <label className = 'image-upload'>
@@ -187,7 +187,8 @@ class SongForm extends React.Component{
     this.setState({
       name:this.song.name,
       info: this.song.info, 
-      albumCover: this.song.albumCover || window.defaultAlbumCoverURL,
+      albumCover: this.song.albumCover,
+      albumCoverURL: URL.createObjectURL(this.song.albumCover)|| window.defaultAlbumCoverURL,
       artist_name: this.song.artist_name
     });
   }
@@ -234,7 +235,7 @@ class SongForm extends React.Component{
       fileReader.onloadend = ()=>{
         this.setState({
           [type]: aFile,
-          [`${type}`]:URL.createObjectURL(aFile)
+          [`${type}URL`]:URL.createObjectURL(aFile)
         });
       };
       fileReader.readAsDataURL(aFile);

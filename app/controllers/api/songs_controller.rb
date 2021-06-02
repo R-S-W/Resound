@@ -1,13 +1,12 @@
 
 class Api::SongsController < ApplicationController
   def create
-    debugger
     @song = Song.new(song_params)
-    if @song.save!
-      render :show
-    else
-      render json: @song.errors.full_messages
-    end
+      if @song.save!
+        render :show
+      else
+        render json: @song.errors.full_messages
+      end
   end
 
   def show
