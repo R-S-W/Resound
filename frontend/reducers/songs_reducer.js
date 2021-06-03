@@ -29,7 +29,7 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#
 
     case REMOVE_SONG:
       newState = merge({}, state);
-      debugger
+      
       let idx = newState.songPlaylist.indexOf(state[action.id]);
       if (idx !==-1) delete  newState.songPlaylist[idx];
       if (idx===newState.playlistIndex) newState.playlistIndex  = null;

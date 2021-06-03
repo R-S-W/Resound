@@ -1,6 +1,6 @@
 import {RECEIVE_USER} from "../actions/user_actions";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
-import {RECEIVE_SONG} from '../actions/song_actions';
+import {RECEIVE_SONG, REMOVE_SONG} from '../actions/song_actions';
 const defaultState = {}
 const usersReducer = (state = defaultState, action)=>{
   Object.freeze(state);
@@ -26,6 +26,11 @@ const usersReducer = (state = defaultState, action)=>{
         return state;
       }
 
+    case REMOVE_SONG:
+      let user = Object.assign({},state[action.artistId]);
+      let idx = user.songIds.indexOf(action.id);
+      user.songIds = user.songIds.splice(idx,1)
+      return Object.assign({}, state, user);
     default:
       return state;
   }

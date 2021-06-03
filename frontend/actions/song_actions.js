@@ -25,10 +25,11 @@ export const receiveSongs = (songs)=>{
   }
 }
 
-export const removeSong = (id)=>{
+export const removeSong = (ids)=>{
   return {
     type: REMOVE_SONG,
-    song_id: id
+    id: ids.id,
+    artistId: ids.artistId
   }
 }
 
@@ -84,7 +85,7 @@ export const fetchUserSongs = (id) => dispatch => {
 
 export const deleteSong = (songId)=>dispatch=>{
   return SongAPIUtil.deleteSong(songId)
-    .then(()=>{return dispatch(removeSong(songId))})
+    .then((ids)=>{return dispatch(removeSong(ids))})
 }
 
 export const fetchPlaylistSong = (songId) => dispatch => {

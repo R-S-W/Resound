@@ -48,8 +48,10 @@ class Api::SongsController < ApplicationController
   def destroy
     @song = Song.find(params[:id])
     if (@song)
+      id = @song.id
+      aid = @song.artist_id
       @song.destroy
-      render json: {}
+      render json: {id: id, artistId: aid }
     else
       render json: ['Song not found.'], status: 409 
     end
