@@ -43,7 +43,7 @@ class SongBar extends React.Component {
   
     // this.audio = new Audio('Song_3.mp3');
     this.handlePlay = this.handlePlay.bind(this);
-    this.handleTheClick= this.handleTheClick.bind(this);
+    this.loadAtLeastOneSong= this.loadAtLeastOneSong.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleVolumeChange = this.handleVolumeChange.bind(this);
     this.handleVolumeModal = this.handleVolumeModal.bind(this);
@@ -411,8 +411,7 @@ class SongBar extends React.Component {
   }
   
   componentDidMount() {
-    // debugger
-    this.handleTheClick();
+    this.loadAtLeastOneSong();
     
   }
       
@@ -523,15 +522,16 @@ class SongBar extends React.Component {
     // debugger
   }
 
-  handleTheClick(e) { //helper function to load 1 playlist song for development
-    // setTimeout(() => { console.log("World!"); }, 2000);
+  loadAtLeastOneSong(e) {
 
-
-
-    setTimeout(() => { this.props.fetchPlaylistSong(1); }, 500);
-    
-    
-    
+    setTimeout(() => { 
+      if (Object.keys(this.props.songs).length > 2){
+        this.props.fetchPlaylistSong(1);
+        // this.props.fetchPlaylistSong(Object.values(this.props.songs)[0].id); 
+      }else{
+        this.props.fetchPlaylistSong(1);
+      }
+    }, 1000);
     
     // setTimeout(() => { this.props.fetchPlaylistSong(4); }, 1000);
     // setTimeout(() => { this.props.fetchPlaylistSong(7); }, 1500);

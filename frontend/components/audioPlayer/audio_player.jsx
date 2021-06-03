@@ -1,6 +1,6 @@
 
 import React from 'react';
-import SongBar from './song_bar';
+import SongBarContainer from './song_bar_container';
 import LinkBar from './link_bar';
 
 
@@ -12,18 +12,11 @@ class AudioPlayer extends React.Component {
   }
 
   render(){
-    if (true || this.props.loggedIn){///////\
+    if (true || this.props.loggedIn){
 
       return (
         <div className = 'audio-player'>
-          <SongBar
-            songPlaylist = {this.props.songPlaylist}
-            fetchPlaylistSong = {this.props.fetchPlaylistSong}
-            nextSong = {this.props.nextSong}
-            shufflePlaylist = {this.props.shufflePlaylist}
-            
-            
-          />
+          <SongBarContainer/>
 
           <LinkBar
             songPlaylist =  {this.props.songPlaylist}
