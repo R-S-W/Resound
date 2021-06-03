@@ -1,3 +1,5 @@
+require_relative('../../utils/controller_utils')
+
 class Api::SessionsController < ApplicationController
 
   def create 
@@ -12,7 +14,7 @@ class Api::SessionsController < ApplicationController
       @user = User.find_by_credentials(uname, params[:user][:password]);
       if @user
         login!(@user)
-        @song_ids = @user.songs.map {|s| s.id}.sort_by{|id|id}
+        @song_ids = sort_by_descending_id(@user.songs)
         render 'api/users/show'
       else
         render json: ['Invalid username or password'], status: 401
@@ -30,7 +32,6 @@ class Api::SessionsController < ApplicationController
       render json: ['There is no one logged in.'], status: 404
     end
   end
-
 
 
 end

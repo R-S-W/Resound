@@ -63,7 +63,7 @@ export const updateSong = (formData, songId)=>{
   // console.log('in updateSong in song actions')
   return dispatch=>{
   return SongAPIUtil.updateSong(formData, songId)
-    .then((songWithIndex)=>{return dispatch(receiveSong(songWithIndex, 'update'));})
+    .then((song)=>{return dispatch(receiveSong(song, 'update'));})
 }}
 
 export const fetchSongs = ()=>dispatch=>{
