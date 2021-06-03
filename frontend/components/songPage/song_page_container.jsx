@@ -19,7 +19,7 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch)=>{
   return {
     fetchSong: (id)=>{dispatch(fetchSong(id))},
-    deleteSong: (id)=>{debugger ;dispatch(deleteSong(id))},
+    deleteSong: (id)=>{dispatch(deleteSong(id))},
     createComment: (comment)=>{dispatch(createComment(comment))},
     fetchSongComments: (songId)=>{dispatch(fetchSongComments(songId))},
     deleteComment: (commentId, songId)=>{dispatch(deleteComment(commentId,songId))}

@@ -252,7 +252,7 @@ class SongBar extends React.Component {
             let newSong = this.props.playlist[this.props.playlistIndex + 1];
             let audio = this.audioRef.current;
             // this.setState({ song: newSong }); //
-            debugger
+            //debugger
             audio.src = newSong.audioURL;
             audio.pause();
             audio.load();
@@ -309,7 +309,7 @@ class SongBar extends React.Component {
     }
 
     if (this.prevSong !==this.state.song){
-      debugger
+      //debugger
       this.prevSong = this.state.song;
     }
     
@@ -418,7 +418,7 @@ class SongBar extends React.Component {
     if (!this.state.song && this.props.songPlaylist.length > 0){
       if (!this.props.playlistIndex)   this.nextPlaylistSong();
       else{
-        debugger
+        //debugger
         this.setState({
           song:this.props.songPlaylist[this.props.playlistIndex],
           isPaused: false

@@ -187,7 +187,6 @@ class SongForm extends React.Component{
 
   updateSongState(){
     this.song = this.props.songs[this.state.songId];
-    debugger
     this.setState({
       name:this.song.name,
       info: this.song.info, 
@@ -270,7 +269,6 @@ class SongForm extends React.Component{
       formData.append('song[artist_name]', this.props.currentUserUsername);
     }
 
-    debugger
 
     this.props.handleSong(formData, this.state.songId);
     let finalState = this.defaultState;
