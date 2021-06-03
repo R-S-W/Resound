@@ -24,6 +24,11 @@ User.create(username:"Natasha" ,email:"cats@.com" ,password:"bleghb" )
 #Our DemoUser.  Very important
 User.create(username:"Guest", email: "demoUser@demomail.com", password:'demodemo')
 
+User.create(username: 'Vulfpeck', email: 'vulpeck@gmail.com' , password: '1234567890asdfghjkl')
+User.create(username: "Jamiroquai" , email: 'jamiroquai@gmail.com' , password:'1234567890asdfghjkl' )
+User.create(username: "Cory Wong" , email:  'corywong@gmail.com', password: '1234567890asdfghjkl')
+User.create(username: "Django Reinhardt" , email: 'django@gmail.com' , password: '1234567890asdfghjkl')
+User.create(username: 'Snarky Puppy', email: 'snarkypuppy@gmail.com', password: '1234567890asdfghjkl')
 
 
 
@@ -47,7 +52,7 @@ s2.audio.attach(io:audio_file, filename: 'Song_2_clip.mp3')
 s2.album_cover.attach(io:album_cover_file, filename: 'RLWB.png')
 
 
-jta  = Song.create(name: "Journey to Arnhemland Clip", length: 14, info: "funky", artist_name: 'Jamiroquai', artist_id:8)
+jta  = Song.create(name: "Journey to Arnhemland Clip", length: 14, info: "funky", artist_name: 'Jamiroquai', artist_id:10)
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/Journey_to_Arnhemland_clip.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Return_of_the_Space_Cowboy.png')
 jta.audio.attach(io:audio_file, filename: "Journey_to_Arnhemland_clip.mp3")
@@ -55,7 +60,7 @@ jta.album_cover.attach(io: album_cover_file, filename: 'Return_of_the_Space_Cowb
 
 
 
-aoa = Song.create(name: "Ace of Aces", length:10 , info: "Aces", artist_name:'Fearless Flyers',artist_id:8)
+aoa = Song.create(name: "Ace of Aces", length:10 , info: "Aces", artist_name:'Guest',artist_id:8)
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/Ace_of_Aces.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Ace_of_Aces.png')
 aoa.audio.attach(io:audio_file, filename: "Ace_of_Aces.mp3")
@@ -64,28 +69,28 @@ aoa.album_cover.attach(io: album_cover_file, filename: 'Ace_of_Aces.png')
 
 
 
-cdltm = Song.create(name: "Claire de Lune TRAP REMIX", length:10 , info: "Cool", artist_name:'Debussy' , artist_id:8)
+cdltm = Song.create(name: "Claire de Lune TRAP REMIX", length:10 , info: "Cool", artist_name:'Guest' , artist_id:8)
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/Clair_De_Lune_TRAP_REMIX.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Claire_De_Lune_TRAP_REMIX.png')
 cdltm.audio.attach(io:audio_file, filename: "Clair_De_Lune_TRAP_REMIX.mp3")
 cdltm.album_cover.attach(io: album_cover_file, filename: 'Clair_De_Lune_TRAP_REMIX.png')
 
 
-cs = Song.create(name: "Cosmic Sans", length:10 , info: "Cool", artist_name: 'Cory Wong' , artist_id:8)
+cs = Song.create(name: "Cosmic Sans", length:10 , info: "Cool", artist_name: 'Cory Wong' , artist_id:11)
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/Cosmic_Sans.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Cosmic_sans.png')
 cs.audio.attach(io:audio_file, filename: "Cosmic_Sans.mp3")
 cs.album_cover.attach(io: album_cover_file, filename: 'Cosmic_sans.png')   #####
 
 
-igf = Song.create(name: "It Gets Funkier", length:10 , info: "Cool", artist_name: 'Vulfpeck', artist_id:8 )
+igf = Song.create(name: "It Gets Funkier", length:10 , info: "Cool", artist_name: 'Vulfpeck', artist_id:9 )
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/It_Gets_Funkier.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/It_Gets_Funkier.png')
 igf.audio.attach(io:audio_file, filename: "It_Gets_Funkier.mp3")
 igf.album_cover.attach(io: album_cover_file, filename: 'It_Gets_Funkier.png')
 
 
-round = Song.create(name: "Roundabout", length:10 , info: "Cool", artist_name: 'Yes', artist_id:8 )
+round = Song.create(name: "Roundabout", length:10 , info: "Cool", artist_name: 'Guest', artist_id:8 )
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/Roundabout.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Roundabout.png')
 round.audio.attach(io:audio_file, filename: "Roundabout.mp3")
@@ -93,7 +98,7 @@ round.album_cover.attach(io: album_cover_file, filename: 'Roundabout.png')
 
 
 
-Sein= Song.create(name: "Seinfeld", length: 10 , info: "Cool", artist_name:'Newman',artist_id:8 )
+Sein= Song.create(name: "Seinfeld", length: 10 , info: "Cool", artist_name:'Guest',artist_id:8 )
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/Seinfeld.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Seinfeld.png')
 Sein.audio.attach(io:audio_file, filename: "Seinfeld.mp3")
@@ -101,7 +106,7 @@ Sein.album_cover.attach(io: album_cover_file, filename: 'Seinfeld.png')
 
 
 
-tr= Song.create(name: "Titanic Recorder", length:10 , info: "Cool", artist_name:'Joe' ,artist_id:8)
+tr= Song.create(name: "Titanic Recorder", length:10 , info: "Cool", artist_name:'Guest' ,artist_id:8)
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/Titanic_Recorder.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Titanic_Recorder.png')
 tr.audio.attach(io:audio_file, filename: "Titanic_Recorder.mp3")
@@ -109,7 +114,7 @@ tr.album_cover.attach(io: album_cover_file, filename: 'Titanic_Recorder.png')
 
 
 
-ultra= Song.create(name: "Ultrafox", length:10 , info: "Cool", artist_name: 'Django Reinhardt & Stephan Grappelli',artist_id:8 )
+ultra= Song.create(name: "Ultrafox", length:10 , info: "Cool", artist_name: 'Django Reinhardt',artist_id:12 )
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/Ultrafox.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/Ultrafox.png')
 ultra.audio.attach(io:audio_file, filename: "Ultrafox.mp3")
@@ -118,7 +123,7 @@ ultra.album_cover.attach(io: album_cover_file, filename: 'Ultrafox.png')
 
 
 
-wam = Song.create(name: "What About Me", length:10 , info: "Cool", artist_name: 'Snarky Puppy' ,artist_id:8)
+wam = Song.create(name: "What About Me", length:10 , info: "Cool", artist_name: 'Snarky Puppy' ,artist_id:13)
 audio_file = URI.open("https://resound-seeds.s3.amazonaws.com/What_About_Me.mp3")
 album_cover_file = URI.open('https://resound-seeds.s3.amazonaws.com/What_About_Me.png')
 wam.audio.attach(io:audio_file, filename: "What_About_Me.mp3")
