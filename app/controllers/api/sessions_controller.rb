@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
       @user = User.find_by_credentials(uname, params[:user][:password]);
       if @user
         login!(@user)
-        @song_ids = @user.songs.map {|s| s.id}
+        @song_ids = @user.songs.map {|s| s.id}.sort_by{|id|id}
         render 'api/users/show'
       else
         render json: ['Invalid username or password'], status: 401

@@ -20,6 +20,7 @@ class Api::SongsController < ApplicationController
     else
       @songs = Song.all
     end
+    @songs = @songs.sort_by{|s| s.id}
     render :index
   end
 

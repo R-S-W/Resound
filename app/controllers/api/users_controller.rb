@@ -35,7 +35,7 @@ class Api::UsersController < ApplicationController
 
   def show  
     @user = User.find(params[:id])
-    @song_ids = @user.songs.map {|s| s.id}
+    @song_ids = @user.songs.map {|s| s.id}.sort_by{|id|id}
     if @user
       render :show
     else

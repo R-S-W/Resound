@@ -38,7 +38,7 @@ class Navigation extends React.Component {
           <span>Upload</span> 
         </button>
       </Link>
-      <Link to = {`users/${this.props.currentUser.id}`}>
+      <Link to = {`/users/${this.props.currentUser.id}`}>
         <button className = 'user-page-button' onClick = {this.handleUserPageButton}>
           <img className ='profile-pic' src = {window.musicNote}></img>
           <span>{this.props.currentUser.username}</span>
