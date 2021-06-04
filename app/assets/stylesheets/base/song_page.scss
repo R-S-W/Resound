@@ -191,7 +191,7 @@ $background-height: 385px;
     }
   }
 
-  .profile-and-comments{
+  .profile-info-comments{
     display: flex;
     flex-direction: row;
     
@@ -209,8 +209,6 @@ $background-height: 385px;
     span{
       font-family: 'Overpass', sans-serif;
     }
-
-
     
 
     .profile-pic{
@@ -230,85 +228,99 @@ $background-height: 385px;
       }
     }
 
-    .comments{
-      $comment-pfp-length: 40px;
-      width: 100%;
 
-      span{
-        color: $comment-text-color;
-        font-size: 14px;
-        
-        .comment-icon{
-          margin: 0 5px;
-        }
+    .info-and-comments{
+      width:100%;
+
+      .song-info{
+        margin-left: 5px;
+        display: block;
+        white-space: normal;
       }
+      
 
-      ul{
+      .comments{
+        $comment-pfp-length: 40px;
         width: 100%;
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px solid $input-border-color;
-      }
+        margin-top: 20px;
 
-
-      li{
-        display: grid;
-        grid-template-areas: 
-          "pic name     time"
-          "pic comment  del";
-        grid-template-columns: $comment-pfp-length auto auto ;
-        grid-template-rows: 1fr 1.5fr;
-
-        font-size: 14px;
-        column-gap: 10px;
-        padding: 10px 0;
-
-        img{
-          grid-area: pic;
-          width: $comment-pfp-length;
-          height: $comment-pfp-length;
-        }
-        .comment-username{
-          grid-area: name;
+        span{
           color: $comment-text-color;
-        }
-        .comment-content{
-          grid-area: comment;
-        }
-        .comment-time{
-          grid-area: time;
-          color: $comment-text-color;
-          text-align: end;
-          margin-right: 20px;
-        }
-        .comment-delete{
-          grid-area: del;
-          height:20px;
-          width: 25px;
-          padding:0;
-          background-color: white;
-          border: 1px solid $input-border-color;
-          border-radius: 2px;
-          margin: 3px 25px 0 auto;
-
-          svg{
-            height: 17px;
-            width: 17px;
+          font-size: 14px;
+          
+          .comment-icon{
+            margin: 0 5px;
           }
         }
 
-      }
-      .user-comment{
-        background-color: $input-border-color-light;
-        .comment-delete{
-          opacity: 0;
+        ul{
+          width: 100%;
+          margin-top: 10px;
+          padding-top: 10px;
+          border-top: 1px solid $input-border-color;
         }
-      }
-      .user-comment:hover{
-        .comment-delete{
-          opacity:1;
+
+
+        li{
+          display: grid;
+          grid-template-areas: 
+            "pic name     time"
+            "pic comment  del";
+          grid-template-columns: $comment-pfp-length auto auto ;
+          grid-template-rows: 1fr 1.5fr;
+
+          font-size: 14px;
+          column-gap: 10px;
+          padding: 10px 0;
+
+          img{
+            grid-area: pic;
+            width: $comment-pfp-length;
+            height: $comment-pfp-length;
+          }
+          .comment-username{
+            grid-area: name;
+            color: $comment-text-color;
+          }
+          .comment-content{
+            grid-area: comment;
+          }
+          .comment-time{
+            grid-area: time;
+            color: $comment-text-color;
+            text-align: end;
+            margin-right: 20px;
+          }
+          .comment-delete{
+            grid-area: del;
+            height:20px;
+            width: 25px;
+            padding:0;
+            background-color: white;
+            border: 1px solid $input-border-color;
+            border-radius: 2px;
+            margin: 3px 25px 0 auto;
+
+            svg{
+              height: 17px;
+              width: 17px;
+            }
+          }
+
+        }
+        .user-comment{
+          background-color: $input-border-color-light;
+          .comment-delete{
+            opacity: 0;
+          }
+        }
+        .user-comment:hover{
+          .comment-delete{
+            opacity:1;
+          }
         }
       }
     }
+
   }
 }

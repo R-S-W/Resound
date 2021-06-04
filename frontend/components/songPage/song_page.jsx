@@ -85,7 +85,7 @@ class SongPage extends React.Component{
           null
         }
 
-        <div className = 'profile-and-comments'>
+        <div className = 'profile-info-comments'>
           <aside className = 'profile-pic'>
             <Link to = {`/users/${this.state.song.artist_id}`}>
               <img 
@@ -94,7 +94,10 @@ class SongPage extends React.Component{
               <span>{this.state.song.artist_name}</span>
             </Link>
           </aside>
-          {this.commentsComponent()}
+          <div className = 'info-and-comments'>
+            <span className = 'song-info'>{this.state.song.info}</span>
+            {this.commentsComponent()}
+          </div>
           
         </div>
 
