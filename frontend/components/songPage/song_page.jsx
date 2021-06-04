@@ -111,7 +111,6 @@ class SongPage extends React.Component{
       this.setState({song: this.props.songs[this.state.songId]});
     }
     let songCommentIds = this.props.songs[this.state.songId]?.commentIds;
-    debugger
     if ((!this.state.comments && songCommentIds)  || 
       (this.state.comments && songCommentIds && this.state.comments.length !== songCommentIds.length)){
       let commentList = this.props.songs[this.state.songId].commentIds.map((cid)=>this.props.comments[cid]);

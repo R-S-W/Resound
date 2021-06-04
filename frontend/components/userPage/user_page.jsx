@@ -107,7 +107,7 @@ class UserPage extends React.Component{
             <Link to= {`/songs/${s.id}`} className = 'album-pic-link'>
               <img className = 'album-pic' src= {s.albumCover}></img>
             </Link>
-            <button className = 'play-button'>
+            <button className = 'play-button' onClick = {(e)=>{this.props.fetchPlaylistSong(s.id)}}>
               <BsPlayFill className = 'play-icon-background'/>
               <GoPlay className ='play-icon'/>
             </button>

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import UserPage from './user_page';
 import {fetchUser} from '../../actions/user_actions'
-import {fetchUserSongs} from '../../actions/song_actions';
+import {fetchUserSongs, fetchPlaylistSong} from '../../actions/song_actions';
 import {printHowLongAgo} from '../../util/misc_utils';
 
 
@@ -18,6 +18,7 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) =>{
   return {
     fetchUserSongs: (id)=>{dispatch(fetchUserSongs(id))},
+    fetchPlaylistSong: (id)=>{dispatch(fetchPlaylistSong(id))},
     fetchUser: (userId)=>{dispatch(fetchUser(userId))}
 
   }
