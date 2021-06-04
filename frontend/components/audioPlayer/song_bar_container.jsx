@@ -15,7 +15,6 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch)=>{
   return {
     fetchPlaylistSong: (songId) => {
-      debugger
       dispatch(fetchPlaylistSong(songId))
     },
     nextSong:()=>{

@@ -1,4 +1,3 @@
-require_relative('../../utils/controller_utils')
 
 class Api::UsersController < ApplicationController
 
@@ -17,7 +16,6 @@ class Api::UsersController < ApplicationController
       render json: ['Invalid email.  Please try again.'], status: 401
     elsif @user.save!
       login!(@user)
-      @song_ids = sort_by_descending_id(@user.songs)
       render :show
     else
       render json: ['Invalid username or password.  Please try again.'], status: 422
@@ -37,7 +35,6 @@ class Api::UsersController < ApplicationController
 
   def show  
     @user = User.find(params[:id])
-    @song_ids = sort_by_descending_id(@user.songs)
     if @user
       render :show
     else

@@ -16,12 +16,7 @@ class SongBar extends React.Component {
   constructor(props){
     super(props);
 
-    debugger
     let aSong = this.props.songPlaylist[0];
-    // if (props.playlistIndex){
-    //   aSong = props.playlist[props.playlistIndex];
-    // }
-
 
     this.state = {
       numLoops: 0, //=0,1,or 2
@@ -53,8 +48,6 @@ class SongBar extends React.Component {
     this.handlePlayPause = this.handlePlayPause.bind(this);
 
     this.interval;  //handles the interval that rerenders component every second
-    // this.setThisInterval = this.setThisInterval.bind(this);
-
 
     this.test= this.test.bind(this);
   }
@@ -223,7 +216,6 @@ class SongBar extends React.Component {
   }
 
   handlePlayPause(e){ 
-    debugger
     if (this.state.isPaused) {
       this.audioRef.current.play();
       this.setState({isPaused: false});
@@ -291,7 +283,7 @@ class SongBar extends React.Component {
           //   // this.audioRef.current.currentTime = 0;
           //   let newSong = this.props.playlist[this.props.playlistIndex + 1];
           //   // this.setState({ song: newSong }); //
-          //   debugger
+          //   
           //   audio.src = newSong.audio;
           //   audio.pause();
           //   audio.load();
@@ -317,7 +309,6 @@ class SongBar extends React.Component {
           console.log('one');
           break;
         case 2:
-          // debugger
           console.log('two')
           this.audioRef.current.play();
           this.audioRef.current.currentTime = 0;
@@ -326,7 +317,6 @@ class SongBar extends React.Component {
 
 
   nextPlaylistSong(){
-    // debugger
     if (!this.props.playlistIndex){
       this.setState({ 
         song: this.props.songPlaylist[0] 
@@ -414,13 +404,10 @@ class SongBar extends React.Component {
   }
   
   componentDidMount() {
-    debugger
-    this.loadAtLeastOneSong();
-    
+    this.loadAtLeastOneSong();    
   }
       
   componentDidUpdate(){
-    debugger
     if (!this.audioRef.current && !this.interval){
       this.interval = setInterval(()=>{
         if ( this.state.song !== this.props.songPlaylist[0]    ){
@@ -548,7 +535,6 @@ class SongBar extends React.Component {
 }
 
   const formatSeconds = (seconds)=>{
-  // debugger
     // console.log(seconds, (typeof seconds));
     // if (seconds === NaN  || !(seconds instanceof Number)) return '--:--';
     if (Number.isNaN(seconds)) return '--:--';
