@@ -104,20 +104,25 @@
 
     font-family: 'Quicksand', sans-serif;
 
-    span{
-      display: inline-block;
-      margin: 4px 0;
-      text-align: left;
-
-      font-weight: 900;
-
-
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      line-height: normal;
-
-
+    a{
+      display: inherit;
+      text-decoration: none;
+      color: black;
+      span{
+        display: inline-block;
+        margin: 4px 0;
+        text-align: left;
+        
+        font-weight: 900;
+        
+        
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: normal;
+        
+        
+      }
     }
     .title{
       font-size: 15px;

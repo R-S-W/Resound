@@ -1,6 +1,7 @@
 
 import React from 'react'
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import { HiHeart, HiUserAdd} from 'react-icons/hi';
 import { RiPlayListFill} from 'react-icons/ri';
 
@@ -34,8 +35,12 @@ class LinkBar extends React.Component{
               <img src = {this.song.albumCover} />
             </button>
             <div className = 'text-items'>
-              <a className = 'artist-link'  href="#">{this.song.artist_name}</a> 
-              <a href="#">{this.song.name}</a>
+              <Link to= {`/users/${this.song.artist_id}`}
+                className = 'artist-link'
+              >{this.song.artist_name}</Link>
+              <Link to = {`/songs/${this.song.id}`}>{this.song.name}</Link>
+              {/* <a className = 'artist-link'  href="#">{this.song.artist_name}</a>  */}
+              {/* <a href="#">{this.song.name}</a> */}
             </div>
           </div>
 

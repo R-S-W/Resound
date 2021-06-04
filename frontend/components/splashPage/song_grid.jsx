@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {fetchSongs , fetchSong, fetchPlaylistSong} from '../../actions/song_actions';
 import { GoPlay} from 'react-icons/go';
 import {BsPlayFill} from 'react-icons/bs'
@@ -61,9 +62,12 @@ class SongGrid extends React.Component{
           }
         </button>
         <div className = 'text-div'>
-          <span className= 'title' >{song.name}</span>
-          {/* <br/> */}
-          <span className = "album-title"> {song.artist_name} </span>
+          <Link to = {`/songs/${song.id}`}>
+            <span className= 'title' >{song.name}</span>
+          </Link>
+          <Link to = {`/users/${song.artist_id}`}>
+            <span className = "album-title"> {song.artist_name} </span>
+          </Link>
         </div>
       </div>
     )
