@@ -64,6 +64,8 @@ $background-height: 385px;
         position: relative;
         grid-area: play;
         margin-right: 20px;
+        background: transparent;
+
 
         .play-icon-background, .play-icon{
           height: $play-button-length;
