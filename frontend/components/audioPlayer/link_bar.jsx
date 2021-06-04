@@ -1,7 +1,18 @@
 
 import React from 'react'
+import {connect} from 'react-redux';
 import { HiHeart, HiUserAdd} from 'react-icons/hi';
 import { RiPlayListFill} from 'react-icons/ri';
+
+
+const mapStateToProps = (state)=>{
+  return {
+    playlist: state.entities.playlist,
+    songPlaylist: state.entities.playlist.songPlaylist
+  }
+}
+
+
 
 class LinkBar extends React.Component{
 
@@ -20,7 +31,7 @@ class LinkBar extends React.Component{
         <nav className = 'link-bar'>
           <div className = 'song-links'>
             <button className = 'album-cover-button'>
-              <img   src = {this.song.albumCover} />
+              <img src = {this.song.albumCover} />
             </button>
             <div className = 'text-items'>
               <a className = 'artist-link'  href="#">{this.song.artist_name}</a> 
@@ -44,9 +55,11 @@ class LinkBar extends React.Component{
       )
     }else{
       return (
-        <div></div>
+        <div>linkbarnotloading</div>
       )
     }
   }
 }
-export default LinkBar;
+
+
+export default connect(mapStateToProps)(LinkBar);

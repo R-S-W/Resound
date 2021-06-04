@@ -8,15 +8,14 @@ import { fetchPlaylistSong, nextSong, shufflePlaylist} from "../../actions/song_
 const mapStateToProps = (state)=>{
   
   return {
-    songs: state.entities.songs,
-    songPlaylist: state.entities.songs.songPlaylist, 
-    playlistIndex: state.entities.songs.playlistIndex,
-
+    songPlaylist: state.entities.playlist.songPlaylist, 
+    playlistIndex: state.entities.playlist.playlistIndex,
   }
 }
 const mapDispatchToProps = (dispatch)=>{
   return {
     fetchPlaylistSong: (songId) => {
+      debugger
       dispatch(fetchPlaylistSong(songId))
     },
     nextSong:()=>{

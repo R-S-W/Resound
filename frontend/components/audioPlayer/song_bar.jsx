@@ -16,10 +16,11 @@ class SongBar extends React.Component {
   constructor(props){
     super(props);
 
-    let aSong;
-    if (props.playlistIndex){
-      aSong = props.playlist[props.playlistIndex];
-    }
+    debugger
+    let aSong = this.props.songPlaylist[0];
+    // if (props.playlistIndex){
+    //   aSong = props.playlist[props.playlistIndex];
+    // }
 
 
     this.state = {
@@ -49,6 +50,7 @@ class SongBar extends React.Component {
     this.handleVolumeModal = this.handleVolumeModal.bind(this);
     this.handleMute = this.handleMute.bind(this);
     this.handleAudioEnded = this.handleAudioEnded.bind(this);
+    this.handlePlayPause = this.handlePlayPause.bind(this);
 
     this.interval;  //handles the interval that rerenders component every second
     // this.setThisInterval = this.setThisInterval.bind(this);
@@ -79,17 +81,7 @@ class SongBar extends React.Component {
   playButton(){
     return (
       <button className='play-button'
-      onClick={ (e)=>{
-        if (this.state.isPaused) {
-          this.audioRef.current.play();
-          this.setState({isPaused: false});
-          this.setThisInterval();
-        } else {
-          this.audioRef.current.pause();
-          clearInterval(this.interval);
-          this.setState({isPaused: true})
-        }
-      }}
+      onClick={ this.handlePlayPause }
       >
         {!this.audioRef.current || this.audioRef.current.paused ? 
           <FaPlay className = 'play-icon'/>  
@@ -230,7 +222,18 @@ class SongBar extends React.Component {
 
   }
 
-
+  handlePlayPause(e){ 
+    debugger
+    if (this.state.isPaused) {
+      this.audioRef.current.play();
+      this.setState({isPaused: false});
+      this.setThisInterval();
+    } else {
+      this.audioRef.current.pause();
+      clearInterval(this.interval);
+      this.setState({isPaused: true})
+    }
+  }
 
   handlePlay(e) { //Handle play button functionality
 
@@ -328,9 +331,9 @@ class SongBar extends React.Component {
       this.setState({ 
         song: this.props.songPlaylist[0] 
       });
-    }else if (this.props.playlist.length > this.props.playlistIndex){
+    }else if (this.props.songPlaylist.length > this.props.playlistIndex){
       // this.audioRef.current.currentTime = 0;
-      this.setState({song: this.props.playlist[this.props.playlistIndex]}); //
+      this.setState({song: this.props.songPlaylist[this.props.playlistIndex]}); //
       // this.audioRef.current.play();
     }else{
       this.state.song = null; //#-#
@@ -411,15 +414,17 @@ class SongBar extends React.Component {
   }
   
   componentDidMount() {
+    debugger
     this.loadAtLeastOneSong();
     
   }
       
   componentDidUpdate(){
+    debugger
     if (!this.audioRef.current && !this.interval){
       this.interval = setInterval(()=>{
-       if ( this.state.song !== this.props.songPlaylist[0]    ){
-         this.setState({song: this.props.songPlaylist[0]});
+        if ( this.state.song !== this.props.songPlaylist[0]    ){
+          this.setState({song: this.props.songPlaylist[0]});
         }else{
           clearInterval(this.interval)
         }
@@ -525,12 +530,11 @@ class SongBar extends React.Component {
   loadAtLeastOneSong(e) {
 
     setTimeout(() => { 
-      if (Object.keys(this.props.songs).length > 2){
-        this.props.fetchPlaylistSong(1);
+      // if (Object.keys(this.props.songs).length > 2){////////////////////////////////////////
+        // this.props.fetchPlaylistSong(1);
         // this.props.fetchPlaylistSong(Object.values(this.props.songs)[0].id); 
-      }else{
-        this.props.fetchPlaylistSong(1);
-      }
+      this.props.fetchPlaylistSong(1);
+      
     }, 1000);
     
     // setTimeout(() => { this.props.fetchPlaylistSong(4); }, 1000);
