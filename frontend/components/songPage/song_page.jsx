@@ -19,6 +19,7 @@ class SongPage extends React.Component{
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleAddPlaylist = this.handleAddPlaylist.bind(this);
   }
   componentDidMount(){
     if (!this.state.song){
@@ -38,10 +39,10 @@ class SongPage extends React.Component{
             <img src={this.state.song.albumCover} />
           </div>
           <article className= 'song'>
-            <div className = 'play-button'>
+            <button className = 'play-button' onClick = {this.handleAddPlaylist}>
               <BsPlayFill className = 'play-icon-background'/>
               <GoPlay className ='play-icon'/>
-            </div>
+            </button>
             <section className = 'text'>
               <span className = 'artist-name'>{this.state.song.artist_name}</span>
               <span className = 'song-name'>{this.state.song.name}</span>
@@ -121,26 +122,7 @@ class SongPage extends React.Component{
 
     
   }
-  
-  handleChange(type){
-    return (event)=>{
-      this.setState({[type]:event.currentTarget.value});
-    };
-  }
 
-  handleSubmit(e){
-    e.preventDefault();
-    let data = {
-      comment: {
-        user_id: this.props.currentUserId,
-        username: this.props.username,
-        song_id: this.state.songId,
-        content: this.state.content
-      }
-    };
-    this.props.createComment(data);
-    this.setState({content:''});
-  }
   commentsComponent(){
     if (!this.state.comments) return null;
 
@@ -181,6 +163,31 @@ class SongPage extends React.Component{
     </aside>
 
   }
+
+  handleChange(type){
+    return (event)=>{
+      this.setState({[type]:event.currentTarget.value});
+    };
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    let data = {
+      comment: {
+        user_id: this.props.currentUserId,
+        username: this.props.username,
+        song_id: this.state.songId,
+        content: this.state.content
+      }
+    };
+    this.props.createComment(data);
+    this.setState({content:''});
+  }
+
+  handleAddPlaylist(e){
+    this.props.fetchPlaylistSong(this.state.songId);
+  }
+  
 
 }
 export default SongPage;

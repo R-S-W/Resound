@@ -98,10 +98,10 @@ class SongGrid extends React.Component{
     )
   }
   componentDidMount(){
-    this.props.fetchSongs();
-    // this.props.fetchSong(1);
-    // this.props.fetchSong(2);
-    // this.props.fetchSong(3)
+    if (this.props.songList.length < 10){
+      this.props.fetchSongs();
+    }
+  
 
 
   }

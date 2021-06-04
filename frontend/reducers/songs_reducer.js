@@ -13,7 +13,7 @@ import {
 
  import {RECEIVE_COMMENT, RECEIVE_SONG_COMMENTS, REMOVE_COMMENT} from '../actions/comment_actions';
 
-const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#-#  !!!!!!!!!!
+const songsReducer = (state= {}, action)=>{  //#-#  !!!!!!!!!!
   let newState = {};
   Object.freeze(state);
   
@@ -29,21 +29,16 @@ const songsReducer = (state= {songPlaylist:[], playlistIndex:0}, action)=>{  //#
 
     case REMOVE_SONG:
       newState = merge({}, state);
-      
-      let idx = newState.songPlaylist.indexOf(state[action.id]);
-      if (idx !==-1) delete  newState.songPlaylist[idx];
-      if (idx===newState.playlistIndex) newState.playlistIndex  = null;
-      else if (idx < newState.playlistIndex) newState.playlistIndex--;
-
+    
       delete newState[action.id]
       return newState;
 
     case ADD_PLAYLIST_SONG:
-      
+      return Object.assign({},state, {[action.song.id]: action.song})
       // let arr = [action.song].concat(state.songPlaylist);
       // return Object.assign({},state,{songPlaylist:arr});
 
-      return merge({},state,{songPlaylist:[action.song]});
+      // return merge({},state,{songPlaylist:[action.song]});
 
     
     case NEXT_SONG:

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import {withRouter} from 'react-router-dom';
 import SongPage from './song_page'
-import {fetchSong, deleteSong} from '../../actions/song_actions';
+import {fetchSong, deleteSong, addPlaylistSong, fetchPlaylistSong} from '../../actions/song_actions';
 import {createComment, fetchSongComments, deleteComment} from '../../actions/comment_actions'
 import {printHowLongAgo} from '../../util/misc_utils';
 
@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch)=>{
   return {
     fetchSong: (id)=>{dispatch(fetchSong(id))},
     deleteSong: (id)=>{dispatch(deleteSong(id))},
+    fetchPlaylistSong: (id)=>{dispatch(fetchPlaylistSong(id))},
     createComment: (comment)=>{dispatch(createComment(comment))},
     fetchSongComments: (songId)=>{dispatch(fetchSongComments(songId))},
     deleteComment: (commentId, songId)=>{dispatch(deleteComment(commentId,songId))}
