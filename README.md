@@ -1,6 +1,6 @@
 # Resound
 
-[Resound](https://resound-music.herokuapp.com/){:target="_blank" :rel="noopener noreferrer"}
+[Resound](https://resound-music.herokuapp.com/){:target="_blank"}
 <a href = "https://resound-music.herokuapp.com/" target="_blank" rel="noopener noreferrer">Resound</a>
 is a Soundcloud clone that emulates its music player.  Users can play any song that appears on the page and control playback with the song player.  
 <img width="1280" alt="Screen Shot 2021-03-26 at 10 53 30 AM" src="https://user-images.githubusercontent.com/73966827/112650249-8fa5ba00-8e21-11eb-889d-a59e0d3b393c.png">
