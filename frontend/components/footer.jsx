@@ -7,8 +7,8 @@ class Footer extends React.Component{
       <section className = 'footer'>
         
         <span>Created by Raymond Wu</span>
-        <a href="https://github.com/R-S-W">Github</a>
-        <a href="https://www.linkedin.com/in/raymond-wu-9a1013164/">LinkedIn</a>
+        <a href="https://github.com/R-S-W" target='_blank' rel="noopener noreferrer">Github</a>
+        <a href="https://www.linkedin.com/in/raymond-wu-9a1013164/" target='_blank' rel="noopener noreferrer">LinkedIn</a>
 
       </section>
     )
