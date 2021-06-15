@@ -7,7 +7,9 @@ body{
   
   // justify-content: center;
 }
-
+#root{
+  margin-top: $navigation-height;
+}
 .app{
   // position: absolute;
   margin: auto ;
