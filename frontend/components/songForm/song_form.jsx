@@ -89,10 +89,10 @@ class SongForm extends React.Component{
               onDragOver = {this.stopDefaults}
               onDrop = {this.handleDrop}
             >
-              <span className = 'audio-title'>Drag & drop your track here</span>
+              <span className = 'audio-title'>Drag & drop your mp3 here</span>
               <label className = 'audio-upload'>
                 <input type="file" accept='audio/*' onChange = {this.handleFile('audio')}/>
-                <div className = 'audio-button-text'>or choose files to upload</div>
+                <div className = 'audio-button-text'>or choose file to upload</div>
               </label>      
             </div>
             :
