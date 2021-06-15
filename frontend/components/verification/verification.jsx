@@ -12,11 +12,11 @@ const Verification  = (props)=>{
     return (
       <div className= 'verification-buttons'>
         {/* <h3>{greetingMessage}</h3> */}
-        <button 
+        {/* <button 
           className='logout-button press-button'
           onClick = {props.logout}>
             Logout
-        </button>
+        </button> */}
       </div>
     );
   }else{

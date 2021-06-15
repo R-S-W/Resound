@@ -1,25 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logout } from '../actions/session_actions'; 
 
 const mapStateToProps = (state)=>{
   return {
     currentUser: state.entities.users[state.session.id]
   }
 }
+const mapDispatchToProps = (dispatch)=>{
+  return {
+    logout: ()=>dispatch(logout())
+  }
+}
 
 
 
 class Navigation extends React.Component {
+  constructor(props){
+    super(props);
 
-  // constructor(props){
-  //   super(props);
-  //   // this.handleUserPageButton = this.handleUserPageButton.bind(this);
-  // }
-
-  // handleUserPageButton(e){
-    
-  // }
+  }
 
   render(){
     // return  !this.props.currentUser.id ?
@@ -44,6 +45,11 @@ class Navigation extends React.Component {
           <span>{this.props.currentUser.username}</span>
         </button>
       </Link>
+      <button 
+        className='logout-button press-button'
+        onClick = {this.props.logout}>
+          Logout
+      </button>
     </nav>
   }
 
@@ -52,4 +58,4 @@ class Navigation extends React.Component {
 
 }
 
-export default connect(mapStateToProps)(Navigation);
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
