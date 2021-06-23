@@ -21,6 +21,7 @@ class Api::SongsController < ApplicationController
       @songs = Song.all
     end
     @songs = @songs.sort_by{|s| s.id}
+    @songs = @songs.slice(0,@songs.length-2)
     render :index
   end
 
