@@ -21,7 +21,7 @@ class Api::SongsController < ApplicationController
       @songs = Song.all
     end
     @songs = @songs.sort_by{|s| s.id}
-    @songs = @songs.select{|e| e.id!=17 && e.id!= 18 }
+    # @songs = @songs.select{|e| e.id!=17 && e.id!= 18 }
     render :index
   end
 
