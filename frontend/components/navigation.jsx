@@ -24,32 +24,46 @@ class Navigation extends React.Component {
 
   render(){
     // return  !this.props.currentUser.id ?
-    return !this.props.currentUser  ?
-    null
-    :
-    <nav className = 'navigation'>
+          
+    return <nav className = 'navigation'>
       <Link to = '/'>
         <button className = 'splash-button'>
           <img src = {window.resoundLogoWhiteURL}></img>
         </button>
       </Link>
       <div className = 'spacer'></div>
-      <Link to = '/songs/new'>
-        <button className = 'upload-button'>
-          <span>Upload</span> 
+
+      {
+        !this.props.currentUser ?
+        null 
+        :
+        <Link to = '/songs/new'>
+          <button className = 'upload-button'>
+            <span>Upload</span> 
+          </button>
+        </Link>
+      }
+      {
+        !this.props.currentUser ?
+        null
+        :
+        <Link to = {`/users/${this.props.currentUser.id}`}>
+          <button className = 'user-page-button' onClick = {this.handleUserPageButton}>
+            <img className ='profile-pic' src = {window.musicNote}></img>
+            <span>{this.props.currentUser.username}</span>
+          </button>
+        </Link>
+      }
+      {
+        !this.props.currentUser ?
+        null :
+        <button 
+          className='logout-button press-button'
+          onClick = {this.props.logout}>
+            Logout
         </button>
-      </Link>
-      <Link to = {`/users/${this.props.currentUser.id}`}>
-        <button className = 'user-page-button' onClick = {this.handleUserPageButton}>
-          <img className ='profile-pic' src = {window.musicNote}></img>
-          <span>{this.props.currentUser.username}</span>
-        </button>
-      </Link>
-      <button 
-        className='logout-button press-button'
-        onClick = {this.props.logout}>
-          Logout
-      </button>
+      }
+
     </nav>
   }
 
