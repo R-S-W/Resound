@@ -39,7 +39,6 @@ class SongGrid extends React.Component{
 
   songComponent(song, ind){
     return (
-
       <div className = 'song-grid-element'  key = {song.id} id= {song.id}>
         <button className = 'song-component-button'
           data-index={ind}
@@ -74,9 +73,6 @@ class SongGrid extends React.Component{
   }
 
   handleSongSelect(e){
-    // debugger
-    // let idx = e.currentTarget.dataset.index;
-    // console.log(idx);
     let songIdx = e.currentTarget.dataset.index;
     this.props.fetchPlaylistSong(this.props.songList[songIdx].id);
   }
