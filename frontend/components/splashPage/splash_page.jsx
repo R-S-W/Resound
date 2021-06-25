@@ -16,6 +16,7 @@ class SplashPage extends React.Component{
   }
 
   handleModal(type){//Types are login and signup
+    
     let isSessionFormVisible;
     isSessionFormVisible =  (type === 'signup') ?  'isSignupVisible' : 'isLoginVisible';
     
